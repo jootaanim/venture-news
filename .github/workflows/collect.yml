@@ -26,11 +26,18 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
+      # 수집기 하나가 실패해도 나머지 수집과 배포는 계속한다(이전 데이터는 data/에 남아 있다).
       - run: python scripts/collect_kvic.py
+        continue-on-error: true
       - run: python scripts/collect_kgrowth.py
+        continue-on-error: true
       - run: python scripts/collect_kif.py
+        continue-on-error: true
+      # 수출입은행은 서버 인증서 체인 문제로 GitHub 서버에서는 연결이 안 될 수 있다.
       - run: python scripts/collect_koreaexim.py
+        continue-on-error: true
       - run: python scripts/collect_news.py
+        continue-on-error: true
       - run: python scripts/build_site.py
       - name: 변경된 데이터 커밋
         run: |
