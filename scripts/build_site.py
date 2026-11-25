@@ -11,9 +11,12 @@ MAIN = {"출자계획", "선정결과", "접수현황", "서류결과", "질의�
 ALIAS = {"선정공고": "출자계획"}  # 한국성장금융 '선정공고' = 위탁운용사 선정계획 공고
 
 
+NEWS_CATS = {"VC·펀드", "출자·LP", "벤처기업"}
+
+
 def norm_cat(cat):
     cat = ALIAS.get(cat, cat)
-    return cat if cat in MAIN else "기타"
+    return cat if cat in MAIN or cat in NEWS_CATS else "기타"
 
 
 items = []
@@ -24,6 +27,8 @@ slim = [
     {
         "id": f'{it["source"]}-{it["id"]}',
         "src": it["source"],
+        "kind": it.get("kind", "notice"),
+        "pub": it.get("outlet", ""),
         "cat": norm_cat(it["category"]),
         "title": " ".join(it["title"].split()),
         "date": it["published"],
