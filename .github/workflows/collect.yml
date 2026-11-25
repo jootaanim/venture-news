@@ -36,6 +36,8 @@ jobs:
       # 수출입은행은 서버 인증서 체인 문제로 GitHub 서버에서는 연결이 안 될 수 있다.
       - run: python scripts/collect_koreaexim.py
         continue-on-error: true
+      - run: python scripts/collect_kdb.py
+        continue-on-error: true
       - run: python scripts/collect_news.py
         continue-on-error: true
       - run: python scripts/build_site.py
