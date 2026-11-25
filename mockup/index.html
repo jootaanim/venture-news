@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>모험자본 출자사업 모니터</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#1c2430;--mute:#6b7685;--line:#e3e7ec;--brand:#1f4e9c;
+--c1:#1f4e9c;--c2:#b4541a;--c3:#2a7d4f;--c4:#7a3f9d}
+@media (prefers-color-scheme:dark){:root{--bg:#12161c;--card:#1a2029;--ink:#e8ecf1;--mute:#93a0b1;--line:#2a323d;--brand:#6ea0f0;--c1:#6ea0f0;--c2:#e8955a;--c3:#5fc08a;--c4:#c08be0}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Malgun Gothic",system-ui,sans-serif}
+header{background:var(--card);border-bottom:1px solid var(--line);padding:14px 16px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+h1{font-size:18px;margin:0}
+.banner{background:#fff4d6;color:#6b4e00;padding:8px 16px;font-size:13px;text-align:center}
+@media (prefers-color-scheme:dark){.banner{background:#3a3014;color:#f0d98a}}
+nav{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0}
+nav button{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:6px 12px;border-radius:999px;cursor:pointer;font:inherit}
+nav button.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.grid{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}
+@media (max-width:820px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.card h2{font-size:14px;margin:0 0 10px;color:var(--mute);font-weight:600}
+.cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.dow{font-size:12px;color:var(--mute);text-align:center;padding:4px 0}
+.day{min-height:64px;border:1px solid var(--line);border-radius:6px;padding:3px;font-size:12px;overflow:hidden}
+.day.out{opacity:.35}
+.day b{font-weight:600}
+.ev{display:block;margin-top:2px;padding:1px 4px;border-radius:3px;color:#fff;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.t1{background:var(--c1)}.t2{background:var(--c2)}.t3{background:var(--c3)}.t4{background:var(--c4)}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--mute);margin-top:8px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px}
+ul.list{list-style:none;margin:0;padding:0}
+ul.list li{padding:10px 0;border-top:1px solid var(--line)}
+ul.list li:first-child{border-top:0}
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:999px;background:var(--bg);border:1px solid var(--line);color:var(--mute);margin-right:4px}
+.meta{font-size:12px;color:var(--mute)}
+.sum{font-size:13px;margin:3px 0}
+a{color:var(--brand);text-decoration:none}
+footer{padding:24px 0;color:var(--mute);font-size:12px;text-align:center}
+</style>
+</head>
+<body>
+<div class="banner">샘플 데이터로 만든 화면 목업입니다. 실제 공고·일정이 아닙니다.</div>
+<header><div class="wrap"><h1>모험자본 출자사업 모니터 <span class="meta">· 갱신: 매일 오전 7시(예정)</span></h1></div></header>
+<div class="wrap">
+<nav id="filters"></nav>
+<div class="grid">
+  <section class="card">
+    <div class="cal-head"><h2 style="margin:0">출자사업 일정</h2><span id="month" class="meta"></span></div>
+    <div class="cal" id="cal"></div>
+    <div class="legend">
+      <span><i class="t1"></i>접수 마감</span><span><i class="t2"></i>심사(서류·PT)</span>
+      <span><i class="t3"></i>선정 발표</span><span><i class="t4"></i>결성 마감</span>
+    </div>
+  </section>
+  <section class="card">
+    <h2>최근 소식 (AI 요약)</h2>
+    <ul class="list" id="list"></ul>
+  </section>
+</div>
+<footer>제목·원문 링크·자체 요약만 제공합니다. 원문은 각 출처에서 확인하세요.</footer>
+</div>
+<script>
+const events=[
+ {d:"2026-12-03",t:1,org:"한국벤처투자",n:"샘플 모펀드 2차 접수 마감",k:"출자공고"},
+ {d:"2026-12-08",t:2,org:"한국성장금융",n:"샘플 성장펀드 PT 심사",k:"출자공고"},
+ {d:"2026-12-10",t:3,org:"한국벤처투자",n:"샘플 모펀드 1차 선정 발표",k:"선정결과"},
+ {d:"2026-12-15",t:4,org:"산업은행",n:"샘플 펀드 결성 마감",k:"펀드결성"},
+ {d:"2026-12-17",t:1,org:"공제회",n:"샘플 공제회 출자 접수 마감",k:"출자공고"}
+];
+const news=[
+ {k:"출자공고",org:"한국벤처투자",t:"샘플: 모펀드 출자사업 계획 공고",s:"샘플 요약 문장이 여기에 들어갑니다. 접수 마감은 공고문 기준.",d:"11-20",amt:"500억원"},
+ {k:"선정결과",org:"한국성장금융",t:"샘플: 성장펀드 선정 결과",s:"선정 운용사와 약정 규모를 AI가 추출해 요약합니다.",d:"11-19",amt:"1,200억원"},
+ {k:"펀드결성",org:"산업은행",t:"샘플: 바이오 펀드 결성 완료",s:"결성 규모와 주요 LP를 요약합니다.",d:"11-18",amt:"800억원"},
+ {k:"정책",org:"중소벤처기업부",t:"샘플: 벤처투자촉진법 개정 입법예고",s:"정책 변경점과 LP에 미치는 영향 한 줄 요약.",d:"11-17",amt:""}
+];
+const kinds=["전체","출자공고","선정결과","펀드결성","정책"];let cur="전체";
+const f=document.getElementById("filters");
+function drawFilters(){f.innerHTML=kinds.map(k=>`<button class="${k===cur?'on':''}" onclick="cur='${k}';render()">${k}</button>`).join("")}
+function render(){drawFilters();
+ const y=2026,m=11;document.getElementById("month").textContent=`${y}년 ${m+1}월`;
+ const first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate();
+ let h=["일","월","화","수","목","금","토"].map(x=>`<div class="dow">${x}</div>`).join("");
+ for(let i=0;i<first;i++)h+=`<div class="day out"></div>`;
+ for(let d=1;d<=days;d++){const key=`${y}-12-${String(d).padStart(2,"0")}`;
+  const ev=events.filter(e=>e.d===key&&(cur==="전체"||e.k===cur));
+  h+=`<div class="day"><b>${d}</b>${ev.map(e=>`<span class="ev t${e.t}" title="${e.org} ${e.n}">${e.n}</span>`).join("")}</div>`}
+ document.getElementById("cal").innerHTML=h;
+ document.getElementById("list").innerHTML=news.filter(n=>cur==="전체"||n.k===cur).map(n=>
+  `<li><span class="tag">${n.k}</span><span class="tag">${n.org}</span>${n.amt?`<span class="tag">${n.amt}</span>`:""}
+  <div><a href="#">${n.t}</a></div><div class="sum">${n.s}</div><div class="meta">${n.d}</div></li>`).join("")}
+render();
+</script>
+</body>
+</html>
