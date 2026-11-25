@@ -20,7 +20,7 @@ from bs4 import BeautifulSoup
 BASE = "https://www.kgrowth.or.kr"
 OUT = Path(__file__).resolve().parent.parent / "data" / "kgrowth.json"
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; venture-news-bot/0.1)"}
-DELAY = 1.0
+DELAY = 60.0  # robots.txt의 Crawl-Delay: 60 준수 (증분 수집이라 매일 몇 건만 받는다)
 
 
 def get(path, **params):
