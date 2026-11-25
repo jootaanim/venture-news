@@ -1,5 +1,15 @@
 [
  {
+  "id": "ff31bb7e36e8",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "매일신문",
+  "title": "[AI 시대, 대구의 길을 묻다] ③ 벤처투자 절반 가까이 AI로…대구 AI 기업 창업은 답보",
+  "published": "2026-11-25",
+  "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE04cU40djBJOTR2QXhBNklCUGktZkwwTU1INmlEcGJPbUtYQy1FQVpJeS1oX044Mmx3bnRFRm12RU9ESlR6T29OQjM2SlU4NE9sMnpOcC04bmc4a1k0NXQxNDB3?oc=5"
+ },
+ {
   "id": "f410e58a2cb3",
   "source": "뉴스",
   "kind": "article",
@@ -18,6 +28,26 @@
   "title": "벤처투자 12조 돌파…예탁결제원 '벤처넷' 외연 확장",
   "published": "2026-11-25",
   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1WcDRZSW50NzNuWjltRkU2XzVsVEl1QUQ2OTRqVGJsdWo1RGZLanc4Q1BiOFZUdjlnbWM5bVlLUVZpbjdvaDRsVmxELUN0Rm5GSkZWZFgtX3dfYXha?oc=5"
+ },
+ {
+  "id": "eccfbbab0ed8",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "뉴스1",
+  "title": "'벤처넷' 참여 운용사 확대...예탁원 \"벤처투자 지원 강화\"",
+  "published": "2026-11-25",
+  "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9HeUVLaHJqVXFJNjkyY2JwN3NGT1dLUmZfdm43Sm5PMHBWcHVkMGliRk10VXFFd3o4NVRTbWxTT0lVbS14UzhJMjE4NDhIaXhrSHhsT3VBOUZ3ZXUwTlFB?oc=5"
+ },
+ {
+  "id": "ec853260ec19",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "www.dt.co.kr",
+  "title": "예탁원 ‘벤처넷’ 참여 운용사 확대…벤처 투자 인프라 혁신 속도",
+  "published": "2026-11-25",
+  "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1oVnB2dTJmTE5kNnpLLXgtMllzNmtOUk1FTENXQ09taHMtdjROdENXdDlCWTNWOHBvMHFxY3ppNzVtYzlpNHVKaVZxbDRDQQ?oc=5"
  },
  {
   "id": "ec65321ed53d",
@@ -40,6 +70,16 @@
   "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBaeTc5SFFIWHBPamdNWnl1ZWhya3BkWHBvSTgxdzNhdkMzWkxuWDctcndZWUZpTFJhZTFseTUzWDZBTGhhc3BRNWh6TExnQQ?oc=5"
  },
  {
+  "id": "e3b0df995338",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "뉴스톱",
+  "title": "지앤텍벤처투자, 강준규 단독대표 체제로...3년 만에 세대교체",
+  "published": "2026-11-25",
+  "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9FTlFjcEFtcHRhdEpQeGV3RFNic2tmOFNCZzREeFpvMkZZTkxXOWYweV91R2RMN2s4Ym1zZFBpVWRQdENLRV9wRjNpUUR2YWhWUndMeDVReEpjakg4Vnc?oc=5"
+ },
+ {
   "id": "e094f86dcd2b",
   "source": "뉴스",
   "kind": "article",
@@ -48,6 +88,16 @@
   "title": "국민성장펀드 위탁운용사, 연말 출범 ‘준비 끝’",
   "published": "2026-11-25",
   "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFB0cEtNMHZuV3F5WERBNG82ODU2R0xmSlY5TWlUUl9BOGJnM0dhaG9yMUJUbzNsOWg2T0JQQmpNTGlGa2dpM01nV1ZyM0FxU3Y4dURCZldB?oc=5"
+ },
+ {
+  "id": "cde5d376308b",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "디지털투데이",
+  "title": "금감원 모험자본 플랫폼 첫 성과...KB증권, 지역 벤처펀드 출자",
+  "published": "2026-11-25",
+  "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE94VHVVVFY5VlNPQzBXbUVpSVBpcllMd0hrSTNHVVRHaV93czFsYkNmV3dXN1daZWs5NGFaRmpvTGo1UXA5SnBrd3JiajEwQmprdThNbm1lMFh2cWdhZFhaY0ZFR3VJcmtzaU9qSzZ6bWNxSjg?oc=5"
  },
  {
   "id": "c9503cb4b574",
@@ -78,6 +128,16 @@
   "title": "현대건설, 스타트업 85개사 발굴…건설 혁신기술 협업 확대",
   "published": "2026-11-25",
   "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOcW9kYm96SUJ2ckdVVmhvclJqaTJNLVV6Ri1TN1F3dW5QOVpqZVI1ZENlajRzeFZxaGt4UmNaeUt2U0FaU2NDMnRIRjNucjFJVWF1UkxDd2RKbzNlb290cHhlX3Y1V2Fta2pFUEN2ZWFKMTQxNjRmQ3c5RFZaNWZMSA?oc=5"
+ },
+ {
+  "id": "bd58dc308a4b",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "금융경제신문",
+  "title": "한국예탁결제원, 벤처넷 참여 기관 확대…벤처투자 인프라 전산화 속도",
+  "published": "2026-11-25",
+  "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFA0Zl9ES0NWTlo3TXBnODRjVksxZWtPMlVuMHdIOFpIRnN3VjhqSmExNnNYWUVnZ09WYWVJZzV3MXJMcG00c3h2WlFsQ0NvWlpiZWdURjU1YVdDTEV1amFvZXVfTHhWMTY2V0RqZm9kQdIBb0FVX3lxTFA0Zl9ES0NWTlo3TXBnODRjVksxZWtPMlVuMHdIOFpIRnN3VjhqSmExNnNYWUVnZ09WYWVJZzV3MXJMcG00c3h2WlFsQ0NvWlpiZWdURjU1YVdDTEV1amFvZXVfTHhWMTY2V0RqZm9kQQ?oc=5"
  },
  {
   "id": "bb90312ce9e4",
@@ -150,6 +210,26 @@
   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE95Nk54SDFGdm5CVWxGWWhiLW94QVlqNzhKUHRDSUdSUnNoOG1ieFdHbVFKWWVGVVhiQ29lRjNORG13ci1YZnRmVXlhdTVOY2tuNmxyU0dPZkxsbzA4SG9fTmk3TjgzdjcyYXc?oc=5"
  },
  {
+  "id": "90330138b78a",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "동행일보",
+  "title": "예탁결제원 벤처넷, ERP 1위 품고 백오피스 개편 속도",
+  "published": "2026-11-25",
+  "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9LZVF4RkNTdGVqR2FQaVJ5Z2JheVpkNEZEOHBpY1NfLWt3bW51cE5lc2FVdGI5c29sNnN6eEtMcFRTcFZ6YjZiUFFqclBOSDMzSy1kN2JKaXpxX3RlRXgySW4zTUpEVjRt?oc=5"
+ },
+ {
+  "id": "8f9639474d86",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "매일일보",
+  "title": "한국예탁결제원, 벤처넷 참여 운용사 확대…인라이트벤처스·JB인베스트먼트 합류",
+  "published": "2026-11-25",
+  "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1VUmFxQk5oMHJHcW1rMjVNcmdqRWxMeVladk1TRkdsQXpBMzl4WmExdzd2WFlEalhNOGxfTGRNZkNrMnV1WWhOb25Wbl91YUNVRF9JZ05tRW81N3ZWaG04UjRDYXo?oc=5"
+ },
+ {
   "id": "87ea8f39a73b",
   "source": "뉴스",
   "kind": "article",
@@ -178,6 +258,26 @@
   "title": "예탁결제원, 벤처넷 참여 운용사 확대…벤처투자 인프라 고도화",
   "published": "2026-11-25",
   "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE8xWUhCT3BzblZRSzJwdFk1aFlIX1RkUWZXd09yUld3NzNIc1dleWVuU1J2MjY2cTBnZkd0NXEtcEFHQ1RTd2JSZHRkQ0hsUVRnb0pvY2Z6UVUzTndnYm1MQS1PWUJGLUVwc2JPaEJvYWNkYm4wejNaejR2RDQ?oc=5"
+ },
+ {
+  "id": "6e75c1dd69d9",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "서울파이낸스",
+  "title": "금감원 모험자본 투자 플랫폼 첫 성과···KB증권, 지역 벤처펀드 출자",
+  "published": "2026-11-25",
+  "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1tNGxncEpyR1ZZY0FMUThQUHJBVFlKOHFuU1V3d0hxemF2cEhBWDdXRHFFTzV6djgtTXNCZ2JuTGs4akFPQm1mczN6VlNRdzlDUGhpOWJQVFF0WDluODdodDFSWFlQaF9ZOFE?oc=5"
+ },
+ {
+  "id": "6df276c200fe",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "www.dt.co.kr",
+  "title": "‘모험자본 플랫폼’ 종투사 첫 출자 성사…KB증권, 울산 벤처펀드 20억 투자",
+  "published": "2026-11-25",
+  "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5GRlNvVUtDaW50Mk1pZXpuaGZiX2ROa1drbHpYeVpRR0xFRjlHLVdSQkJrOVNLdUQ1RVdzTE04WXhpWHhyTzdJT1Q0V3IxQQ?oc=5"
  },
  {
   "id": "50fbee40203a",
@@ -220,6 +320,26 @@
   "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE1DUGxQWVVEY1RuRkloRS0xR243OEdmZmoxYms2by1wbGtZYnNpZlV0dUYxaTVFakNJeUdROS11LTltS0J3WFE?oc=5"
  },
  {
+  "id": "43b1ce587ead",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "한국데이터경제신문",
+  "title": "[단독분석] 1~3분기 벤처투자 역대 최대…ICT제조 늘고 게임 급감",
+  "published": "2026-11-25",
+  "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9EMk9PdktobTZxYkJaV3RqeTJxSkdpaDlYWkZHekVQVDczS0UtaWdWdHdybC1kTkFRVmtTWWI5RHFqcDZZU2xPa2xLNzdiVjI0UjNrNEFRR18ybjg1U0JuaVJSbWkyY091NFJVOXFiSC3SAXRBVV95cUxPaE5VME5yaDFhYlMxYTNQZ3Fqa2hBU1NfWU84MEVsQndMV1BiUGhrNGR6VHVzSDlxOUtpMENZU3NHRmNnWGJ2UllBQWZsR1ljQlN3LWVHWW11RWljM25qenlLNm9kV2RaVXpETnR4NS15ODV4aA?oc=5"
+ },
+ {
+  "id": "40ceb92958db",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "파이낸셜뉴스",
+  "title": "금감원·네이버페이 모험자본 플랫폼 첫 성과…KB증권, 지역 벤처펀드 출자",
+  "published": "2026-11-25",
+  "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFA4Wkp0U1pOeDJuUE9OWUhwM3RoLTNSN29CNGJSZU5fUTZ0SEh3ZWZzVmR4UlgtSTNSd2h3WV93bFFFcTl3TUdCMVJoLWNpQXliWkVuRGtFWVg1QQ?oc=5"
+ },
+ {
   "id": "3e525e7c297d",
   "source": "뉴스",
   "kind": "article",
@@ -228,6 +348,16 @@
   "title": "KB證, 금감원 모험자본 플랫폼서 첫 벤처펀드 출자…지역 초기기업 투자 ‘물꼬’",
   "published": "2026-11-25",
   "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPUVJsUDFhQ0ZpbzNOckphcmlxQmdNVzhnYnpheWxCSTFFVVBrcmRzS2xxLUF6TVBmT1pxM3MtWTZ0c0pNdThzc1FaZjg2SnR6Q08xbktjSE15RnBpX2tad2Z0Qk83X3JDcmNIanp1ZWhPTTIyNmVOMkJOTnoxUmczOG5vLXRCZ3N30gGcAUFVX3lxTE9BMTYwWERseUxCU2ZBUWg2d24wZVY1QWpVRWZ1d05XRUhlV3paSVRuQmJVUXR2a04weDBXSktzZEwyOFJaOWVoSE9sUmN2MVp4bVpBRmxVY2NJVUN0SG45Z1d0OGEweGduMm4xQjhaRGMxNlZxUWo5UHpMbXNQaUJXMDd0M0RfekZxTnRvMTBXS0FCVUVabmw2MW91MA?oc=5"
+ },
+ {
+  "id": "386fa4bf25bb",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "이투데이",
+  "title": "금감원, 모험자본 플랫폼 첫 투자 성사…KB증권, 지역 벤처펀드 출자",
+  "published": "2026-11-25",
+  "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBKSERERzR2M3FXWHpxLXMyenhEM3pRRTJ2cG94RHlnQW41VV9IejJQWnp1dnlNZ0NOZDNSX2NjQklxbzJyTFdjWmNGYUxqZzRKY2syQw?oc=5"
  },
  {
   "id": "2a4fd7c20ed9",
@@ -290,6 +420,26 @@
   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBLSk04Q2VGaWs0R055T2FxVjZ4ZHB1QVdJRkVjR0pUUDZ5eXNneDRPSVg3T0JuMlJmTDR5N2VyUWR6bm1BcVVpLWZkTlQ3aHh3VjlyNm53MjN3ZXhTU3FWS2FJeGEwMnZ2QklB?oc=5"
  },
  {
+  "id": "14239293a433",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "헤럴드경제",
+  "title": "한국예탁결제원, 벤처넷 참여 운용사 확대…“벤처투자 지원 강화”",
+  "published": "2026-11-25",
+  "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE4tei16UXdHa0xkMmsyUThWdFlOWkxEYkxiNkxkNE5hZmlRYlpmZTdvTDNVTXpKeEEtMExTaEtnMU01UlJxYUFyellEUXdXTmpNNl8wMjRB?oc=5"
+ },
+ {
+  "id": "0f5f3b979485",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "뉴스톱",
+  "title": "미래에셋캐피탈, 증권·벤처투자에 총 1200억 추가 출자",
+  "published": "2026-11-25",
+  "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE53Mjhvc002b21BQ2FBQXNwWnlGTzVaV05UVjh2RVFhbEtZM3RBaGxQN21mcTdwVWQyQ25zTTZCd2tUamRWejhneFZiZHRCZHZWck9hcjlKSkgyYTI0d0E?oc=5"
+ },
+ {
   "id": "0ac0da2dd0ae",
   "source": "뉴스",
   "kind": "article",
@@ -328,6 +478,16 @@
   "title": "K-콘텐츠, 글로벌자본 유치 전면전…콘진원·한국벤처투자 맞손",
   "published": "2026-11-24",
   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9nVk9aSno3X2cxd2Q1WXdRSmdURjg4ek1fSDRMZ21HTzR6OVI4OWFtbkUtNUxVeHpZOGdvaGdEalFIeURFN2hFSC0zQmIwMGdWYjE1MFhVZ3E5NkN0bmc3MkYtUTUzMkw2QmtfeA?oc=5"
+ },
+ {
+  "id": "f2cbf458bd33",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "피앤피뉴스",
+  "title": "방송대-한국엔젤투자협회, 창업·벤처 투자 교육 활성화 업무협약 체결",
+  "published": "2026-11-24",
+  "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5QU1hGQjUzdEJ5UnlRS0p1MXVtZFNOMHF2MktaY2VBazV4Z0NhcnkzX0NlcVdyNFh1QTZxZF85NzIzcDR3eDdtRHhoSW1NQXRBdnh1eWFrbXBVVnQyTXc?oc=5"
  },
  {
   "id": "ed8d05097510",
@@ -390,6 +550,16 @@
   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1xZEw3aFBaaVMxT29uUkwxbzZSQmRBM3dBX3pxRERpbW5ERzA0VEF5ZjdQSnRSclNXMWFIcndBRHBTWE1vWTZiVTR1Um5hZHc?oc=5"
  },
  {
+  "id": "d81e29f94cc5",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "머니투데이",
+  "title": "[고래사냥] '태성·미래에셋벤처투자·PS일렉트로닉스·와이제이링크! 내일장 고래 종목은?! - 머니투데이",
+  "published": "2026-11-24",
+  "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9FWnpkejFxemRlVUhiX2hpeFFKYklGRjhoMzNUV0JMMko3VThfb1luWTJQVVFhRjlBUklsVEp4MTFMMVVfNTNudnlueUZ1ZmJvTEJHVXZUbDB1YU5PbkpJNDc4aExPUWMzZ3VHVl9B0gFuQVVfeXFMT0VaemR6MXF6ZGVVSGJfaGl4UUpiSUZGOGgzM1RXQkwySjdVOF9vWW5ZMlBVUWFGOUFSSWxUSngxMUwxVV81M252eW55RnVmYm9MQkdVdlRsMHVhTk9uSkk0NzhoTE9RYzNndUdWX0E?oc=5"
+ },
+ {
   "id": "d7e8a6302f64",
   "source": "뉴스",
   "kind": "article",
@@ -408,6 +578,26 @@
   "title": "경남창조경제혁신센터, 콘텐츠 스타트업 9개사 수도권 투자유치 지원",
   "published": "2026-11-24",
   "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBWdmlnQzhxYWpXSGZsY005RC1SZ2locXlWbTU4b2FXeW9uVXlLT3dsdmNSbk5QUzRfUHQtYURGNlkwRWFSS2wxUVowNWRjdERjTW9xTkFQU1F4T2ludUNPT25ZTS1ndw?oc=5"
+ },
+ {
+  "id": "d1c8da264c87",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "뉴스핌",
+  "title": "콘진원, 한국벤처투자와 MOU…K콘텐츠기업 글로벌 투자 강화",
+  "published": "2026-11-24",
+  "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFB2LXJfYlZveXVjMGp3ZXFVQkZuXzRsZTVpUFdpdDN4OHE0NkRYNWg4MGJOcFBSMGJvT0tzYlM1WWVBeWpZS2VlcURPc3lKanVjUFJPZWotTExyUlhm?oc=5"
+ },
+ {
+  "id": "c84513a98a64",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "한국경제",
+  "title": "자금 몰리는 벤처시장, 정작 VC는 돈 못벌어",
+  "published": "2026-11-24",
+  "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE42VXpjNU9mY2Y2QzYxZDlVQnN3emlIUEhtcXpROTByMTl1YWl1V1k4V0RPWW5rbE1QdVNmWWF2U09UaV9VUkoxcldRMFNKaTUzTmlJX3JRZjNKQQ?oc=5"
  },
  {
   "id": "c117154679b7",
@@ -448,6 +638,16 @@
   "title": "‘여신금융포럼’ 개최…카드·캐피탈업계 디지털 전환·성장금융 전략 모색",
   "published": "2026-11-24",
   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5WT2NLMEVyQWJxZmFKZnRPamtfN1ZSXy1uNmpkYXRlOUp4SjBad1ZyM1JhZFVTeTdDYzR4bTlBVzJKVEkwTWd4aHVfOTZ1LWtiUU00Mm5ZQVkxT1g2LXhIRmNOX0R1LU5jTlJjWnNn?oc=5"
+ },
+ {
+  "id": "bad622890fd3",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "MTN 머니투데이방송",
+  "title": "[고래사냥] '태성·미래에셋벤처투자·PS일렉트로닉스·와이제이링크! 내일장 고래 종목은?!",
+  "published": "2026-11-24",
+  "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFB3S2VBX2ZscnQteEZfc2NROHBxX3hrTXhzMDBQY1hrSzRrTkstc2k2aTFGTWpTaVVfMHZiTUZXeTBPaldrcmhtVHBuLVpjZzlVQ3UyaEw1ZzhSNXdr?oc=5"
  },
  {
   "id": "b39ab9b9b600",
@@ -610,6 +810,26 @@
   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5iNUFRZ1hpZGxyR0c1Ulc4V0tPbzJua1RxRlNBT3VhT1JTNXJwaEF1Zy1qcjEtMFd6cjlJZjVTMVJPYUh0eV9mVnozM3VNOURFRS12ZHdSNFlTZ3o4a1E?oc=5"
  },
  {
+  "id": "57d786630f6d",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "출자·LP",
+  "outlet": "핀포인트뉴스",
+  "title": "AI·코인시대 여전업계 \"‘결제 보호·성장금융’ 역할 넓혀야\"",
+  "published": "2026-11-24",
+  "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5SMlY0aUpxZVZEYktSaUZkSDU2Y2NRSVdJQWJXTVFRb19XZTRqVVhvdDY4YnhRaTdlT2drWXZVZVdCRm9PMkhFNm9oWDlzZ093WHN2NXdNTWdXUVFnVEdxNmpIOFlWbkRaR213RmVYMEZaams?oc=5"
+ },
+ {
+  "id": "5759a4a9baca",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "벤처기업",
+  "outlet": "브릿지경제",
+  "title": "중기부, 초격차 스타트업 유럽 공략 지원… 베를린서 글로벌 투자유치 무대 마련",
+  "published": "2026-11-24",
+  "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE92MExVRmpSei1jUWdyQm1aUHJhNnE2bWw0bVptZzZGTlloTzZGT1c5S3lrcWhwaWVmRGZJeFFXOFl2U3J1QVhGR1F2QTFyTDNsbV94YWtSd1Jvdw?oc=5"
+ },
+ {
   "id": "52f0d1120716",
   "source": "뉴스",
   "kind": "article",
@@ -618,6 +838,16 @@
   "title": "유럽으로 눈 돌린 K-스타트업…독일 베를린서 투자유치 나선다",
   "published": "2026-11-24",
   "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5GVWxES0hBSHBOb0d2MmFYV0R1cW9WRjlNcjNnWXd1LUtjLW5QWTJKUDFSVlI5WUQzS3hiRHlKVXlJZ1lFVHBoNjVaOGZlVEFnYTM4aUJ3?oc=5"
+ },
+ {
+  "id": "4e896af16d24",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "소셜임팩트뉴스",
+  "title": "KDB넥스트원·IBK창공·광주연구개발특구, 서남권 스타트업 10곳 ‘지역도약 IR’",
+  "published": "2026-11-24",
+  "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9ZQkZkRHBSdWpTUjQ4VlRMRTlyNzY5YzN1NmF2YWNuakx3bDV6Zk1IQjEtclBBaWlTZU5IRVpDeERaSVp6a2VLc3pLc2Fsa2ZZY3BZNWNxSGdiU3M3TDZER3R1WUJVNWJ1bGhBVE5fX1ZpNnl1dmxv0gF3QVVfeXFMT1lCRmREcFJ1alNSNDhWVExFOXI3NjljM3U2YXZhY25qTHdsNXpmTUhCMS1yUEFpaVNlTkhFWkN4RFpJWnprZUtzektzYWxrZlljcFk1Y3FIZ2JTczdMNkRHdHVZQlU1YnVsaEFUTl9fVmk2eXV2bG8?oc=5"
  },
  {
   "id": "40278c8b13bc",
@@ -740,6 +970,16 @@
   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFB6aEdybktrRDhiNXVGMnJQaFRGOW94eUFqM0VicEVHMXNuVXVFSnJ3VXc0ckFacVZiOVFXWnF5d0Q4TmYtel93OUMyWTBJQW5saHE4TmpZZUlnWE9tV1E?oc=5"
  },
  {
+  "id": "00705e722d25",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "뉴스워커",
+  "title": "콘진원, 한국벤처투자와 K-콘텐츠 글로벌 투자유치 협약",
+  "published": "2026-11-24",
+  "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE01Y0FtNllDaTRhV0dXZ3lYZTVVRkNGRTRjd1hoaUxzYkV4YlVNMk9YUkNjd3pMMkhPY0Q2ekJPcy1QeDVXenRkSi1rMWE0eE9CaVg2amxiRHpMM1lCU1EtRTliMHcwSmRXZDNNOVZmc0JuVW1X0gF0QVVfeXFMTTVjQW02WUNpNGFXR1dneVhlNVVGQ0ZFNGN3WGhpTHNiRXhiVU0yT1hSQ2N3ekwySE9jRDZ6Qk9zLVB4NVd6dGRKLWsxYTR4T0JpWDZqbGJEekwzWUJTUS1FOWIwdzBKZFdkM005VmZzQm5VbVc?oc=5"
+ },
+ {
   "id": "ab614048c373",
   "source": "뉴스",
   "kind": "article",
@@ -748,6 +988,16 @@
   "title": "강원창조경제혁신센터, 투자유치부터 특허까지…‘스타트업 올인원 데이’ 12월 1일 개최",
   "published": "2026-11-23",
   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5YUWN1ZlRpNjZjRnJrazV0Nld0SlBrczhPOFVPVXpEVDJGemFXbmJRSThwRWJfNDlvVGhRRTV4bVdLWktESEwxQW85VzBOLVE?oc=5"
+ },
+ {
+  "id": "9ff1e3a510c2",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "벤처기업",
+  "outlet": "아이뉴스24",
+  "title": "경기도 바이오스타트업, 투자유치 성과 가시화…엔바이오셀 실제 투자 확보",
+  "published": "2026-11-23",
+  "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9DMHFqdkhxY2FYZmZXdjgwcXVDQVdCbkg0S0FXalkzY1JRWVVCVEU3NFRmejFmS2dLZk9OVFZKYzh4SS1nTWFyZ1ZxRGU?oc=5"
  },
  {
   "id": "7653e471b274",
@@ -760,6 +1010,16 @@
   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1VcnFvODNuX2JzcjRVMnpOc2FXcjl5Q2hMVXp1LWZYSWlsd2xsenlXdW9RUE9PdHc1V29Ma1BWcWRIMjdRNXFVckFVZnJLS1hDOW1iNVFXU0RSSng5c3BlM09LUS15aGpoZXFN?oc=5"
  },
  {
+  "id": "195681c2fb76",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "벤처기업",
+  "outlet": "테크42",
+  "title": "[스타트업 안테나] 큐어버스 230억원 투자 유치, 에이치에너지 1GW 태양광 개발… AI 스타트업 기술 성과 잇따라",
+  "published": "2026-11-23",
+  "url": "https://news.google.com/rss/articles/CBMiuwJBVV95cUxQR3BvUDFhNWJIMUFfTUM0OXVEYng5dTBRNmJkZWRXMjR3dmhfSm54V042WEpLN1lDdVNET2JMNWdyUklqaVFIdDRXVE83UVRrOFh4RV94bDI5ejhqSDBGRXdfRnN6V3ZQdEZSeXNoejZIY2hzdksydUoxLVBoNEJvbzNSS0RsMHAwbUF4SFBzSzYtY3ZsNjN6ZktPeHprZDd1UHRYTW01NlhDdVdKNzc5Zlo2Q0tEOEhUMXc4bTk4dU5aUGJ1eGVZRTJYYVRUVVlweEdCVjNyd1ZRbG05VXlmbTFDbjJ0RFpsZlp2MVlUQWRrRlhtZk0ydVdRWTYzM0lYbHB3eHBLVzNscWI5eU9xVkx2XzY4SzVaSWZjM2NVVU8tZlEwXzFKZU05ZWFxUHRrekdYcThtdllUUTg?oc=5"
+ },
+ {
   "id": "1376a18cb68a",
   "source": "뉴스",
   "kind": "article",
@@ -768,6 +1028,16 @@
   "title": "[스타트업 뉴스] 서울 AI 허브, 신용보증기금과 AI 스타트업 투자·금융 지원 확대 추진",
   "published": "2026-11-23",
   "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1uQ2YxX0J5WVlkU1BCN0I3NHVna0c0bjA0RGhNaE40Z3JvRy1wNzVlV0JDTjlqMDduVmhTSjJ5QmhvcGdmbHBjbnQxcmRwOGRsaHR5Nm9RNVV0TW9xNzlEZGtoemluMmR1V01wZkZtY292Zw?oc=5"
+ },
+ {
+  "id": "0793fd78751b",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "넘버스",
+  "title": "신한벤처·타임웍스, LP성장펀드 해외진출 GP 선정…850억원 결성",
+  "published": "2026-11-23",
+  "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1CcGR2SEJKTmIwUTA3RzZjUl92S0F3ZE85NWZqYVVPdGNKZEhiX1ZZUXdtTjI2aEtXa1c1Tm5rb3pYcFJEeEwxVktiMEpIN2I3UjM1NkQ1c2Z3ZWh4T0FValkyZXd4amU4T1hR?oc=5"
  },
  {
   "id": "07880923f8c5",
@@ -788,6 +1058,26 @@
   "title": "부산대, ‘창업기업 액셀러레이팅 IR 데모데이’ 성료",
   "published": "2026-11-23",
   "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE81blFOaUtWTzJjOUQxOHV3NnNqQ1l1LVFoYUcta0NFem80MERpUGhKc2tPbDJ4UDIwb0FKOGY3LXVDTDVyOEM5bENoRTdMYVlQcXpZc2JfdUxoMlZQcjJKcHM2QkRaQW1hTkMwZU9XZk5pZVpC?oc=5"
+ },
+ {
+  "id": "f5fbafddba58",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "산학뉴스",
+  "title": "벤처투자 12.6조원 역대 최대…창업 3년 이하 기업에 2.5조원 몰렸다",
+  "published": "2026-11-22",
+  "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFA2dGNxYVBPeTNPZkN2amoxV2o3UEVSMzM0dHhwMFNyLUFnVkMwbENRQlA2d192SVYtbU51QWVnalpDR05HUzJJaXk4bzlfYUxWUGt2NWdUNGhCdWhnSVFWMjZpVTllX3J2dGlj?oc=5"
+ },
+ {
+  "id": "a89b8ee270e5",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "벤처기업",
+  "outlet": "비즈월드",
+  "title": "경과원, 바이오스타트업 투자유치 지원…참여기업 첫 성과",
+  "published": "2026-11-22",
+  "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9PNFV2TURXdWFVbHFmTG9nbjIyT1hEZXM5YlFCZGNYb1ZSV3ZVbTZRTVZEWHhIalllMGxrN193NHp5R1lXM3ktSXZ6TnBIZHdYbHUwdEVPdlVVT2EwaFBuMGhJM3c2eTI0czlB?oc=5"
  },
  {
   "id": "a89b6c936d04",
@@ -860,6 +1150,16 @@
   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9zajYwNDFFQnpGdlVFWDBPZVBZck9faE1VQmZfdGUwMWN5OVA5RXNfb1liVjlxckVWemJsazFXOG5ldGxzOE4zWm9WTGlfNE0?oc=5"
  },
  {
+  "id": "cfc501ff1b01",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "쿠키뉴스",
+  "title": "강릉 기업에 1500억 벤처투자 길 열린다…투자기관 3곳과 직접 상담",
+  "published": "2026-11-21",
+  "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9jYmpDZXZmV0FNWFQ4eXVnNmlweS1DUnE1eS1CX1ZWX3FlQ1cyNHoyZVBpS3Zrb2JqWFhWTUJRU0RxVk1uY1J2akhDOVZhRTNFTlp0aXBtZTZScXBLTFMxUktrRQ?oc=5"
+ },
+ {
   "id": "ba45b24f49cf",
   "source": "뉴스",
   "kind": "article",
@@ -870,6 +1170,46 @@
   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBJd2liNF9wR1p4VGExMTNVUnBRV2JiaWlHd2E1R2dPZExjRHhCWURGRVg3U3lVOFliRndxVThfUFhWQUYxb0VQZ0dpUEtfZ0VtRThxWTN5LUEyQ1hNcEZBSHFEWWVNZ05T0gFuQVVfeXFMUHE5S1hqd0pQY2xKdVpzbXg4WFRlbTM0MnFkM1dvS3lRaWJCamRpRTZOYUhieTU3MTNkYV9NbWtWRDU3SzEzZDZFbE9kMXBPbXNqVGxpanRzVFg4T0o5S05HN1JMTy1GVEpMQmR5VVE?oc=5"
  },
  {
+  "id": "9f67a0128e52",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "벤처기업",
+  "outlet": "전국매일신문",
+  "title": "경기도·경과원, 바이오스타트업 투자유치 지원 성과",
+  "published": "2026-11-21",
+  "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFB5Vy0zVm9sV2Y4MlViSF8tcVIxaXFybWo1b0o1VEk0Ry16MlU0TXd6S3RfM3NRMmJYcjV5TGZRV2ZUbjJYTnVOODJyci1lUkdXMXQ1TkZBZUo2S1ZCR1hNdk8tQU1oN280Y2JNcHB3?oc=5"
+ },
+ {
+  "id": "71bfa2b2ce8b",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "헤럴드경제",
+  "title": "웰투시, 6000억 신규 블라인드 펀드 결성…5대 금융지주 총출동",
+  "published": "2026-11-21",
+  "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5fNXJIMzlkWnlSdENFNUdvdXRCQTdDWXNybmZNcjJRY213dmluTjlBY2RvWlU1RGdJWHk1TGJLeDc0V3JZc0lvZ2VuYS1UNTVzcGo0cnNR?oc=5"
+ },
+ {
+  "id": "6e0c3a0df933",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "스타트업레시피",
+  "title": "[이번주생태계] 韓 세계 4번째 수출 1조 달러 클럽‧벤처투자 기록 갱신",
+  "published": "2026-11-21",
+  "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1jUDVHdFlLUk51cGx1RWRKQm1sTlVCa0UxSWl4U0hLZEMyNnJHcTcxTEtlZDRuSDFZN0IwRV8zU05TeVdfQ2l4MEd4dUt0ZzEwUWh1T2h0SQ?oc=5"
+ },
+ {
+  "id": "4df4ff44641c",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "MTN 머니투데이방송",
+  "title": "[고래사냥] '케이씨·미래에셋벤처투자·아모레퍼시픽! 내일장 고래 종목은?!",
+  "published": "2026-11-21",
+  "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9Zdk5CQk92akwzN1NzdEhNV1ExQVBNNHVNMGVMZ2oybkswZXJ6SFVUdC1WWnhzd294a0JhakplMFcxYUJ6TkZtakhTT2tyUHgyMkxjcDc3dHRVY0M2?oc=5"
+ },
+ {
   "id": "4cac2ba1f2cb",
   "source": "뉴스",
   "kind": "article",
@@ -878,6 +1218,26 @@
   "title": "경과원, 바이오스타트업 10곳 투자유치 지원",
   "published": "2026-11-21",
   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5BdDhacHQ5WGoxVFVwOFBxT1lJaVBWSEZSRHJxWEdHZkc0MkRTclM3V2Jad3NCNUt2WkFMSEJXcWpmYlFoS2FoMkltU3NMUlk3eV9NSzNlejlGUEdsUXlfRNIBeEFVX3lxTFB5M2gzWmF5WWlzQ2dLR1g3UVhlUnRsUVB6ZktnRXY2Wm12dXRBbjBxZVg4LUFLX28zVnp1LUQ1MGQyMjg0TUFlNFR6ZlJpcGNxUWhZaUprWldzWDVtQUV3Z3BzaHdFTFJ4X0d4cEVzN0pxdXRjRUpLTw?oc=5"
+ },
+ {
+  "id": "fee7412818bd",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "뉴스1",
+  "title": "대구 신규 벤처투자 '역대 최대' 781억…수도권 1.8% '불과'",
+  "published": "2026-11-20",
+  "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE8wNlRWMHdHLVFKb0pmZGNXQjFxSjVWN0x2clhTZjFWeFR3V1dhR0VrRjFPUjNwZGlacUMzQ3lkdkIzSzJNS1NXWnJGMTFCRTVRZ1VGODNvWHpKQmJGVDln?oc=5"
+ },
+ {
+  "id": "f57c8049c431",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "벤처기업",
+  "outlet": "팍스경제TV",
+  "title": "경과원, 바이오스타트업 투자유치 지원…10개 기업 참여",
+  "published": "2026-11-20",
+  "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBGdGktem9aMkl6aVJ1Z3U5czV1MjRnZkMxODRjQ3JoNW5Vc3ZKTnNGZ2lwb1ZocElnRmFWYmJuTm5UYlRVWDdyaWZCdVVTWDJ6NXZKaUMzaXdOemFnaUx2dFl1SGFRekdW?oc=5"
  },
  {
   "id": "f205a3e45faf",
@@ -920,6 +1280,16 @@
   "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE1yc0diNWpJeU1jSzVabHpPWTB1X0NIeFo0c0xqVE42NVByaFhjN29ES0paaXBQYXk2a1dhemJhNEZzUDJIalHSAWJBVV95cUxQZmU5cTJRbE0wbnhINGppTTgyejJmbHdUcVFFQVVNQ3dhajFZMER6TERLUUdneVdtVEM0Nnhka0lab290emxKb2d6VEpjdmNZNnZMbE4xekRCU2JqM3VHdWcwdw?oc=5"
  },
  {
+  "id": "e11d12ab7872",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "벤처기업",
+  "outlet": "경기경제신문",
+  "title": "경기도경제과학진흥원, 바이오스타트업 투자유치 지원 성과… 실제 투자 결실",
+  "published": "2026-11-20",
+  "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5LemYtV3VZWkpfaXUtcHlFNXVSRGZFQ1V6UUV1a1MxaENRVDVGN01aQ18tX2xUYWcxSlVzWWlZcG9zTkhSbnV4eUh5YW02X0NJRFlLdUowVVBpWGdYLS11Zg?oc=5"
+ },
+ {
   "id": "d3dd9f2ad36d",
   "source": "뉴스",
   "kind": "article",
@@ -938,6 +1308,16 @@
   "title": "AI·반도체가 끌어올린 벤처투자 12.6조…역대 최대실적 속 ‘쏠림 현상’",
   "published": "2026-11-20",
   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5KSTNUY1FIc1JSYUw3cHJ6Z1FTemhkaVBmc1hMdk9vc1FwTXc4TE0wSGlrYmc2TlpaaW5pYnJzNnpFeW05VW44Sm9SbWlrMHdNNUVZRm9yZ3dmelhzN3c?oc=5"
+ },
+ {
+  "id": "b45fda9d72b6",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "월드장애인사랑뉴스",
+  "title": "김윤재 고양시의원, 벤처펀드 지역기업 투자·이전 조건 이행 점검…관리·감독 강화 촉구",
+  "published": "2026-11-20",
+  "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBXcHc5Ml82aDRaUFFjUXB5RnN2azl0SVlvRkNUUlNUMGx2Qkh0eF95QzNINVlyemNhY3BpU0wzSTRDcXdzZVdrdHFHbHNkZVJHa1VFMFRFYUZfWm9ZeElQTE5iSEhPTWZGTWZMd1Y2QQ?oc=5"
  },
  {
   "id": "9ff81af403ae",
@@ -970,6 +1350,16 @@
   "url": "https://news.google.com/rss/articles/CBMiowJBVV95cUxORFoyUlAwUDBfY1RpbF9faUF2d2Y5NTltVlBnZnc0bC1mYmw5bXZVSjZnZTVfUGdEaXZwSHZxMWN4ZW1jZ0h4dWo2WFotX3ZndTE1TXRiTzFmcnV5eTY2RHZtOXVWeElxNW1FTUZReEQ1Sm9KSURVRjZFMjUwcnM5aXFwTkZXcmE2c2FoZWlGd1dCZEFjLVMwQnFWNzkzN25FOEJiR3E4emt6Zy12RnBVVkdUcTJPa3MwV0RQdUdPUWpGaTlMUGtCTXVqS0F0algtWUxUZ0s3RmluSHh6aGxTVC1JcjZ6QmcxbUU5Z0t6RTJwZXNBWjFkVzRpVWJ2YTVKZ2E5WUsxcl9tMkdoVGdMaG1VMHVucUJiZEZrd3lMUWJ5R1E?oc=5"
  },
  {
+  "id": "8342846ba731",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "벤처기업",
+  "outlet": "디스커버리뉴스(DISCOVERYNEWS)",
+  "title": "경과원, 바이오스타트업 투자 연계…엔바이오셀 투자 유치",
+  "published": "2026-11-20",
+  "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1Ec0lSc2o4QlZpVFZtbjdiWjg5SVdyMjlIWDhHU0pGWkYwQVJMTVlCR1JESkc5ZmRPeURRVEJCcEhOZ2lIMXpBTUIzbjh3ZmR6WFBfbnQ0cmlDMDRTa3ZxcW4yZzhuT1RPY1hkajJFNk50Zw?oc=5"
+ },
+ {
   "id": "647f4643b307",
   "source": "뉴스",
   "kind": "article",
@@ -978,6 +1368,26 @@
   "title": "경기도·경제과학진흥원, 바이오스타트업 '투자유치 지원' 성과",
   "published": "2026-11-20",
   "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBJZFZSVFl3YlNPRnJ0WEppWGhxNFVYTm5oVWNCZU5FWnRyaFAtLTBydzNrazRyN21wbTlnUmE5eTBHMTVFS0wtSEV2VUcxX1UzZlNFcTRR?oc=5"
+ },
+ {
+  "id": "4b436acd4e77",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "타임뉴스",
+  "title": "김윤재 고양시의원, “고양시 출자 벤처펀드, 투자 적정성과 운용 투명성 확보해야”",
+  "published": "2026-11-20",
+  "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFA5ZFdBanhQanBQMlJoYTAtTm1RSW1BZjl6ZEw2SVZPcFo2XzVDQmdNN2JSR09sSUtNYVVIbGRuTEl4R2xLUDQtcDNfcnNMUWhVNkg0Rw?oc=5"
+ },
+ {
+  "id": "1e5583c65695",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "벤처기업",
+  "outlet": "필드뉴스",
+  "title": "경과원, 바이오스타트업 투자유치 지원 성과…엔바이오셀 실제 투자유치 성공",
+  "published": "2026-11-20",
+  "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBtT2s0azhDTHVsSW9LVVNBV3VSOEowQTBvOU9ueW8tbnc2OVFrb3VydnVtcERqR3NwdDM4bFlsR295LXV3ZE05LV9DSEZwc0V6TkJwMGxKc3FfM1Fvb0RWRVlsNEZMcGZf0gFsQVVfeXFMTWllVnFTOVZ4LXV3b243eUNvYm5UMThqaEhnSzdZVWY3LTdGTkJEQkVxYXdlRWlidHNXZkVCZzVCS3cwZmlnajA1QXpLblhXeVZPZnBMdFZoSkY3d2p5WVU4MzE0RjFIb0pQRFoy?oc=5"
  },
  {
   "id": "0c5a830b1051",
@@ -990,6 +1400,16 @@
   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1qZThuUUVUc1lSaUZDaDNRMzdsT1p4ZjcyaEtKUUxpb2tKS2prQ3dJRENPRHNmWmFrOHEtdXdWUmpWNzVFR3ZWakNVTGQyLUpNaGZMT0I2Vzh3NjhvQ1E?oc=5"
  },
  {
+  "id": "0c02b0d5a38a",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "벤처기업",
+  "outlet": "아주경제",
+  "title": "경과원, 바이오스타트업 10곳 투자유치 지원...엔바이오셀 투자 성과",
+  "published": "2026-11-20",
+  "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE42eVAtQzkzQ0hMaTJmSUY4cGVSYmdfSjZPZFlBS0hNbmZhVHJ5dm1JbjlqNmQ3YUtkUVBoalJFVnY3NVcyT1JwY3Q5dnJId2pqODRFbklVWHYxd9IBWEFVX3lxTE9DR3BVQXpDS3pBQ2QtbEdaRVdITTBsQnlLNm5aV1VMTTdIX05kaEd6aHVGcDJxeV9UWFNoY2xfckVaQTlEclJtT0RObjc1Q0k1MzZkTU5FcDQ?oc=5"
+ },
+ {
   "id": "0acdb37bd0a7",
   "source": "뉴스",
   "kind": "article",
@@ -998,6 +1418,16 @@
   "title": "신한벤처투자·타임웍스, LP 성장펀드 2차 GP 선정",
   "published": "2026-11-20",
   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9jeUM1Y05zcjA2Y1NNM0drZHFsNVp2Zjcwbl9FNzU5VzAxY2hsZmRyQTJJSTdaNlZTOVp5eEFSVVp2SGJULS15RVF3bnZsTlk?oc=5"
+ },
+ {
+  "id": "06b2d69c64ac",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "벤처기업",
+  "outlet": "국제뉴스",
+  "title": "AI 기획 스타트업 매니패스트, 美 Alchemist·시카고대학교 투자 유치… 미국 시장 공략 본격화",
+  "published": "2026-11-20",
+  "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5JNlBSVGh4VmItZkpyNDM3VExBWnNKamEwblM2RVVXdi16aHM3MXJ5VXVneU9lUENMV0lwV2JlMjFUdmNYOUNSeHZucURhaUNKVkhzM1ZDaUFuOHMzMkxraFlvamdlTnhvYzI4OU1R?oc=5"
  },
  {
   "id": "fb4a4d3ba3c1",
@@ -1020,6 +1450,16 @@
   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5JQ19BMmFRTUNRTjQ4dUxkV2RLdW5vNFAyb3ROcGJFTDRuZ0hLQl8xTFE5QWZ6UWZXWVFFMVpkQmo4LW5SZWtRZE1rLVg0OEkzMEhkVF9fNVRqemZyMUE?oc=5"
  },
  {
+  "id": "e34b3b72e466",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "한국미디어창업뉴스",
+  "title": "벤처투자 12.6조 '역대 최대'…AI·초기 창업기업에 돈 몰렸다",
+  "published": "2026-11-19",
+  "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBNYW56VXNpLWJuYU5GNl96cVVMbVJ1OXlQYjQ3S0ltQUdYRjF3MnVTUVlkRnhxT1pFZlRJQWhJYW1fbDEtQVU4cl9jbi1ucVlESTNueWR3akc0SG9Cc3FqT0xzYWJuek5YM1pDUWZR0gFwQVVfeXFMTzhSNU55aWNWeFYwRVFFSVo5YTFwS2JsM2tKSXZrVXRqVDVZX2pEZVczZVhOQlBJeGZfUWlXMXFsRUVVZ3VwT0pSeEFsdDZNQzEyOUUzZ3J6NEFkQUcwSnM5b05xWUhqMWkwSzk3N3hVTA?oc=5"
+ },
+ {
   "id": "d3a36f48b74a",
   "source": "뉴스",
   "kind": "article",
@@ -1028,6 +1468,26 @@
   "title": "2026년 1~3분기 벤처투자 및 벤처펀드 결성 역대 최대 실적 달성",
   "published": "2026-11-19",
   "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFB2bjNOX2RvQjhvWXFrZWs1b1B4X3lKWVhRME52ekJzLTVoWWhYSU1UemNzeUtoTVpCaVZpY2JXeEpuUk1FUF8tcGtaSlZBb2xqWThFOVRFVzJIVDRDRUtn?oc=5"
+ },
+ {
+  "id": "d28b716147f5",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "벤처기업",
+  "outlet": "매일일보",
+  "title": "유망 스타트업 10곳, 투자유치 도전…VC협회·동국대, IR 로드쇼 개최",
+  "published": "2026-11-19",
+  "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1fVVVRUEJTMVM0U1V5YmcwSm9Bc3dyWHAwMmhOc2NOekpLa3hEczNqSDkwUHFOSVpJRHNCNWRWTUkxa1JiQU0ydWo1Q3VBRHloY0lhSDVYNnpUZEJRS0pZeUFWTGU?oc=5"
+ },
+ {
+  "id": "c5601bc598f6",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "넘버스",
+  "title": "LP성장펀드 세컨더리 GP에 컴퍼니케이 등 13곳 몰려…경쟁률 4.3대1",
+  "published": "2026-11-19",
+  "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBFVFkzRGxlV3FWbDd3SFREb3FQU21tbE1tMDhHc1ZpU1E5YnRaUm5hc1BucGFOSVU4X1RIazBOQ0FMWEJOQnZFV0ZicjVqSm5TN2lwQzBCeFZGS3ZiUk9NZlYwUWYwTFRmdjdj?oc=5"
  },
  {
   "id": "b5324382699f",
@@ -1060,6 +1520,16 @@
   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1rMk52UUc4ZGsxWExNVVpHbDE5dG5ZbWFkNldpaWNUdmlBejBqdUIzVDZpV3JKWWltVHBpWTJqTTJ2ZTRyTkZyQmNHeFFoekNrbDh5dzZEZnBGYU53RkgyNA?oc=5"
  },
  {
+  "id": "8864f5c99ab7",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "한국공공정책신문",
+  "title": "벤처투자 12.6조원 역대 최대…첨단산업이 이끈 시장 회복의 명암",
+  "published": "2026-11-19",
+  "url": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTFAta0duMDR2SDdtdlFfaS04WTV0WDVPTmJsWWYwczFyTVJQMU5XS29KNTdfMmxrOTFHemtNT0NQWHpWdEk?oc=5"
+ },
+ {
   "id": "8518b1682db4",
   "source": "뉴스",
   "kind": "article",
@@ -1068,6 +1538,26 @@
   "title": "KB증권, 지역 관광 AI 벤처펀드에 출자…발행어음 모험자본 투자 확대 By EBN",
   "published": "2026-11-19",
   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBTT25ORzZWaVFhZTBHRWZkSGlBNC16Q0R0YXhrUm1GSDdoODRFMzYwSm9SUlpiMHcyS2txdEZDQjhSbmQ4SkItT3VSWnhRSkJNNnBOajZGMW5KOVpnbmlLdEZXaFhEOXBVRTV6eFFydnk?oc=5"
+ },
+ {
+  "id": "7646de372766",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "퍼블릭뉴스통신",
+  "title": "KB증권, 지역 관광 AI 벤처투자조합에 20억원 출자",
+  "published": "2026-11-19",
+  "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE8zMS1oWmlpYWxLWUVhbV9IZDNRVEZ6bEpyM19iVlFtVUNyOXhaamk0aFFKdXM0Rm5kZWpPT3NQQ0hsRUxudjVqck5wb1hLanFtcXR4OWkxV0FoeVhiRlFyWGhuSFYwLTJFTmc?oc=5"
+ },
+ {
+  "id": "5dbc93892efb",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "창업일보",
+  "title": "\"벤처캐피탈과 투자조합에 대해서...\"",
+  "published": "2026-11-19",
+  "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9JQURLZ1hQNWF5SzZxSHl3bkxKZmVZMWJaR1dJS3NBY3JzR0g3T0xGMGc1cW8ta2Rpb0paREQzV0dodm5kQ2J1R3gxdDlXVFNzR2V0eUMyTE96NE4wd2NzaWEwM01XSDg?oc=5"
  },
  {
   "id": "5cf50e2a67c2",
@@ -1110,6 +1600,16 @@
   "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPeUlSSHdic0c2MVByWlo0YXBHSVhXMVZ4MkxwXzJHOERoU0xmT0hodW9jbHBKVDlETkRHYzlJcEg3T1piT2RPYnBoejl5aXd3YjNnVE4yZmlrS0RfZ2VDWVUtMUdUSTdVUms5N1l2dm8zeEo0SXVaTHN2NzU3WURTQkVtVnU1MzJI?oc=5"
  },
  {
+  "id": "3a735b4855a6",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "뉴시스",
+  "title": "Npay 스타트업, 지역 벤처펀드 출자 연결 첫 성과",
+  "published": "2026-11-19",
+  "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9KVjdjTzRwZlRaNjNSWGhsZ1JnZDJ0ZW8zUzN0T0FTUzI0Y1Jfa0Y4endvbnNucG90bHR1TExFcjg0RGktMkxFNkxzU2xMMkdQRGxibld5RTlLYzM4aUhFVtIBeEFVX3lxTE1BYTNMM2RHbFF3VWNIbHRsNVY5NFZnYmYxN3NBS0dCbnl1TDNaaVFfazhMUzdXSGlfZUY4d3IwX0VIX1l6VHRDRmtkNzJVVFE5QXhlNlJJdUZhNW1mSHRucC1ocDhHVUFYSHdtazREZGRQRUFWR3Q4aQ?oc=5"
+ },
+ {
   "id": "3571a5eb3a93",
   "source": "뉴스",
   "kind": "article",
@@ -1118,6 +1618,26 @@
   "title": "한국벤처투자, 서남권 벤처투자 포럼 개최...지역 투자망 확대",
   "published": "2026-11-19",
   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE8wMVkydnJDbHc1U2hqR3B5cUJZZXZWWDlDM2h2OWZNVEQ0NENXbVJtaHVwTkNKQlQ3LVM2R2V2dFkxcjd0NHVmSUdYMUU2LVUwYXlzMnNRbXJrTVFnckE?oc=5"
+ },
+ {
+  "id": "2ac907ca5cc3",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "폴리뉴스 Polinews",
+  "title": "KB증권, 지역 관광·AI 벤처펀드에 20억원 출자…모험자본 공급 확대",
+  "published": "2026-11-19",
+  "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE83c2lRRk5xTi1SQldyb0pUaUhvNEczV1loR1VXYUROUkJKdlNJWUdGYi1BT0ZzcDg5c1ZWdUZYaU9RTlpiaFItV195QzN4SmlQdXZWWXhzV3YwY3NCS0o3SDJHajNuYmM5UHBTZ2N3?oc=5"
+ },
+ {
+  "id": "28baab35d9c9",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "마켓인",
+  "title": "네이버페이 모험자본 플랫폼 첫 성과…KB증권, 울산 VC에 20억 출자",
+  "published": "2026-11-19",
+  "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9Lbk43MkdXNEE1MEl3OFZiX1ZNYUFHZXZJdnI0Q040VEU1SnlQcDI0Vl9CWE11NWF2Xzlva2NxS21RYllYcXJjXzBWRzFWdjR6amhCNHBfLXdQQXFpbmdqUEx6SnRWU3l2bGpZYXBrMFNwQmM?oc=5"
  },
  {
   "id": "077126cc85e7",
@@ -1138,6 +1658,16 @@
   "title": "[벤처캐피탈리스트] 리센느 구주 싹쓸이…'거제 야호'에 빠진 DSC 신동원",
   "published": "2026-11-18",
   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9iVG5nWURfc01ha1B4WmJEeW52ODVPeVpYaTR0SHFvUG1DeXBaSlU2YlVybWVlVmxmRWREek13Z0ZNWlJuZkpkVmNUdV8zVjQ?oc=5"
+ },
+ {
+  "id": "ee71b2d78263",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "강릉넷TV",
+  "title": "강릉시, 벤처펀드 투자설명회…운용사 3곳과 1:1 상담",
+  "published": "2026-11-18",
+  "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5uYktEck0xc3BtV2J5Z2w3WG40X1VuUDIxQnkzcnlVNGZNdXdIMVJ1dk5KVW9NQ1VTQldyVC1RaU03X0F4VUttaDZSTUY1eU93Ylp4NTdyTjdvQlFPQ2xPOHBaTnRSQTZIRVE?oc=5"
  },
  {
   "id": "e0aa34a8fd52",
@@ -1270,6 +1800,16 @@
   "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBLU3ZwUlQ3SGVZY1h0M18ybWcySVhzZGlMNlpYYTc0QXJGZ2pHSExlUEcyQmhWNHZQaVNlTnQ1bmw4SnBkZUVkbDF2dHl5YW00cG5SZ3ljUF84eUc3Qmh4b2g5TGQ0Zw?oc=5"
  },
  {
+  "id": "7851207f6dfb",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "벤처기업",
+  "outlet": "한국영농신문",
+  "title": "농식품 스타트업 13개사, 투자유치·판로 확대 위한 성장 경쟁",
+  "published": "2026-11-18",
+  "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBpaVM5S3hMU0VnaTJ4UHE2SEpEZGpUU3ZDMU5NRVUzelNQUWpGalloQXAzUDRvTGZzRDBhdUpmbTRFOWhJSTFuT0dvZ01DOVdFZU5GaDY4NXN4WUZVcDQwSVM3UzJtc0hXQ0swOWtR?oc=5"
+ },
+ {
   "id": "744c5715bfa7",
   "source": "뉴스",
   "kind": "article",
@@ -1310,6 +1850,16 @@
   "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPSDBnVXlJSVlwbmZBWHo4TndKd2lfY2JObUpqamNaaUFwN3NNWGxsVUxkamF4T212aXczM0JaVWU1TXZRdzJQREhPZTZFWWh6NGhPNnNZSjVnV0VSVVlVTzVlVDJ3eGd1bnJKNzdQekZKVkt5NWcyU0RmNWZyTGJvR0g0RFVGTXFQTEs3UjdmVTNwUQ?oc=5"
  },
  {
+  "id": "4b7880d5bf76",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "출자·LP",
+  "outlet": "이데일리",
+  "title": "국성펀드에 밀렸나…신한캐피탈·에이온, GP 석달 만 반납[마켓인]",
+  "published": "2026-11-18",
+  "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOMGF2T295M1RaeV9vcS0tdG5jeS1HT3A3MXduOXd1bldXTUw1X0d6Q1dxRnZVMVQxYThnbk0wZ3JkNzBGaHhSaEplRjdndUtNb1B0dkR5Z3c0cFd3RDAwazRTSWZSZ2pmWFpuZVA1NFppZE81QmxqOEFEdEZ6MWlrVg?oc=5"
+ },
+ {
   "id": "48564401b475",
   "source": "뉴스",
   "kind": "article",
@@ -1340,6 +1890,16 @@
   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBVNlVSWVJtM2w3MTlvS2RlWkFjaVhqUUhmTk9pcUVpYnVKclhzUklEQXh6a290QzBYQ0RIQ2I0N1M5Vks2V0k3d3dHMEVMcXNqaE9MUkVCM283MjDSAWBBVV95cUxPSlhtV1E0MUJxNklXdjVnd0JrNEZ2ZVFiSEE5bWlZMWxqT2t6S1pIXzljSm11SEEtblgyak11M21XNDZGYWU0M0cxX19GR3Q5RHViZlBpbDVDTHNHaXlnNGI?oc=5"
  },
  {
+  "id": "262a8e37b533",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "벤처기업",
+  "outlet": "중소기업투데이",
+  "title": "이포트·에티포스 등 스타트업 12곳, 日 투자시장 '노크'",
+  "published": "2026-11-18",
+  "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1aZlhxZGFBNWdDMU53ZERLT0h5aXFKYnR2b3hwOFp1N3drNmNvbHJpTDdWSG5KVDc2aGlYbjJSckpheVNtV0F5R3ZkczRQb05Db3BaSkxpVjFPNHlVTVM5SFExTVJ6YXl60gFsQVVfeXFMTmt1M0cyNFppTmJXT3FyeEUwVnhxOGxpQXhWV0FuQl85R1l3OTNrOF91R0oyVVNYMTdZNFI3cWZmOU1INk1nQ1pYLUh5NlJiVkhVN3VhN2E4MGpmMWkxcmRhQ2NiNXh0Rm51akFT?oc=5"
+ },
+ {
   "id": "20446c970a1f",
   "source": "뉴스",
   "kind": "article",
@@ -1348,6 +1908,16 @@
   "title": "네이버페이, 기술보증기금·코드박스와 스타트업 투자 유치 지원",
   "published": "2026-11-18",
   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE8zLUNybEdEbDRuaS1FQkpLazItNjRSNlNPYW1NS19kZWJEOGl3REZlNzcxdHBEVC1FOXVKb2x1Z3c2RndqX29BdzlEMkpGVVZRa0hVWEc2MVFsUkdD?oc=5"
+ },
+ {
+  "id": "1788dd38312e",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "벤처기업",
+  "outlet": "데일리안",
+  "title": "산업은행, 도쿄서 K-스타트업 12곳 투자유치 지원…한일 VC 300명 참여",
+  "published": "2026-11-18",
+  "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxOdC1FejBZMExDQk1GZ0RuN1RqRW9zbFRJR0hwZENyYWQ5OUFhNERuOUZYYXVWQ09Edjl0amRrY19Ecl8yelBNaTJsRXEwZ240ZENoZFZ1cVZ5b0Y0XzRfcTNDUzZNSVVhbXZmTnhxWFBrbklnOGoxN3dsNFFBUWw4ZXgwZHY4dmtIZWZuOTBKT3BhZHFLTzU1ejliLXBqTS1EOUxmQjlpZ3YwOENUSC1wSTJOQWJ5TGhNWmtfMFpZSTRWRUhjZUJ6ZEdNREgtYldiSy1wTG5JQlhnUmxfUGRwbFVNQURSRks1aUk1aC1ERmN5U1Myel9N?oc=5"
  },
  {
   "id": "1378a03ac6aa",
