@@ -41,8 +41,9 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Pretendard","
 /* 한 열로 쌓는 카드: 출자사업 → 달력 → (날짜 클릭 시) 공고문 → 뉴스전체 → 최근 소식 */
 .stack{display:flex;flex-direction:column;gap:20px}
 .col{display:flex;flex-direction:column;gap:20px;min-width:0}
-/* 데스크탑(넓은 화면): 왼쪽 출자사업 묶음, 오른쪽 뉴스 묶음 */
-@media (min-width:1024px){.stack{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:start}}
+/* 데스크탑·폴더블 펼친 화면(너비 640px 이상): 왼쪽 출자사업 묶음, 오른쪽 뉴스 묶음. 일반 스마트폰(640px 미만)은 한 열 */
+@media (min-width:640px){.stack{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}}
+@media (min-width:1024px){.stack{gap:32px}}
 .card{background:var(--card);border-top:4px solid var(--rule);border-radius:0;padding:18px 0 26px;min-width:0}
 .card h2{font-size:22px;line-height:1.36;margin:0;color:var(--ink);font-weight:700}
 /* 두 묶음 구분: 출자사업 묶음은 흰 면, 뉴스 묶음은 연회색 면(#f7f7f7) */
