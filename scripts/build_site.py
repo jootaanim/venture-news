@@ -79,16 +79,12 @@ for it in sorted(items, key=lambda x: x["published"], reverse=True):
     deduped.append(it)
 items = deduped
 
-# 산업은행은 글 상세 화면이 숨은 양식 전송(POST)이라 고유 주소가 없다. 그래서 글 주소로 연결하면 공지사항 목록만
-# 열린다. 이런 기관은 제목 링크를 공고문 첨부 파일(PDF 우선)로 연결하고, 원래 목록 주소는 alt로 따로 둔다.
-NO_PERMALINK = {"산업은행"}
+from kdb_url import detail_url  # 산업은행은 글 상세 주소를 계산해서 쓴다(scripts/kdb_url.py)
 
 
 def pick_url(it):
-    if it["source"] in NO_PERMALINK and it.get("attachments"):
-        atts = it["attachments"]
-        pdf = next((a for a in atts if a["name"].lower().endswith(".pdf")), None)
-        return (pdf or atts[0])["url"]
+    if it["source"] == "산업은행":
+        return detail_url(it["id"])
     return it["url"]
 
 
@@ -103,7 +99,6 @@ slim = [
         "title": " ".join(it["title"].split()),
         "date": it["published"],
         "url": pick_url(it),
-        "alt": it["url"] if pick_url(it) != it["url"] else "",
         "files": len(it.get("attachments", [])),
     }
     for it in items

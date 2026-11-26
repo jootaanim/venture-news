@@ -3,7 +3,7 @@
 게시판: https://www.kdb.co.kr/CHBIPR23N00.act (은행소개 > 새소식 > 공지사항, 통합게시판 ITR_BLB_ID=STD119)
 - 화면은 JS가 JSON 서비스(POST /BOUBUF01R01.jct)를 호출해 그린다. 같은 서비스를 직접 호출한다.
   (robots.txt가 막는 /search*/ 경로는 사용하지 않는다.) 목록 응답에 본문 HTML과 첨부 정보가 들어 있다.
-- 상세 화면은 POST 폼 이동이라 고유 주소(permalink)가 없다. url은 게시판 주소 + '#sno=게시글번호'로 만든다.
+- 글 상세 화면은 GET 주소(BOUBUF02N00.act?...&_PARM_DATA=...&_PARM_DATA_SIGN=...)로 열린다. kdb_url.py가 만든다.
 - 상단 고정글(ANC_YN=Y)은 기간 종료/증분 종료 판단에서 제외한다.
 - 출자사업과 무관한 공지는 제목 키워드로 거른다.
 - 기본 수집 기간: 최근 6개월(--since로 변경). 이미 저장한 id를 만나면 증분 수집.
@@ -17,6 +17,8 @@ from datetime import date, timedelta
 from pathlib import Path
 
 import requests
+
+from kdb_url import detail_url
 from bs4 import BeautifulSoup
 
 BASE = "https://www.kdb.co.kr"
@@ -139,7 +141,7 @@ def main():
             items[r["id"]] = {
                 "id": r["id"], "source": "산업은행", "kind": "notice",
                 "category": classify(r["title"]), "title": r["title"],
-                "published": r["published"], "url": f"{BOARD_URL}#sno={r['id']}",
+                "published": r["published"], "url": detail_url(r["id"]),
                 "attachments": r["attachments"], "body": r["body"],
             }
             added += 1
