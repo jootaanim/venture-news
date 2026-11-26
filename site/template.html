@@ -28,6 +28,8 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Pretendard","
 .nav{position:sticky;top:0;z-index:20;height:52px;background:var(--nav);border-bottom:1px solid var(--line)}
 .nav .wrap{height:52px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .nav b{font-size:15px;font-weight:800;letter-spacing:.02em;white-space:nowrap}
+.brand{display:flex;align-items:baseline;gap:10px;min-width:0}
+.upd{font-size:11px;color:var(--mute);white-space:nowrap}
 .hero{padding-top:36px;padding-bottom:8px}
 .hero h1{margin:0;font-size:clamp(28px,4.4vw,40px);line-height:1.25;font-weight:700;letter-spacing:-.01em;word-break:keep-all;text-wrap:balance}
 .hero p{margin:10px 0 0;font-size:14px;line-height:1.55;color:var(--mute);max-width:640px;word-break:keep-all}
@@ -105,7 +107,7 @@ footer{margin-top:36px;padding:20px 0 56px;border-top:4px solid var(--rule);colo
 </style>
 </head>
 <body>
-<nav class="nav"><div class="wrap"><b>모험자본 출자사업 모니터</b><span class="meta" id="info"></span></div></nav>
+<nav class="nav"><div class="wrap"><div class="brand"><b>모험자본 출자사업 모니터</b><span class="upd" id="upd"></span></div><span class="meta" id="info"></span></div></nav>
 <div class="wrap hero">
   <h1>출자사업 일정과 벤처 뉴스</h1>
   <p>한국벤처투자·한국성장금융 등 출자기관의 공고와 벤처캐피탈·벤처기업 소식을 매일 자동으로 모아 보여줍니다.</p>
@@ -268,6 +270,7 @@ addEventListener("resize",fitCal);if(document.fonts&&document.fonts.ready)docume
 if(window.ResizeObserver){let lw=0;new ResizeObserver(es=>{const w=Math.round(es[0].contentRect.width);if(w!==lw){lw=w;fitCal()}}).observe($("cardCal"))}
 function shift(n){const [y,m]=ym.split("-").map(Number);const d=new Date(y,m-1+n,1);ym=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`;selDay=null;render()}
 $("prev").onclick=()=>shift(-1);$("next").onclick=()=>shift(1);
+$("upd").textContent=window.BUILT?`${window.BUILT} 업데이트`:"";
 $("info").textContent=D.length?`총 ${D.length}건 · 최신 공지 ${latest}`:"데이터 없음";
 render();
 </script>

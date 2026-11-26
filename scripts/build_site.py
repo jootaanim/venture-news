@@ -3,6 +3,7 @@
 데이터를 HTML 안에 넣어서, 파일을 더블클릭해 열거나 패널 미리보기로 열어도 데이터가 보인다.
 """
 import json
+from datetime import datetime, timedelta, timezone
 import re
 from pathlib import Path
 
@@ -124,7 +125,10 @@ if ev_file.exists():
                 })
 events.sort(key=lambda x: (x["d"], x["t"]))
 ev_payload = json.dumps(events, ensure_ascii=False).replace("</", "<\\/")
-html = tpl.replace(tag, f"<script>window.DATA={payload};window.EVENTS={ev_payload};</script>")
+# 사이트를 만든 시각(한국 시간). 서버(GitHub)는 UTC라서 시간대를 명시한다.
+KST = timezone(timedelta(hours=9))
+built = datetime.now(KST).strftime("%Y-%m-%d %H:%M")
+html = tpl.replace(tag, f'<script>window.DATA={payload};window.EVENTS={ev_payload};window.BUILT="{built}";</script>')
 
 out = ROOT / "site" / "index.html"
 out.write_text(html, encoding="utf-8")
