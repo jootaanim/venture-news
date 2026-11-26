@@ -24,18 +24,9 @@ DELAY = 1.0
 KEYWORDS = ("출자", "위탁운용", "모펀드", "운용사 선정", "GP")
 
 
-def _ca_bundle():
-    """이 사이트는 중간 인증서를 빼고 내려준다. 발급기관(Sectigo)의 공식 중간 인증서를 기본 신뢰 목록에 더해
-    검증은 그대로 켠 채 접속한다(certs/sectigo_rsa_dv_intermediate.pem)."""
-    import certifi
-    extra = Path(__file__).resolve().parent.parent / "certs" / "sectigo_rsa_dv_intermediate.pem"
-    out = Path(__file__).resolve().parent.parent / ".cache" / "ca_bundle.pem"
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(Path(certifi.where()).read_text() + "\n" + extra.read_text())
-    return str(out)
+from cabundle import ca_bundle
 
-
-CA = _ca_bundle()
+CA = ca_bundle()  # 서버가 빠뜨린 중간 인증서(certs/)를 더해 검증을 켠 채 접속
 
 
 def get(path, **params):

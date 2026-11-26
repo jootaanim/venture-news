@@ -18,6 +18,9 @@ from pathlib import Path
 import requests
 from bs4 import BeautifulSoup
 
+from cabundle import ca_bundle
+
+CA = ca_bundle()  # 서버가 빠뜨린 중간 인증서(certs/)를 더해 검증을 켠 채 접속
 BASE = "https://www.koreaexim.go.kr"
 BOARD = "HPHKBI039M01"
 OUT = Path(__file__).resolve().parent.parent / "data" / "koreaexim.json"
@@ -29,7 +32,7 @@ KEYWORDS = ["출자", "위탁운용", "GP", "모펀드", "펀드", "운용사", 
 def get(path, **params):
     for attempt in range(3):
         try:
-            r = requests.get(f"{BASE}/{path}", params=params, headers=HEADERS, timeout=30)
+            r = requests.get(f"{BASE}/{path}", params=params, headers=HEADERS, timeout=30, verify=CA)
             r.raise_for_status()
             return r.content.decode("utf-8", errors="replace")
         except requests.RequestException as e:
