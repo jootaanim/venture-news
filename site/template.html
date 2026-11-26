@@ -94,7 +94,9 @@ button.chip.on{background:var(--chip-on);color:var(--chip-on-ink);border-color:v
 .dots .dot .lb{flex:none;overflow:visible}
 /* 좁은 화면에서도 같은 모양: 글자만 더 작게, 칸 여백을 줄여 이름이 한 줄에 다 들어가게 한다 */
 @media (max-width:900px){.day{padding:5px 1px;min-height:64px}.dots .dot,.evp{padding:1px 2px;gap:1px}}
-@media (max-width:640px){.card.tone-b{padding-left:16px;padding-right:16px}}
+@media (max-width:640px){.card.tone-b{padding-left:10px;padding-right:10px}}
+/* 스마트폰·폴더블: 좌우 여백을 줄여 내용 폭을 넓힌다 */
+@media (max-width:900px){.wrap{padding-left:max(10px,env(safe-area-inset-left,0px));padding-right:max(10px,env(safe-area-inset-right,0px))}}
 .lb{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
 .n{flex:none;font-weight:700}
 ul.list{list-style:none;margin:0;padding:0}
