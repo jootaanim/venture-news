@@ -232,7 +232,7 @@ function dayCard(){
  $("dh").textContent=(selDay?`${selDay} 공고문`:"선택한 조건의 공고문")+` (${f.length}건)`;
  $("dclear").textContent=selDay?"날짜 해제":"조건 해제";
  const evHtml=evs.map(e=>`<li><span class="tag ev ${EVC[e.t]}">${e.t}</span><span class="tag">${esc(e.src)}</span><div><a href="${e.url}" target="_blank" rel="noopener">${esc(e.title)}</a></div><div class="meta">공고문 근거: ${esc(e.ev)}${e.file?` (${esc(e.file)})`:""}</div></li>`).join("");
- $("dlist").innerHTML=evHtml+f.slice(0,dlimit).map(d=>`<li><span class="tag">${esc(LBL[d.cat]||d.cat)}</span><span class="tag">${esc(d.src)}</span><span class="meta">${d.date}${d.files?` · 첨부 ${d.files}`:""}</span><div><a href="${d.url}" target="_blank" rel="noopener">${esc(d.title)}</a></div></li>`).join("")||`<li class="meta">조건에 맞는 공고문이 없습니다.</li>`;
+ $("dlist").innerHTML=evHtml+f.slice(0,dlimit).map(d=>`<li><span class="tag">${esc(LBL[d.cat]||d.cat)}</span><span class="tag">${esc(d.src)}</span><span class="meta">${d.date}${d.files?` · 첨부 ${d.files}`:""}${d.alt?` · 공고문 파일로 연결 · <a href="${d.alt}" target="_blank" rel="noopener">공지 목록 보기</a>`:""}</span><div><a href="${d.url}" target="_blank" rel="noopener">${esc(d.title)}</a></div></li>`).join("")||`<li class="meta">조건에 맞는 공고문이 없습니다.</li>`;
  $("dmore").hidden=f.length<=dlimit}
 // 5. 뉴스 최근 소식 카드: 뉴스 필터만 따른다.
 function news(){
