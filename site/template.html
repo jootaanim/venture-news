@@ -40,6 +40,9 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Pretendard","
 .meta{font-size:13px;color:var(--mute)}
 /* 한 열로 쌓는 카드: 출자사업 → 달력 → (날짜 클릭 시) 공고문 → 뉴스전체 → 최근 소식 */
 .stack{display:flex;flex-direction:column;gap:20px}
+.col{display:flex;flex-direction:column;gap:20px;min-width:0}
+/* 데스크탑(넓은 화면): 왼쪽 출자사업 묶음, 오른쪽 뉴스 묶음 */
+@media (min-width:1024px){.stack{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:start}}
 .card{background:var(--card);border-top:4px solid var(--rule);border-radius:0;padding:18px 0 26px;min-width:0}
 .card h2{font-size:22px;line-height:1.36;margin:0;color:var(--ink);font-weight:700}
 /* 두 묶음 구분: 출자사업 묶음은 흰 면, 뉴스 묶음은 연회색 면(#f7f7f7) */
@@ -115,6 +118,7 @@ footer{margin-top:36px;padding:20px 0 56px;border-top:4px solid var(--rule);colo
 </div>
 <div class="wrap">
   <div class="stack">
+   <div class="col" id="colL">
 
     <!-- 1. 출자사업 카드 -->
     <section class="card tone-a" id="cardA">
@@ -142,6 +146,9 @@ footer{margin-top:36px;padding:20px 0 56px;border-top:4px solid var(--rule);colo
       <button class="more" id="dmore" hidden>더 보기</button>
     </section>
 
+   </div>
+   <div class="col" id="colR">
+
     <!-- 4. 뉴스전체 카드 -->
     <section class="card tone-b" id="cardNF">
       <h2>뉴스</h2>
@@ -156,6 +163,7 @@ footer{margin-top:36px;padding:20px 0 56px;border-top:4px solid var(--rule);colo
       <button class="more" id="more" hidden>더 보기</button>
     </section>
 
+   </div>
   </div>
   <footer>출처: 한국벤처투자 출자사업공지(최근 2년), 한국성장금융 출자사업공고(최근 6개월), Google 뉴스 검색 결과(최근 90일, 자동 수집이라 관련 없는 기사가 섞일 수 있습니다). 제목과 원문 링크만 제공합니다. 정확한 내용은 원문을 확인하세요.</footer>
 </div>
