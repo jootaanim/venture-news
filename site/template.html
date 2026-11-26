@@ -93,7 +93,8 @@ button.chip.on{background:var(--chip-on);color:var(--chip-on-ink);border-color:v
 .dots .dot{margin-top:0;padding:1px 4px;gap:3px;font-size:var(--chipfs,10px);line-height:1.5;max-width:100%}
 .dots .dot .lb{flex:none;overflow:visible}
 /* 좁은 화면에서도 같은 모양: 글자만 더 작게, 칸 여백을 줄여 이름이 한 줄에 다 들어가게 한다 */
-@media (max-width:640px){.day{padding:5px 1px;min-height:64px}.dots .dot,.evp{padding:1px 2px;gap:1px}.card.tone-b{padding-left:16px;padding-right:16px}}
+@media (max-width:900px){.day{padding:5px 1px;min-height:64px}.dots .dot,.evp{padding:1px 2px;gap:1px}}
+@media (max-width:640px){.card.tone-b{padding-left:16px;padding-right:16px}}
 .lb{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
 .n{flex:none;font-weight:700}
 ul.list{list-style:none;margin:0;padding:0}
