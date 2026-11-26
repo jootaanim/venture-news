@@ -17,8 +17,23 @@ PRIORITY_OUTLETS = {"더벨", "딜사이트"}
 OUTLET_ALIAS = {"thebell Free": "더벨", "THE BELL": "더벨"}
 
 
-def norm_cat(cat):
+# 기관이 붙인 분류와 제목이 어긋나는 경우(예: 한국성장금융은 "서류심사 결과" 글에도 【선정결과】를 붙인다)는
+# 제목을 우선한다. 제목에 "서류심사 결과"가 있으면 최종 선정이나 출자계획이 아니라 서류결과다.
+DOC_RESULT = re.compile(r"서류\s*심사\s*(결과|발표)|서류\s*결과")
+TITLE_RULES = [
+    (DOC_RESULT, "서류결과"),
+    (re.compile(r"접수\s*(현황|결과)"), "접수현황"),
+    (re.compile(r"질의\s*응답"), "질의응답"),
+]
+
+
+def norm_cat(cat, title=""):
     cat = ALIAS.get(cat, cat)
+    # 기관이 넓은 분류(출자계획·선정결과·기타)로 올렸더라도 제목에 분명한 표현이 있으면 그 종류로 본다.
+    if cat in ("출자계획", "선정결과", "기타"):
+        for rx, to in TITLE_RULES:
+            if rx.search(title):
+                return to
     return cat if cat in MAIN or cat in NEWS_CATS else "기타"
 
 
@@ -70,7 +85,7 @@ slim = [
         "kind": it.get("kind", "notice"),
         "pub": OUTLET_ALIAS.get(it.get("outlet", ""), it.get("outlet", "")),
         "pri": 1 if OUTLET_ALIAS.get(it.get("outlet", ""), it.get("outlet", "")) in PRIORITY_OUTLETS else 0,
-        "cat": norm_cat(it["category"]),
+        "cat": norm_cat(it["category"], it["title"]),
         "title": " ".join(it["title"].split()),
         "date": it["published"],
         "url": it["url"],
