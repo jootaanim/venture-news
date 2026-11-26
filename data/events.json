@@ -4,27 +4,48 @@
   "title": "『국민성장펀드(간접투자분야) 정책성펀드』 2026년 2차 위탁운용사 선정계획 공고",
   "url": "https://www.kdb.co.kr/CHBIPR23N00.act#sno=186153",
   "published": "2026-05-27",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-26"
+  "file": "붙임1. 국민성장펀드(간접투자분야) 정책성펀드 2026년 2차 위탁운용사 선정계획 공고.hwp",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2026-06-10",
+    "evidence": "접수일시 ○ 2026년 6월 10일"
+   }
+  ],
+  "tried": "2026-11-26",
+  "pages": null
  },
  "한국성장금융-1121": {
   "source": "한국성장금융",
   "title": "「IBK 생산적금융펀드 1호」일반매칭 위탁운용사 선정계획 공고",
   "url": "https://www.kgrowth.or.kr/notice_view.asp?idx=1121&tab=1",
   "published": "2026-09-18",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-26"
+  "file": "『IBK 생산적금융펀드 1호』 일반매칭 선정계획 공고_vF.hwp",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2026-10-08",
+    "evidence": "접수일시 ▪ 2026.10.8"
+   }
+  ],
+  "tried": "2026-11-26",
+  "pages": null
  },
  "한국성장금융-1085": {
   "source": "한국성장금융",
   "title": "「IBK 국민성장펀드 1호」 국민성장 매칭 2차 위탁운용사 선정계획 공고",
   "url": "https://www.kgrowth.or.kr/notice_view.asp?idx=1085&tab=1",
   "published": "2026-07-15",
-  "status": "no_pdf",
+  "file": "『IBK 국민성장펀드 1호』 국민성장 매칭 2차 사업 선정계획 공고.hwp",
+  "status": "no_date",
+  "note": "",
   "events": [],
-  "tried": "2026-11-26"
+  "tried": "2026-11-26",
+  "pages": null
  },
  "한국성장금융-1083": {
   "source": "한국성장금융",
@@ -49,25 +70,39 @@
   "title": "「IBK 국민성장펀드 1호」 국민성장 매칭 1차 위탁운용사 선정계획 공고",
   "url": "https://www.kgrowth.or.kr/notice_view.asp?idx=1051&tab=1",
   "published": "2026-06-10",
-  "status": "no_pdf",
+  "file": "『IBK 국민성장펀드 1호』 국민성장 매칭 1차 사업 선정계획 공고_vf.hwp",
+  "status": "no_date",
+  "note": "",
   "events": [],
-  "tried": "2026-11-26"
+  "tried": "2026-11-26",
+  "pages": null
  },
  "한국성장금융-1035": {
   "source": "한국성장금융",
   "title": "「국민성장펀드(간접투자분야) 정책성펀드」2026년 2차 위탁운용사 선정계획 공고",
   "url": "https://www.kgrowth.or.kr/notice_view.asp?idx=1035&tab=1",
   "published": "2026-05-27",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-26"
+  "file": "국민성장펀드(간접투자분야) 정책성펀드 2026년 2차 위탁운용사 선정계획 공고_vf.hwp",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2026-06-10",
+    "evidence": "접수일시 ○ 2026년 6월 10일"
+   }
+  ],
+  "tried": "2026-11-26",
+  "pages": null
  },
  "수출입은행-115905": {
   "source": "수출입은행",
   "title": "한국수출입은행 2026년 하반기 중소벤처 초혁신 성장펀드 출자사업 공고",
   "url": "https://www.koreaexim.go.kr/HPHKBI039M01/115905",
   "published": "2026-08-31",
-  "status": "no_pdf",
+  "file": "(붙임1) 수출입은행 중소·벤처 초혁신 성장펀드(VC부문) 출자사업 공고.hwp",
+  "status": "skipped",
+  "note": "robots.txt를 확인하지 못함",
   "events": [],
   "tried": "2026-11-26"
  },
@@ -76,7 +111,9 @@
   "title": "한국수출입은행 2026년 하반기 중소중견 글로벌 성장펀드 출자사업 공고",
   "url": "https://www.koreaexim.go.kr/HPHKBI039M01/115904",
   "published": "2026-08-31",
-  "status": "no_pdf",
+  "file": "(붙임1) 수출입은행 중소·중견 글로벌 성장펀드(PE부문) 출자사업 공고.hwp",
+  "status": "skipped",
+  "note": "robots.txt를 확인하지 못함",
   "events": [],
   "tried": "2026-11-26"
  },
@@ -85,7 +122,9 @@
   "title": "[우정사업본부 공고 제2026-140호] 2026년 우체국보험 국내주식 인덱스형 신규 위탁운용사 선정 공고",
   "url": "https://www.kpasset.go.kr/board.es?mid=a10510000000&bid=0042&bid2=&bid3=&act=view&list_no=434&tag=&nPage=1",
   "published": "2026-10-12",
-  "status": "no_pdf",
+  "file": "우체국보험 국내주식 인덱스형 신규 위탁운용사 선정 공고문.hwp",
+  "status": "skipped",
+  "note": "구형 암호화 방식 허용 여부가 정해지지 않음",
   "events": [],
   "tried": "2026-11-26"
  },
@@ -94,7 +133,9 @@
   "title": "[우정사업본부 공고 제2026-132호] 우체국보험 해외채권형 펀드(글로벌크레딧) 운용사 선정 공고",
   "url": "https://www.kpasset.go.kr/board.es?mid=a10510000000&bid=0042&bid2=&bid3=&act=view&list_no=433&tag=&nPage=1",
   "published": "2026-09-30",
-  "status": "no_pdf",
+  "file": "우체국보험 해외채권 글로벌크레딧형 운용사 선정 공고(안)_국문.hwp",
+  "status": "skipped",
+  "note": "구형 암호화 방식 허용 여부가 정해지지 않음",
   "events": [],
   "tried": "2026-11-26"
  },
@@ -103,7 +144,9 @@
   "title": "(우정사업본부 공고 2026-113호) 2026년도 우체국예금 해외인프라 지분전략 펀드 위탁운용사 선정 공고",
   "url": "https://www.kpasset.go.kr/board.es?mid=a10510000000&bid=0041&bid2=&bid3=&act=view&list_no=398&tag=&nPage=1",
   "published": "2026-08-24",
-  "status": "no_pdf",
+  "file": "2026년도 우체국예금 해외인프라 지분전략 펀드(미드캡) 위탁운용사 모집공고(KOR).hwp",
+  "status": "skipped",
+  "note": "구형 암호화 방식 허용 여부가 정해지지 않음",
   "events": [],
   "tried": "2026-11-26"
  },
@@ -112,7 +155,9 @@
   "title": "(우정사업본부 공고 2026-103호) 2026년 우체국보험 국내VC 위탁운용사 선정 공고",
   "url": "https://www.kpasset.go.kr/board.es?mid=a10510000000&bid=0042&bid2=&bid3=&act=view&list_no=430&tag=&nPage=1",
   "published": "2026-07-30",
-  "status": "no_pdf",
+  "file": "(공고문) 2026년 우체국보험 국내VC 위탁운용사 선정 공고문.hwp",
+  "status": "skipped",
+  "note": "구형 암호화 방식 허용 여부가 정해지지 않음",
   "events": [],
   "tried": "2026-11-26"
  },
@@ -121,7 +166,9 @@
   "title": "(우정사업본부 공고 제2026-80호) 우체국금융 해외채권 자문운용사 선정 공고",
   "url": "https://www.kpasset.go.kr/board.es?mid=a10510000000&bid=0041&bid2=&bid3=&act=view&list_no=377&tag=&nPage=1",
   "published": "2026-06-22",
-  "status": "no_pdf",
+  "file": "(우정사업본부 공고 제2026-80호) 우체국금융 해외채권 자문운용사 선정 공고.hwp",
+  "status": "skipped",
+  "note": "구형 암호화 방식 허용 여부가 정해지지 않음",
   "events": [],
   "tried": "2026-11-26"
  },
@@ -130,7 +177,9 @@
   "title": "[우정사업본부 공고 제2026-75호] 2026년 우체국예금 보험 국내주식 대형주형 신규 위탁운용사 선정 공고",
   "url": "https://www.kpasset.go.kr/board.es?mid=a10510000000&bid=0042&bid2=&bid3=&act=view&list_no=406&tag=&nPage=1",
   "published": "2026-06-15",
-  "status": "no_pdf",
+  "file": "2026년 우체국예금 보험 국내주식 대형주형 신규 위탁운용사 선정 공고문_게시용.hwp",
+  "status": "skipped",
+  "note": "구형 암호화 방식 허용 여부가 정해지지 않음",
   "events": [],
   "tried": "2026-11-26"
  },
@@ -139,7 +188,9 @@
   "title": "[우정사업본부 공고 제2026-67호] 2026년 우체국보험 해외주식 글로벌형 신규 위탁운용사 선정 공고",
   "url": "https://www.kpasset.go.kr/board.es?mid=a10510000000&bid=0042&bid2=&bid3=&act=view&list_no=405&tag=&nPage=1",
   "published": "2026-05-29",
-  "status": "no_pdf",
+  "file": "우체국보험 해외주식 글로벌형 신규 위탁운용사 선정 공고.hwp",
+  "status": "skipped",
+  "note": "구형 암호화 방식 허용 여부가 정해지지 않음",
   "events": [],
   "tried": "2026-11-26"
  },
@@ -148,9 +199,18 @@
   "title": "2026년 한국교직원공제회 VC 블라인드 펀드 위탁운용사 선정 공고",
   "url": "https://www.ktcu.or.kr/PPW-CSB-000101/61383",
   "published": "2026-07-07",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-26"
+  "file": "1. 2026년 한국교직원공제회 VC 블라인드 펀드 위탁운용사 선정 공고문.hwp",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2026-07-16",
+    "evidence": "7월 16일 제안서 접수 마감"
+   }
+  ],
+  "tried": "2026-11-26",
+  "pages": null
  },
  "군인공제회-mmaa-732320": {
   "source": "군인공제회",
@@ -197,7 +257,7 @@
    }
   ],
   "tried": "2026-11-26",
-  "pages": 7
+  "pages": null
  },
  "한국벤처투자-5235": {
   "source": "한국벤처투자",
@@ -226,7 +286,7 @@
    }
   ],
   "tried": "2026-11-26",
-  "pages": 8
+  "pages": null
  },
  "한국벤처투자-5201": {
   "source": "한국벤처투자",
@@ -271,7 +331,7 @@
    }
   ],
   "tried": "2026-11-26",
-  "pages": 14
+  "pages": null
  },
  "한국벤처투자-5168": {
   "source": "한국벤처투자",
@@ -294,7 +354,7 @@
   "note": "",
   "events": [],
   "tried": "2026-11-26",
-  "pages": 6
+  "pages": null
  },
  "한국벤처투자-5147": {
   "source": "한국벤처투자",
@@ -334,7 +394,7 @@
    }
   ],
   "tried": "2026-11-26",
-  "pages": 8
+  "pages": null
  },
  "한국벤처투자-5130": {
   "source": "한국벤처투자",
@@ -374,7 +434,7 @@
    }
   ],
   "tried": "2026-11-26",
-  "pages": 9
+  "pages": null
  },
  "교직원공제회-61742": {
   "source": "교직원공제회",
@@ -392,7 +452,7 @@
    }
   ],
   "tried": "2026-11-26",
-  "pages": 5
+  "pages": null
  },
  "한국벤처투자-5121": {
   "source": "한국벤처투자",
@@ -487,7 +547,7 @@
    }
   ],
   "tried": "2026-11-26",
-  "pages": 10
+  "pages": null
  },
  "한국성장금융-1091": {
   "source": "한국성장금융",
@@ -505,7 +565,7 @@
    }
   ],
   "tried": "2026-11-26",
-  "pages": 10
+  "pages": null
  },
  "산업은행-186671": {
   "source": "산업은행",
@@ -523,7 +583,7 @@
    }
   ],
   "tried": "2026-11-26",
-  "pages": 14
+  "pages": null
  },
  "한국성장금융-1089": {
   "source": "한국성장금융",
@@ -541,7 +601,7 @@
    }
   ],
   "tried": "2026-11-26",
-  "pages": 14
+  "pages": null
  },
  "우정사업본부-koreapost-0041-389": {
   "source": "우정사업본부",
@@ -581,7 +641,7 @@
    }
   ],
   "tried": "2026-11-26",
-  "pages": 8
+  "pages": null
  },
  "한국성장금융-1082": {
   "source": "한국성장금융",
@@ -593,7 +653,7 @@
   "note": "",
   "events": [],
   "tried": "2026-11-26",
-  "pages": 7
+  "pages": null
  },
  "산업은행-186557": {
   "source": "산업은행",
@@ -611,7 +671,7 @@
    }
   ],
   "tried": "2026-11-26",
-  "pages": 9
+  "pages": null
  },
  "한국성장금융-1073": {
   "source": "한국성장금융",
@@ -629,7 +689,7 @@
    }
   ],
   "tried": "2026-11-26",
-  "pages": 9
+  "pages": null
  },
  "한국성장금융-1070": {
   "source": "한국성장금융",
@@ -647,7 +707,7 @@
    }
   ],
   "tried": "2026-11-26",
-  "pages": 12
+  "pages": null
  },
  "KIF-50134": {
   "source": "KIF",
@@ -676,7 +736,7 @@
    }
   ],
   "tried": "2026-11-26",
-  "pages": 8
+  "pages": null
  },
  "한국벤처투자-4884": {
   "source": "한국벤처투자",
@@ -705,7 +765,7 @@
    }
   ],
   "tried": "2026-11-26",
-  "pages": 12
+  "pages": null
  },
  "한국성장금융-1057": {
   "source": "한국성장금융",
@@ -723,7 +783,7 @@
    }
   ],
   "tried": "2026-11-26",
-  "pages": 10
+  "pages": null
  },
  "한국벤처투자-4883": {
   "source": "한국벤처투자",
@@ -752,7 +812,7 @@
    }
   ],
   "tried": "2026-11-26",
-  "pages": 8
+  "pages": null
  },
  "한국성장금융-1047": {
   "source": "한국성장금융",
@@ -770,7 +830,7 @@
    }
   ],
   "tried": "2026-11-26",
-  "pages": 9
+  "pages": null
  },
  "한국성장금융-1039": {
   "source": "한국성장금융",
@@ -788,7 +848,7 @@
    }
   ],
   "tried": "2026-11-26",
-  "pages": 9
+  "pages": null
  },
  "한국성장금융-1037": {
   "source": "한국성장금융",
@@ -806,7 +866,7 @@
    }
   ],
   "tried": "2026-11-26",
-  "pages": 9
+  "pages": null
  },
  "한국벤처투자-4868": {
   "source": "한국벤처투자",

@@ -22,6 +22,11 @@ from pathlib import Path
 from urllib.parse import urlparse
 from urllib.robotparser import RobotFileParser
 
+import struct
+import zipfile
+import zlib
+
+import olefile
 import requests
 from pypdf import PdfReader
 
@@ -101,7 +106,7 @@ def fetch_pdf(item, att, last_hit):
         try:
             r = s.get(url, headers=headers, timeout=60)
             last_hit[host] = time.time()
-            if r.content[:4] == b"%PDF":
+            if doc_kind(r.content):
                 return r.content, "ok", ""
             if attempt == 0:  # 세션 쿠키가 필요한 사이트: 공지 페이지를 먼저 열고 한 번만 다시 시도
                 time.sleep(crawl_delay(rp))
@@ -109,12 +114,92 @@ def fetch_pdf(item, att, last_hit):
                 last_hit[host] = time.time()
         except requests.RequestException as e:
             return None, "download_failed", type(e).__name__
-    return None, "download_failed", "PDF가 아닌 응답(접근 거절 가능성)"
+    return None, "download_failed", "문서가 아닌 응답(접근 거절 가능성)"
+
+
+def doc_kind(b):
+    """내려받은 내용이 PDF / HWP(한글 5.x) / HWPX 중 무엇인지 파일 머리말로 판별한다. 아니면 None."""
+    if b[:4] == b"%PDF":
+        return "pdf"
+    if b[:8] == bytes.fromhex("D0CF11E0A1B11AE1"):
+        return "hwp"
+    if b[:2] == b"PK":
+        try:
+            names = zipfile.ZipFile(io.BytesIO(b)).namelist()
+            return "hwpx" if any(n.startswith("Contents/") for n in names) else None
+        except zipfile.BadZipFile:
+            return None
+    return None
 
 
 def pdf_text(data):
     reader = PdfReader(io.BytesIO(data))
     return "\n".join((p.extract_text() or "") for p in reader.pages), len(reader.pages)
+
+
+def hwp_text(data):
+    """한글(.hwp, 5.x) 본문 글자를 뽑는다. 암호가 걸린 문서는 읽지 않는다."""
+    ole = olefile.OleFileIO(io.BytesIO(data))
+    header = ole.openstream("FileHeader").read()
+    flags = struct.unpack("<I", header[36:40])[0]
+    if flags & 2:
+        raise ValueError("암호화된 문서")
+    compressed = bool(flags & 1)
+    sections = sorted(
+        ("/".join(p) for p in ole.listdir() if len(p) == 2 and p[0] == "BodyText" and p[1].startswith("Section")),
+        key=lambda s: int(re.sub(r"\D", "", s) or 0),
+    )
+    out = []
+    for sec in sections:
+        raw = ole.openstream(sec).read()
+        if compressed:
+            raw = zlib.decompress(raw, -15)
+        pos = 0
+        while pos + 4 <= len(raw):
+            h = struct.unpack("<I", raw[pos: pos + 4])[0]
+            tag, size = h & 0x3FF, (h >> 20) & 0xFFF
+            pos += 4
+            if size == 0xFFF:
+                size = struct.unpack("<I", raw[pos: pos + 4])[0]
+                pos += 4
+            payload = raw[pos: pos + size]
+            pos += size
+            if tag != 67:  # HWPTAG_PARA_TEXT
+                continue
+            s, i = [], 0
+            while i + 1 < len(payload):
+                ch = struct.unpack("<H", payload[i: i + 2])[0]
+                if ch in (10, 13):
+                    s.append("\n"); i += 2
+                elif ch < 32 and ch not in (0, 24, 25, 26, 27, 28, 29, 30, 31):
+                    i += 16  # 표·그림 등 확장 컨트롤은 8글자(16바이트)를 차지한다
+                elif ch < 32:
+                    i += 2
+                else:
+                    s.append(chr(ch)); i += 2
+            out.append("".join(s))
+    return "\n".join(out), None
+
+
+def hwpx_text(data):
+    z = zipfile.ZipFile(io.BytesIO(data))
+    parts = sorted(n for n in z.namelist() if re.match(r"Contents/section\d+\.xml", n))
+    txt = []
+    for n in parts:
+        xml = z.read(n).decode("utf-8", "replace")
+        txt.append(re.sub(r"<[^>]+>", " ", re.sub(r"</hp:p>", "\n", xml)))
+    return "\n".join(txt), None
+
+
+def doc_text(data):
+    kind = doc_kind(data)
+    if kind == "pdf":
+        return pdf_text(data)
+    if kind == "hwp":
+        return hwp_text(data)
+    if kind == "hwpx":
+        return hwpx_text(data)
+    raise ValueError("지원하지 않는 문서")
 
 
 def find_dates(flat, published):
@@ -236,12 +321,13 @@ def main():
                 continue
             if old and old["status"] == "download_failed" and old.get("tried", "") > str(date.today() - timedelta(days=args.retry_days)):
                 continue
-            pdfs = [a for a in it.get("attachments", []) if a["name"].lower().endswith(".pdf") and not SKIP_NAME.search(a["name"])]
+            pdfs = [a for a in it.get("attachments", []) if a["name"].lower().endswith((".pdf", ".hwp", ".hwpx")) and not SKIP_NAME.search(a["name"])]
             if not pdfs:
                 records[key] = {"source": it["source"], "title": it["title"], "url": it["url"], "published": it["published"],
                                 "status": "no_pdf", "events": [], "tried": str(date.today())}
                 continue
-            pdfs.sort(key=lambda a: (0 if re.search(r"공고|계획", a["name"]) else 1))
+            # 공고문 이름이 들어간 파일을 먼저, 같은 조건이면 PDF를 한글 파일보다 먼저 쓴다.
+            pdfs.sort(key=lambda a: (0 if re.search(r"공고|계획", a["name"]) else 1, 0 if a["name"].lower().endswith(".pdf") else 1))
             todo.append((key, it, pdfs[0]))
 
     todo.sort(key=lambda t: t[1]["published"], reverse=True)
@@ -263,7 +349,7 @@ def main():
                 if cached is not None:
                     text, pages = cached, None
                 else:
-                    text, pages = pdf_text(data)
+                    text, pages = doc_text(data)
                     CACHE.mkdir(parents=True, exist_ok=True)
                     cfile.write_text(text, encoding="utf-8")
                 rec["pages"] = pages
