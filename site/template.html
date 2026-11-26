@@ -247,9 +247,10 @@ $("dclear").onclick=()=>{if(selDay){selDay=null}else{src="전체";cat="전체"}d
 // 초기화는 카드별로: 출자사업 카드는 기관·공고문종류·검색을, 뉴스 카드는 매체·분류·검색을 지운다.
 $("resetN").onclick=()=>{src="전체";cat="전체";qN="";$("qn").value="";selDay=null;dlimit=40;render()};
 $("resetA").onclick=()=>{npub="전체";ncat="전체";qA="";$("qa").value="";limit=40;render()};
-// 달력 칸 안 글자: 필터 버튼 글자 크기를 상한으로, 가장 긴 표기가 칸 폭에 한 줄로 다 들어가는 가장 큰 크기로 맞춘다.
+// 달력 칸 안 글자: CAL_FS(12px)를 상한으로, 가장 긴 표기가 칸 폭에 한 줄로 다 들어가는 가장 큰 크기로 맞춘다.
 // 표기 폭은 화면에 그려지지 않아도 재도록 canvas로 잰다.
 const _cv=document.createElement("canvas").getContext("2d");
+const CAL_FS=12;   // 달력 칸 안 글자 크기 상한(px). 필터 버튼(13px)보다 한 단계 작게.
 // 하루·분류별 공고 건수의 최대 자릿수(예: 최대 5건이면 1). 데이터가 바뀌면 자동으로 따라간다.
 const MAXD=String(Math.max(1,...Object.values(D.filter(d=>d.kind==="notice").reduce((a,d)=>{const k=d.date+"|"+d.cat;a[k]=(a[k]||0)+1;return a},{})))).length;
 function fitCal(){const cal=$("cal");if(!cal)return;
@@ -260,8 +261,7 @@ function fitCal(){const cal=$("cal");if(!cal)return;
  _cv.font=`700 100px ${getComputedStyle(document.body).fontFamily}`;
  const w100=Math.max(_cv.measureText("접수 "+"9".repeat(MAXD)).width,_cv.measureText("마감 9").width);
  if(!avail||!w100)return;
- const btnFs=parseFloat(getComputedStyle(document.querySelector("button.chip")||document.body).fontSize)||13;
- const fs=Math.max(8,Math.min(btnFs,Math.floor((avail-fixed)/w100*1000-3)/10));
+ const fs=Math.max(8,Math.min(CAL_FS,Math.floor((avail-fixed)/w100*1000-3)/10));
  cal.style.setProperty("--chipfs",fs+"px")}
 addEventListener("resize",fitCal);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitCal);
 // 창 크기 이벤트가 오지 않는 환경에서도 달력 카드 폭이 바뀌면 다시 맞춘다.
