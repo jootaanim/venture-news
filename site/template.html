@@ -5,87 +5,102 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>모험자본 출자사업 모니터</title>
 <style>
-/* 디자인: Apple 스토어(apple.com/kr/store)에서 읽은 값 - 배경 #f5f5f7, 글자 #1d1d1f, 보조 #6e6e73,
-   링크 #0066cc, 카드 모서리 28px, 옅은 그림자. 로고·상표는 쓰지 않는다. */
-:root{--bg:#f5f5f7;--card:#fff;--ink:#1d1d1f;--mute:#6e6e73;--line:#d2d2d7;
---chip:#e8e8ed;--chip-h:#dcdce1;--chip-on:#1d1d1f;--chip-on-ink:#fff;
---brand:#0066cc;--accent:#0071e3;--cell:#f5f5f7;--shadow:2px 4px 12px rgba(0,0,0,.08);--nav:rgba(245,245,247,.8);
---a:.14;--e1c:255,59,48;--e2c:255,149,0;--e3c:52,199,89;--k1c:0,122,255;--k2c:52,199,89;--k3c:255,149,0;--k4c:175,82,222;--k5c:142,142,147;--e1t:#d70015;--e2t:#b25000;--e3t:#1d7a34;--k1t:#0062cc;--k2t:#1d7a34;--k3t:#b25000;--k4t:#8a37b0;--k5t:#6e6e73}
-@media (prefers-color-scheme:dark){:root{--bg:#000;--card:#1d1d1f;--ink:#f5f5f7;--mute:#a1a1a6;--line:#424245;
---chip:#2c2c2e;--chip-h:#3a3a3c;--chip-on:#f5f5f7;--chip-on-ink:#1d1d1f;
---brand:#2997ff;--accent:#0a84ff;--cell:#2a2a2d;--shadow:none;--nav:rgba(0,0,0,.72);
---a:.26;--e1c:255,69,58;--e2c:255,159,10;--e3c:48,209,88;--k1c:10,132,255;--k2c:48,209,88;--k3c:255,159,10;--k4c:191,90,242;--k5c:152,152,157;--e1t:#ff6961;--e2t:#ffb340;--e3t:#4cd964;--k1t:#64a8ff;--k2t:#4cd964;--k3t:#ffb340;--k4t:#d28cf0;--k5t:#a1a1a6;color-scheme:dark}}
+/* 디자인: 29CM(29cm.co.kr)에서 읽은 값 - 순백 배경, 순흑 글자, 회색 면 #f7f7f7·#f0f0f0, 선 #ddd,
+   포인트 #ff4800 하나, 그림자 없이 평평하게, 모서리는 거의 직각, 굵은 검정 구분선(4px), 큰 굵은 제목(40px)과
+   22px 섹션 제목. 로고·전용 글꼴은 쓰지 않는다. (이전 Apple 스타일은 site/themes/template.apple.html, 태그 style-apple-v1) */
+:root{--bg:#fff;--card:#fff;--ink:#000;--mute:#767676;--line:#ddd;
+--chip:#fff;--chip-h:#f0f0f0;--chip-on:#000;--chip-on-ink:#fff;--chip-line:#ddd;--tag:#f0f0f0;
+--brand:#000;--accent:#ff4800;--cell:#f7f7f7;--rule:#000;--nav:#fff;
+--a:.12;--e1c:255,72,0;--e2c:31,31,31;--e3c:118,118,118;
+--k1c:0,0,0;--k2c:255,72,0;--k3c:118,118,118;--k4c:31,31,31;--k5c:176,176,176;
+--e1t:#d83a00;--e2t:#000;--e3t:#555;--k1t:#000;--k2t:#d83a00;--k3t:#555;--k4t:#1f1f1f;--k5t:#767676}
+@media (prefers-color-scheme:dark){:root{--bg:#000;--card:#000;--ink:#fff;--mute:#a0a0a0;--line:#333;
+--chip:#000;--chip-h:#1f1f1f;--chip-on:#fff;--chip-on-ink:#000;--chip-line:#444;--tag:#1f1f1f;
+--brand:#fff;--accent:#ff6a2b;--cell:#141414;--rule:#fff;--nav:#000;
+--a:.22;--e1c:255,106,43;--e2c:240,240,240;--e3c:160,160,160;
+--k1c:255,255,255;--k2c:255,106,43;--k3c:160,160,160;--k4c:224,224,224;--k5c:110,110,110;
+--e1t:#ff8a5c;--e2t:#fff;--e3t:#bdbdbd;--k1t:#fff;--k2t:#ff8a5c;--k3t:#bdbdbd;--k4t:#e0e0e0;--k5t:#9a9a9a;color-scheme:dark}}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.47 "SF Pro KR","SF Pro Text",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1080px;margin:0 auto;padding:0 max(22px,env(safe-area-inset-left,0px))}
-.nav{position:sticky;top:0;z-index:20;height:48px;background:var(--nav);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(128,128,128,.2)}
-.nav .wrap{height:48px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.nav b{font-size:17px;font-weight:600;white-space:nowrap}
-.hero{padding-top:48px;padding-bottom:28px}
-.hero h1{margin:0;font-size:clamp(30px,6.2vw,64px);line-height:1.1;font-weight:600;letter-spacing:-.01em;word-break:keep-all;text-wrap:balance}
-.hero p{margin:12px 0 0;font-size:clamp(16px,2.4vw,21px);line-height:1.4;color:var(--mute);max-width:720px;word-break:keep-all}
-@media (max-width:560px){.nav .meta{display:none}.hero{padding-top:32px}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Pretendard","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1200px;margin:0 auto;padding:0 max(20px,env(safe-area-inset-left,0px))}
+.nav{position:sticky;top:0;z-index:20;height:52px;background:var(--nav);border-bottom:1px solid var(--line)}
+.nav .wrap{height:52px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.nav b{font-size:15px;font-weight:800;letter-spacing:.02em;white-space:nowrap}
+.hero{padding-top:36px;padding-bottom:8px}
+.hero h1{margin:0;font-size:clamp(28px,4.4vw,40px);line-height:1.25;font-weight:700;letter-spacing:-.01em;word-break:keep-all;text-wrap:balance}
+.hero p{margin:10px 0 0;font-size:14px;line-height:1.55;color:var(--mute);max-width:640px;word-break:keep-all}
+.subnav{display:flex;flex-wrap:wrap;gap:6px 22px;margin:22px 0 0;padding:14px 0 16px;border-top:1px solid var(--line)}
+.subnav a{font-size:16px;font-weight:800;color:var(--ink);letter-spacing:.01em}
+.subnav a:hover{text-decoration:none;color:var(--accent)}
+@media (max-width:560px){.nav .meta{display:none}.hero{padding-top:26px}}
 .meta{font-size:13px;color:var(--mute)}
-.sbox{display:flex;gap:10px;align-items:center;margin-top:14px}
-.sbox input{flex:1;min-width:0;height:42px;padding:0 18px;border:0;border-radius:980px;background:var(--chip);color:var(--ink);font:inherit;font-size:16px}
-.sbox input::placeholder{color:var(--mute)}
-.sbox input:focus,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.sbox .chip{flex:none;height:42px;padding:0 16px}
 /* 한 열로 쌓는 카드: 출자사업 → 달력 → (날짜 클릭 시) 공고문 → 뉴스전체 → 최근 소식 */
-.stack{display:flex;flex-direction:column;gap:14px}
-.card{background:var(--card);border-radius:28px;padding:22px 24px;box-shadow:var(--shadow);min-width:0}
-.card h2{font-size:21px;line-height:1.19;margin:0;color:var(--ink);font-weight:600}
-/* 파스텔 색: 출자사업·달력·공고문 카드는 연한 파랑, 뉴스 카드 둘은 연한 민트 */
-.card.tone-a{--card:#e8f1fd;--chip:rgba(255,255,255,.72);--chip-h:#fff;--chip-on:#bcd7f8;--chip-on-ink:#0a3a7a;--cell:rgba(255,255,255,.6);--line:rgba(10,58,122,.14)}
-.card.tone-b{--card:#e9f6ee;--chip:rgba(255,255,255,.72);--chip-h:#fff;--chip-on:#bfe6cd;--chip-on-ink:#165a33;--line:rgba(22,90,51,.14)}
-@media (prefers-color-scheme:dark){
-.card.tone-a{--card:#1b2a3d;--chip:rgba(255,255,255,.10);--chip-h:rgba(255,255,255,.18);--chip-on:#35597f;--chip-on-ink:#e6f0ff;--cell:rgba(255,255,255,.07);--line:rgba(255,255,255,.12)}
-.card.tone-b{--card:#1a2f25;--chip:rgba(255,255,255,.10);--chip-h:rgba(255,255,255,.18);--chip-on:#2f5c45;--chip-on-ink:#dff5e8;--line:rgba(255,255,255,.12)}}
+.stack{display:flex;flex-direction:column;gap:20px}
+.card{background:var(--card);border-top:4px solid var(--rule);border-radius:0;padding:18px 0 26px;min-width:0}
+.card h2{font-size:22px;line-height:1.36;margin:0;color:var(--ink);font-weight:700}
+/* 두 묶음 구분: 출자사업 묶음은 흰 면, 뉴스 묶음은 연회색 면(#f7f7f7) */
+.card.tone-a{--card:#fff}
+.card.tone-b{--card:#f7f7f7;padding-left:20px;padding-right:20px}
+@media (prefers-color-scheme:dark){.card.tone-a{--card:#000}.card.tone-b{--card:#141414}}
+.sbox{display:flex;gap:8px;align-items:center;margin-top:14px}
+.sbox input{flex:1;min-width:0;height:42px;padding:0 14px;border:1px solid var(--chip-line);border-radius:2px;background:#fff;color:#000;font:inherit;font-size:15px}
+.sbox input::placeholder{color:#8a8a8a}
+.sbox input:focus,button:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.sbox .chip{flex:none;height:42px;padding:0 16px}
 .fbody{display:flex;flex-direction:column;gap:10px;margin-top:14px}
-.fbody>div{display:flex;flex-wrap:wrap;gap:8px}
-button.chip{border:0;background:var(--chip);color:var(--ink);padding:7px 15px;border-radius:980px;cursor:pointer;font:inherit;font-size:14px;line-height:1.3;transition:background .2s}
+.fbody>div{display:flex;flex-wrap:wrap;gap:6px}
+button.chip{border:1px solid var(--chip-line);background:var(--chip);color:var(--ink);padding:6px 12px;border-radius:2px;cursor:pointer;font:inherit;font-size:13px;font-weight:500;line-height:1.35}
 button.chip:hover{background:var(--chip-h)}
-button.chip.on{background:var(--chip-on);color:var(--chip-on-ink);font-weight:600}
+button.chip.on{background:var(--chip-on);color:var(--chip-on-ink);border-color:var(--chip-on);font-weight:700}
+.card.tone-b button.chip,.card.tone-b .sbox input{background:#fff;color:#000}
+.card.tone-b button.chip:hover{background:#f0f0f0}
+.card.tone-b button.chip.on{background:#000;color:#fff}
+@media (prefers-color-scheme:dark){.card.tone-b button.chip,.card.tone-b .sbox input{background:#000;color:#fff}.card.tone-b button.chip:hover{background:#1f1f1f}.card.tone-b button.chip.on{background:#fff;color:#000}.sbox input{background:#000;color:#fff}}
 .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:8px}
-.head button{border:0;background:var(--chip);color:var(--ink);border-radius:980px;min-width:34px;height:34px;padding:0 14px;cursor:pointer;font:inherit;font-size:14px}
+.head button{border:1px solid var(--chip-line);background:var(--chip);color:var(--ink);border-radius:2px;min-width:34px;height:34px;padding:0 14px;cursor:pointer;font:inherit;font-size:14px}
 .head button:hover{background:var(--chip-h)}
 .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
-.dow{font-size:12px;color:var(--mute);text-align:center;padding:4px 0}
-.day{min-height:72px;background:var(--cell);border-radius:12px;padding:5px 6px;font-size:12px;cursor:default;overflow:hidden}
+.dow{font-size:12px;font-weight:700;color:var(--mute);text-align:center;padding:4px 0}
+.day{min-height:72px;background:var(--cell);border-radius:2px;padding:5px 6px;font-size:12px;cursor:default;overflow:hidden}
 .day.has{cursor:pointer}
-.day.has:hover{box-shadow:inset 0 0 0 1px var(--line)}
-.day.sel{outline:2px solid var(--accent);outline-offset:-2px}
+.day.has:hover{box-shadow:inset 0 0 0 1px var(--ink)}
+.day.sel{outline:2px solid var(--ink);outline-offset:-2px;background:var(--bg)}
 .day.out{background:transparent}
 .e1{--c:var(--e1c);--t:var(--e1t)}.e2{--c:var(--e2c);--t:var(--e2t)}.e3{--c:var(--e3c);--t:var(--e3t)}
 .k1{--c:var(--k1c);--t:var(--k1t)}.k2{--c:var(--k2c);--t:var(--k2t)}.k3{--c:var(--k3c);--t:var(--k3t)}.k4{--c:var(--k4c);--t:var(--k4t)}.k5{--c:var(--k5c);--t:var(--k5t)}
 /* 한 줄 표시: 왼쪽에 종류(길면 … 처리), 오른쪽에 건수는 항상 보인다 */
-.evp,.dot{display:flex;align-items:center;gap:4px;margin-top:3px;padding:1px 6px;border-radius:6px;font-size:11px;line-height:1.55;white-space:nowrap;background:rgba(var(--c),var(--a));color:var(--t)}
-.evp{font-weight:600}
-.dot{--a:.09;font-weight:500}
+.evp,.dot{display:flex;align-items:center;gap:4px;margin-top:3px;padding:1px 6px;border-radius:2px;font-size:11px;line-height:1.55;white-space:nowrap;background:rgba(var(--c),var(--a));color:var(--t)}
+.evp{font-weight:700}
+.dot{--a:.08;font-weight:500}
 /* 게시일 칩: 종류마다 한 줄('계획 1'), 종류가 여러 개면 다음 줄에 이어서 쌓는다. 글자는 작게 */
 .dots{display:flex;flex-direction:column;align-items:flex-start;gap:2px;margin-top:3px}
 .dots .dot{margin-top:0;padding:1px 4px;gap:3px;font-size:10px;line-height:1.5;max-width:100%}
 .dots .dot .lb{flex:none;overflow:visible}
 /* 좁은 화면에서도 같은 모양: 글자만 더 작게, 칸 여백을 줄여 이름이 한 줄에 다 들어가게 한다 */
-@media (max-width:640px){.day{padding:5px 2px;min-height:64px}.dots .dot,.evp{padding:1px 3px;gap:2px;font-size:9px}.card{padding:20px 18px}}
+@media (max-width:640px){.day{padding:5px 2px;min-height:64px}.dots .dot,.evp{padding:1px 3px;gap:2px;font-size:9px}.card.tone-b{padding-left:16px;padding-right:16px}}
 .lb{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
 .n{flex:none;font-weight:700}
 .legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--mute);margin-top:12px}
-.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;background:rgb(var(--c))}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:1px;margin-right:5px;background:rgb(var(--c))}
 ul.list{list-style:none;margin:0;padding:0}
 ul.list li{padding:14px 0;border-top:1px solid var(--line)}
 ul.list li:first-child{border-top:0;padding-top:4px}
-ul.list li a{font-weight:500;line-height:1.35}
-.tag{display:inline-block;font-size:12px;padding:2px 10px;border-radius:980px;background:var(--chip);color:var(--mute);margin:0 4px 4px 0}
-.tag.pri{background:transparent;color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);font-weight:600}
-.tag.ev{background:rgba(var(--c),var(--a));color:var(--t);font-weight:600}
-a{color:var(--brand);text-decoration:none}a:hover{text-decoration:underline}
-.more{width:100%;margin-top:14px;padding:12px;border:0;background:var(--chip-on);color:var(--chip-on-ink);border-radius:980px;cursor:pointer;font:inherit;font-size:16px;font-weight:600}
-.more:hover{filter:brightness(.97)}
-.note{margin:14px 0 0;line-height:1.5}
-footer{margin-top:28px;padding:20px 0 48px;border-top:1px solid var(--line);color:var(--mute);font-size:12px;line-height:1.5}
+ul.list li a{font-weight:600;line-height:1.4}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:2px;background:var(--tag);color:var(--mute);margin:0 4px 4px 0}
+.card.tone-b .tag{background:#fff}
+@media (prefers-color-scheme:dark){.card.tone-b .tag{background:#000}}
+.tag.pri{background:transparent;color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);font-weight:700}
+.tag.ev{background:rgba(var(--c),var(--a));color:var(--t);font-weight:700}
+a{color:var(--ink);text-decoration:none}a:hover{text-decoration:underline}
+.more{width:100%;margin-top:14px;padding:12px;border:1px solid var(--ink);background:var(--bg);color:var(--ink);border-radius:2px;cursor:pointer;font:inherit;font-size:15px;font-weight:700}
+.more:hover{background:var(--ink);color:var(--bg)}
+.card.tone-b .more{background:#fff;color:#000}.card.tone-b .more:hover{background:#000;color:#fff}
+@media (prefers-color-scheme:dark){.card.tone-b .more{background:#000;color:#fff}.card.tone-b .more:hover{background:#fff;color:#000}}
+.note{margin:14px 0 0;line-height:1.55}
+.note a{text-decoration:underline;text-underline-offset:2px}
+footer{margin-top:36px;padding:20px 0 56px;border-top:4px solid var(--rule);color:var(--mute);font-size:12px;line-height:1.6}
 </style>
 </head>
 <body>
@@ -93,6 +108,7 @@ footer{margin-top:28px;padding:20px 0 48px;border-top:1px solid var(--line);colo
 <div class="wrap hero">
   <h1>출자사업 일정과 벤처 뉴스</h1>
   <p>한국벤처투자·한국성장금융 등 출자기관의 공고와 벤처캐피탈·벤처기업 소식을 매일 자동으로 모아 보여줍니다.</p>
+  <nav class="subnav"><a href="#cardA">출자사업</a><a href="#cardCal">달력</a><a href="#cardNF">뉴스</a><a href="#cardNews">최근 소식</a></nav>
 </div>
 <div class="wrap">
   <div class="stack">
