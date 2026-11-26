@@ -100,6 +100,7 @@ a{color:var(--ink);text-decoration:none}a:hover{text-decoration:underline}
 .card.tone-b .more{background:#fff;color:#000}.card.tone-b .more:hover{background:#000;color:#fff}
 @media (prefers-color-scheme:dark){.card.tone-b .more{background:#000;color:#fff}.card.tone-b .more:hover{background:#fff;color:#000}}
 .note{margin:14px 0 0;line-height:1.55}
+#calnote{white-space:nowrap;overflow:hidden;font-size:13px}
 .note a{text-decoration:underline;text-underline-offset:2px}
 footer{margin-top:36px;padding:20px 0 56px;border-top:4px solid var(--rule);color:var(--mute);font-size:12px;line-height:1.6}
 </style>
@@ -129,7 +130,7 @@ footer{margin-top:36px;padding:20px 0 56px;border-top:4px solid var(--rule);colo
     <section class="card tone-a" id="cardCal">
       <div class="head"><button id="prev">&lt;</button><h2 id="month"></h2><button id="next">&gt;</button></div>
       <div class="cal" id="cal"></div>
-      <p class="meta note">일부 기관은 공고문의 첨부파일을 자동으로 읽을수 없어 달력에 접수마감일이 표시되지 않습니다.</p>
+      <p class="meta note" id="calnote">일부 기관은 공고문의 첨부파일을 자동으로 읽을수 없어 달력에 접수마감일이 표시되지 않습니다.</p>
     </section>
 
     <!-- 3. 공고문 종류 내용 카드 (날짜를 누르거나 출자사업 조건·검색을 쓰면 달력 바로 아래에 나타남) -->
@@ -247,10 +248,18 @@ $("dclear").onclick=()=>{if(selDay){selDay=null}else{src="전체";cat="전체"}d
 // 초기화는 카드별로: 출자사업 카드는 기관·공고문종류·검색을, 뉴스 카드는 매체·분류·검색을 지운다.
 $("resetN").onclick=()=>{src="전체";cat="전체";qN="";$("qn").value="";selDay=null;dlimit=40;render()};
 $("resetA").onclick=()=>{npub="전체";ncat="전체";qA="";$("qa").value="";limit=40;render()};
+// 달력 아래 안내 문구: 한 줄에 들어가는 가장 큰 글자 크기로 맞춘다(최대 20px).
+function fitNote(){const p=$("calnote");if(!p)return;
+ p.style.fontSize="100px";const w=p.scrollWidth,avail=p.clientWidth;
+ if(!w||!avail)return;
+ p.style.fontSize=Math.min(20,Math.floor(avail/w*1000-3)/10)+"px"}
+addEventListener("resize",fitNote);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitNote);
+// 창 크기 이벤트가 오지 않는 환경(미리보기, 접이식 화면 등)에서도 달력 카드의 폭이 바뀌면 다시 맞춘다.
+if(window.ResizeObserver){let lw=0;new ResizeObserver(es=>{const w=Math.round(es[0].contentRect.width);if(w!==lw){lw=w;fitNote()}}).observe($("cardCal"))}
 function shift(n){const [y,m]=ym.split("-").map(Number);const d=new Date(y,m-1+n,1);ym=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`;selDay=null;render()}
 $("prev").onclick=()=>shift(-1);$("next").onclick=()=>shift(1);
 $("info").textContent=D.length?`총 ${D.length}건 · 최신 공지 ${latest}`:"데이터 없음";
-render();
+render();fitNote();
 </script>
 </body>
 </html>
