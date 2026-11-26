@@ -15,6 +15,10 @@ header{background:var(--card);border-bottom:1px solid var(--line);padding:14px 0
 h1{font-size:18px;margin:0}
 .meta{font-size:12px;color:var(--mute)}
 .bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:16px 0}
+.filters{display:grid;grid-template-columns:1.5fr 1fr;gap:12px;margin:0 0 16px;align-items:start}
+@media (max-width:820px){.filters{grid-template-columns:1fr}}
+.fgroup{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:8px}
+.fgroup>div{display:flex;flex-wrap:wrap;gap:6px}
 .bar input{flex:1;min-width:180px;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font:inherit}
 button.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:5px 11px;border-radius:999px;cursor:pointer;font:inherit;font-size:13px}
 button.chip.on{background:var(--brand);color:#fff;border-color:var(--brand)}
@@ -47,7 +51,11 @@ footer{padding:24px 0;color:var(--mute);font-size:12px;text-align:center}
 <body>
 <header><div class="wrap"><h1>모험자본 출자사업 모니터 <span class="meta" id="info"></span></h1></div></header>
 <div class="wrap">
-  <div class="bar"><input id="q" type="search" placeholder="제목 검색 (예: 모태펀드, 성장펀드)"><span id="srcs"></span><span id="chips"></span></div>
+  <div class="bar"><input id="q" type="search" placeholder="제목 검색 (예: 모태펀드, 성장펀드)"><button class="chip" id="showall">모두 보기</button></div>
+  <div class="filters">
+    <div class="fgroup"><div id="srcs"></div><div id="chips"></div></div>
+    <div class="fgroup"><div id="newsf"></div></div>
+  </div>
   <p class="meta" style="margin:-4px 0 12px">자동 수집이 되지 않는 기관은 이 목록에 없습니다. 공고는 공식 사이트에서 직접 확인하세요:
     <a href="https://www.ibk.co.kr/cyber/noticeListCyber.ibk?pageId=IR03010400" target="_blank" rel="noopener" title="자동 수집 허용 안 됨">IBK기업은행 공고 게시판</a> ·
     <a href="https://www.apfs.kr/front/board/boardContentsListPage.do?boardId=10026&amp;menuId=41#none" target="_blank" rel="noopener" title="자동 수집 허용 안 됨">농업정책보험금융원 공고 게시판</a> ·
@@ -70,13 +78,15 @@ footer{padding:24px 0;color:var(--mute);font-size:12px;text-align:center}
 <script src="data.js"></script>
 <script>
 const D=window.DATA||[];
-const CATS=["출자계획","선정결과","접수현황","서류결과","질의응답","기타","VC·펀드","출자·LP","벤처기업"];
+const CATS=["출자계획","선정결과","접수현황","서류결과","질의응답","기타"];      // 출자사업 분류
+const NEWS_CATS=["VC·펀드","출자·LP","벤처기업"];                              // 뉴스 분류
+const PUBS=["더벨","딜사이트"];                                                // 최우선 매체
 // 기관 버튼은 공고를 많이 낸 순서로 정렬하고, 기관이 아닌 '뉴스'는 맨 뒤에 둔다.
 const noticeCount={};D.forEach(d=>{if(d.kind==="notice")noticeCount[d.src]=(noticeCount[d.src]||0)+1});
 const orgs=Object.keys(noticeCount).sort((a,b)=>noticeCount[b]-noticeCount[a]||a.localeCompare(b,"ko"));
-const SRCS=["전체",...orgs,...[...new Set(D.map(d=>d.src))].filter(s=>!(s in noticeCount))];let src="전체";
-// 최우선 매체는 기관 버튼이 아니라 분류의 '전체' 옆에 둔다.
-const PUBS=["더벨","딜사이트"];let pub="전체";
+const SRCS=orgs;let src="전체";   // 출자사업 기관 버튼(뉴스는 기관이 아니라 오른쪽 묶음에 둔다)
+// mode: all(출자사업+뉴스) / notice(출자사업만) / news(뉴스만). 왼쪽 버튼을 누르면 notice, 오른쪽 버튼을 누르면 news.
+let mode="all",npub="전체",ncat="전체";
 const KC={"출자계획":"k1","선정결과":"k2","접수현황":"k3","서류결과":"k4"};
 const kc=c=>KC[c]||"k5";
 let cat="전체",q="",selDay=null,limit=40;
@@ -84,31 +94,40 @@ const latest=D.length?D[0].date:new Date().toISOString().slice(0,10);
 let ym=latest.slice(0,7);
 const $=id=>document.getElementById(id);
 const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const ok=d=>(cat==="전체"||d.cat===cat)&&(src==="전체"||d.src===src)&&(pub==="전체"||d.pub===pub)&&(!q||d.title.toLowerCase().includes(q));
+const hit=d=>!q||d.title.toLowerCase().includes(q);
+// 출자사업(공지) 조건 / 뉴스 조건. 달력은 모드와 상관없이 출자사업 조건만 따른다.
+const okN=d=>d.kind==="notice"&&(cat==="전체"||d.cat===cat)&&(src==="전체"||d.src===src)&&hit(d);
+const okA=d=>d.kind==="article"&&(npub==="전체"||d.pub===npub)&&(ncat==="전체"||d.cat===ncat)&&hit(d);
+const ok=d=>d.kind==="notice"?(mode!=="news"&&okN(d)):(mode!=="notice"&&okA(d));
 function filtered(){return D.filter(d=>ok(d)&&(!selDay||d.date===selDay))}
+const btn=(on,attrs,label)=>`<button class="chip ${on?"on":""}" ${attrs}>${label}</button>`;
 function chips(){
- $("srcs").innerHTML=SRCS.map(s=>`<button class="chip ${s===src?"on":""}" data-s="${s}">${s==="전체"?"전체 기관":s}</button>`).join(" ");
- $("srcs").querySelectorAll("button").forEach(b=>b.onclick=()=>{src=b.dataset.s;selDay=null;limit=40;render()});$("chips").innerHTML=
-  `<button class="chip ${cat==="전체"&&pub==="전체"?"on":""}" data-c="전체">전체</button> `+
-  PUBS.map(p=>`<button class="chip ${p===pub?"on":""}" data-p="${p}">${p}</button>`).join(" ")+" "+
-  CATS.map(c=>`<button class="chip ${c===cat?"on":""}" data-c="${c}">${c}</button>`).join(" ");
- $("chips").querySelectorAll("button").forEach(b=>b.onclick=()=>{
-  if(b.dataset.p){pub=pub===b.dataset.p?"전체":b.dataset.p}
-  else if(b.dataset.c==="전체"){cat="전체";pub="전체"}
-  else{cat=b.dataset.c}
+ const L=mode!=="news",R=mode!=="notice";   // 선택 표시는 현재 보고 있는 쪽에만 켠다
+ $("srcs").innerHTML=btn(L&&src==="전체",'data-g="s" data-v="전체"',"출자사업전체기관")+SRCS.map(s=>btn(L&&s===src,`data-g="s" data-v="${s}"`,s)).join("");
+ $("chips").innerHTML=btn(L&&cat==="전체",'data-g="c" data-v="전체"',"전체")+CATS.map(c=>btn(L&&c===cat,`data-g="c" data-v="${c}"`,c)).join("");
+ $("newsf").innerHTML=btn(R&&npub==="전체"&&ncat==="전체",'data-g="n0"',"뉴스전체")+
+  PUBS.map(p=>btn(R&&p===npub,`data-g="np" data-v="${p}"`,p)).join("")+
+  NEWS_CATS.map(c=>btn(R&&c===ncat,`data-g="nc" data-v="${c}"`,c)).join("");
+ document.querySelectorAll("#srcs button,#chips button,#newsf button").forEach(b=>b.onclick=()=>{
+  const g=b.dataset.g,v=b.dataset.v;
+  if(g==="s"){mode="notice";src=v}
+  else if(g==="c"){mode="notice";cat=v}
+  else if(g==="n0"){mode="news";npub="전체";ncat="전체"}
+  else if(g==="np"){mode="news";npub=npub===v?"전체":v}
+  else if(g==="nc"){mode="news";ncat=ncat===v?"전체":v}
   selDay=null;limit=40;render()});
  $("legend").innerHTML=CATS.slice(0,4).map(c=>`<span><i class="${kc(c)}"></i>${c}</span>`).join("")}
 function cal(){
  const [y,m]=ym.split("-").map(Number);$("month").textContent=`${y}년 ${m}월`;
  const first=new Date(y,m-1,1).getDay(),days=new Date(y,m,0).getDate();
- const by={};D.filter(d=>d.kind==="notice"&&d.date.startsWith(ym)&&ok(d)).forEach(d=>{(by[d.date]=by[d.date]||[]).push(d)});
+ const by={};D.filter(d=>d.date.startsWith(ym)&&okN(d)).forEach(d=>{(by[d.date]=by[d.date]||[]).push(d)});
  let h=["일","월","화","수","목","금","토"].map(x=>`<div class="dow">${x}</div>`).join("");
  for(let i=0;i<first;i++)h+=`<div class="day out"></div>`;
  for(let d=1;d<=days;d++){const key=`${ym}-${String(d).padStart(2,"0")}`;const ev=by[key]||[];
   const counts={};ev.forEach(e=>counts[e.cat]=(counts[e.cat]||0)+1);
   h+=`<div class="day ${ev.length?"has":""} ${key===selDay?"sel":""}" data-d="${key}"><b>${d}</b>${Object.entries(counts).map(([c,n])=>`<span class="dot ${kc(c)}">${c} ${n}</span>`).join("")}</div>`}
  $("cal").innerHTML=h;
- $("cal").querySelectorAll(".day.has").forEach(e=>e.onclick=()=>{selDay=selDay===e.dataset.d?null:e.dataset.d;limit=40;render()})}
+ $("cal").querySelectorAll(".day.has").forEach(e=>e.onclick=()=>{selDay=selDay===e.dataset.d?null:e.dataset.d;if(selDay&&mode==="news")mode="notice";limit=40;render()})}
 function list(){const f=filtered();
  $("lh").textContent=selDay?`${selDay} 소식 (${f.length}건)`:`최근 소식 (${f.length}건)`;
  $("clear").style.display=selDay?"":"none";
@@ -118,6 +137,7 @@ function render(){chips();cal();list()}
 $("q").oninput=e=>{q=e.target.value.trim().toLowerCase();selDay=null;limit=40;render()};
 $("more").onclick=()=>{limit+=40;list()};
 $("clear").onclick=()=>{selDay=null;render()};
+$("showall").onclick=()=>{mode="all";src="전체";cat="전체";npub="전체";ncat="전체";selDay=null;limit=40;render()};
 function shift(n){const [y,m]=ym.split("-").map(Number);const d=new Date(y,m-1+n,1);ym=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`;selDay=null;render()}
 $("prev").onclick=()=>shift(-1);$("next").onclick=()=>shift(1);
 $("info").textContent=D.length?`· 총 ${D.length}건 · 최신 공지 ${latest}`:"· 데이터 없음";
