@@ -74,15 +74,15 @@ button.chip.on{background:var(--chip-on);color:var(--chip-on-ink);border-color:v
 .e1{--c:var(--e1c);--t:var(--e1t)}.e2{--c:var(--e2c);--t:var(--e2t)}.e3{--c:var(--e3c);--t:var(--e3t)}
 .k1{--c:var(--k1c);--t:var(--k1t)}.k2{--c:var(--k2c);--t:var(--k2t)}.k3{--c:var(--k3c);--t:var(--k3t)}.k4{--c:var(--k4c);--t:var(--k4t)}.k5{--c:var(--k5c);--t:var(--k5t)}
 /* 한 줄 표시: 왼쪽에 종류(길면 … 처리), 오른쪽에 건수는 항상 보인다 */
-.evp,.dot{display:flex;align-items:center;gap:4px;margin-top:3px;padding:1px 6px;border-radius:2px;font-size:11px;line-height:1.55;white-space:nowrap;background:rgba(var(--c),var(--a));color:var(--t)}
+.evp,.dot{display:flex;align-items:center;gap:4px;margin-top:3px;padding:1px 6px;border-radius:2px;font-size:var(--chipfs,11px);line-height:1.55;white-space:nowrap;background:rgba(var(--c),var(--a));color:var(--t)}
 .evp{font-weight:700}
 .dot{--a:.08;font-weight:500}
 /* 게시일 칩: 종류마다 한 줄('계획 1'), 종류가 여러 개면 다음 줄에 이어서 쌓는다. 글자는 작게 */
 .dots{display:flex;flex-direction:column;align-items:flex-start;gap:2px;margin-top:3px}
-.dots .dot{margin-top:0;padding:1px 4px;gap:3px;font-size:10px;line-height:1.5;max-width:100%}
+.dots .dot{margin-top:0;padding:1px 4px;gap:3px;font-size:var(--chipfs,10px);line-height:1.5;max-width:100%}
 .dots .dot .lb{flex:none;overflow:visible}
 /* 좁은 화면에서도 같은 모양: 글자만 더 작게, 칸 여백을 줄여 이름이 한 줄에 다 들어가게 한다 */
-@media (max-width:640px){.day{padding:5px 2px;min-height:64px}.dots .dot,.evp{padding:1px 3px;gap:2px;font-size:9px}.card.tone-b{padding-left:16px;padding-right:16px}}
+@media (max-width:640px){.day{padding:5px 2px;min-height:64px}.dots .dot,.evp{padding:1px 3px;gap:2px}.card.tone-b{padding-left:16px;padding-right:16px}}
 .lb{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
 .n{flex:none;font-weight:700}
 ul.list{list-style:none;margin:0;padding:0}
@@ -100,7 +100,6 @@ a{color:var(--ink);text-decoration:none}a:hover{text-decoration:underline}
 .card.tone-b .more{background:#fff;color:#000}.card.tone-b .more:hover{background:#000;color:#fff}
 @media (prefers-color-scheme:dark){.card.tone-b .more{background:#000;color:#fff}.card.tone-b .more:hover{background:#fff;color:#000}}
 .note{margin:14px 0 0;line-height:1.55}
-#calnote{white-space:nowrap;overflow:hidden;font-size:13px}
 .note a{text-decoration:underline;text-underline-offset:2px}
 footer{margin-top:36px;padding:20px 0 56px;border-top:4px solid var(--rule);color:var(--mute);font-size:12px;line-height:1.6}
 </style>
@@ -130,7 +129,7 @@ footer{margin-top:36px;padding:20px 0 56px;border-top:4px solid var(--rule);colo
     <section class="card tone-a" id="cardCal">
       <div class="head"><button id="prev">&lt;</button><h2 id="month"></h2><button id="next">&gt;</button></div>
       <div class="cal" id="cal"></div>
-      <p class="meta note" id="calnote">일부 기관은 공고문의 첨부파일을 자동으로 읽을수 없어 달력에 접수마감일이 표시되지 않습니다.</p>
+      <p class="meta note">일부 기관은 공고문의 첨부파일을 자동으로 읽을수 없어 달력에 접수마감일이 표시되지 않습니다.</p>
     </section>
 
     <!-- 3. 공고문 종류 내용 카드 (날짜를 누르거나 출자사업 조건·검색을 쓰면 달력 바로 아래에 나타남) -->
@@ -218,7 +217,7 @@ function cal(){
   const evs=evBy[key]||[];const ec={};evs.forEach(e=>ec[e.t]=(ec[e.t]||0)+1);
   const evHtml=Object.entries(ec).map(([t,n])=>`<span class="evp ${EVC[t]}" title="공고문 기준 ${t}${n>1?" "+n+"건":""}"><span class="lb">${EVS[t]||t}</span>${n>1?`<span class="n">${n}</span>`:""}</span>`).join("");
   h+=`<div class="day ${ev.length||evs.length?"has":""} ${key===selDay?"sel":""} ${key===todayKey?"today":""}" data-d="${key}"${key===todayKey?' title="오늘"':""}><b>${d}</b>${evHtml}${Object.keys(counts).length?`<div class="dots">${Object.entries(counts).map(([c,n])=>`<span class="dot ${kc(c)}" title="${LBL[c]||c} ${n}건 게시"><span class="lb">${CS[c]||c}</span><span class="n">${n}</span></span>`).join("")}</div>`:""}</div>`}
- $("cal").innerHTML=h;
+ $("cal").innerHTML=h;fitCal();
  $("cal").querySelectorAll(".day.has").forEach(e=>e.onclick=()=>{
   const d=e.dataset.d;selDay=selDay===d?null:d;dlimit=40;render();
   if(selDay)$("cardDay").scrollIntoView({behavior:"smooth",block:"nearest"})})}
@@ -248,18 +247,26 @@ $("dclear").onclick=()=>{if(selDay){selDay=null}else{src="전체";cat="전체"}d
 // 초기화는 카드별로: 출자사업 카드는 기관·공고문종류·검색을, 뉴스 카드는 매체·분류·검색을 지운다.
 $("resetN").onclick=()=>{src="전체";cat="전체";qN="";$("qn").value="";selDay=null;dlimit=40;render()};
 $("resetA").onclick=()=>{npub="전체";ncat="전체";qA="";$("qa").value="";limit=40;render()};
-// 달력 아래 안내 문구: 한 줄에 들어가는 가장 큰 글자 크기로 맞춘다(최대 20px).
-function fitNote(){const p=$("calnote");if(!p)return;
- p.style.fontSize="100px";const w=p.scrollWidth,avail=p.clientWidth;
- if(!w||!avail)return;
- p.style.fontSize=Math.min(20,Math.floor(avail/w*1000-3)/10)+"px"}
-addEventListener("resize",fitNote);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitNote);
-// 창 크기 이벤트가 오지 않는 환경(미리보기, 접이식 화면 등)에서도 달력 카드의 폭이 바뀌면 다시 맞춘다.
-if(window.ResizeObserver){let lw=0;new ResizeObserver(es=>{const w=Math.round(es[0].contentRect.width);if(w!==lw){lw=w;fitNote()}}).observe($("cardCal"))}
+// 달력 칸 안 글자: 가장 긴 표기('접수 99')가 칸 폭에 한 줄로 다 들어가는 가장 큰 크기로 맞춘다(8~16px).
+// 표기 폭은 화면에 그려지지 않아도 재도록 canvas로 잰다.
+const _cv=document.createElement("canvas").getContext("2d");
+function fitCal(){const cal=$("cal");if(!cal)return;
+ const day=cal.querySelector(".day:not(.out)");if(!day)return;
+ const ds=getComputedStyle(day),avail=day.clientWidth-parseFloat(ds.paddingLeft)-parseFloat(ds.paddingRight);
+ const chip=cal.querySelector(".dots .dot")||cal.querySelector(".evp");
+ let fixed=8+3;if(chip){const cs=getComputedStyle(chip);fixed=parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight)+parseFloat(cs.columnGap||cs.gap||3)}
+ _cv.font=`700 100px ${getComputedStyle(document.body).fontFamily}`;
+ const w100=Math.max(_cv.measureText("접수 99").width,_cv.measureText("마감 9").width);
+ if(!avail||!w100)return;
+ const fs=Math.max(8,Math.min(16,Math.floor((avail-fixed)/w100*1000-3)/10));
+ cal.style.setProperty("--chipfs",fs+"px")}
+addEventListener("resize",fitCal);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitCal);
+// 창 크기 이벤트가 오지 않는 환경에서도 달력 카드 폭이 바뀌면 다시 맞춘다.
+if(window.ResizeObserver){let lw=0;new ResizeObserver(es=>{const w=Math.round(es[0].contentRect.width);if(w!==lw){lw=w;fitCal()}}).observe($("cardCal"))}
 function shift(n){const [y,m]=ym.split("-").map(Number);const d=new Date(y,m-1+n,1);ym=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`;selDay=null;render()}
 $("prev").onclick=()=>shift(-1);$("next").onclick=()=>shift(1);
 $("info").textContent=D.length?`총 ${D.length}건 · 최신 공지 ${latest}`:"데이터 없음";
-render();fitNote();
+render();
 </script>
 </body>
 </html>
