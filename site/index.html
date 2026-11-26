@@ -28,10 +28,11 @@ body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.47 "SF Pro KR","
 .hero p{margin:12px 0 0;font-size:clamp(16px,2.4vw,21px);line-height:1.4;color:var(--mute);max-width:720px;word-break:keep-all}
 @media (max-width:560px){.nav .meta{display:none}.hero{padding-top:32px}}
 .meta{font-size:13px;color:var(--mute)}
-.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 14px}
-.bar input{flex:1;min-width:200px;height:44px;padding:0 20px;border:0;border-radius:980px;background:var(--chip);color:var(--ink);font:inherit;font-size:17px}
-.bar input::placeholder{color:var(--mute)}
-.bar input:focus,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sbox{display:flex;gap:10px;align-items:center;margin-top:14px}
+.sbox input{flex:1;min-width:0;height:42px;padding:0 18px;border:0;border-radius:980px;background:var(--chip);color:var(--ink);font:inherit;font-size:16px}
+.sbox input::placeholder{color:var(--mute)}
+.sbox input:focus,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sbox .chip{flex:none;height:42px;padding:0 16px}
 /* 한 열로 쌓는 카드: 출자사업 → 달력 → (날짜 클릭 시) 공고문 → 뉴스전체 → 최근 소식 */
 .stack{display:flex;flex-direction:column;gap:14px}
 .card{background:var(--card);border-radius:28px;padding:22px 24px;box-shadow:var(--shadow);min-width:0}
@@ -94,12 +95,12 @@ footer{margin-top:28px;padding:20px 0 48px;border-top:1px solid var(--line);colo
   <p>한국벤처투자·한국성장금융 등 출자기관의 공고와 벤처캐피탈·벤처기업 소식을 매일 자동으로 모아 보여줍니다.</p>
 </div>
 <div class="wrap">
-  <div class="bar"><input id="q" type="search" placeholder="제목 검색 (예: 모태펀드, 성장펀드)"><button class="chip" id="showall">초기화</button></div>
   <div class="stack">
 
     <!-- 1. 출자사업 카드 -->
     <section class="card tone-a" id="cardA">
       <h2>출자사업</h2>
+      <div class="sbox"><input id="qn" type="search" placeholder="공고 제목 검색"><button class="chip" id="resetN">초기화</button></div>
       <div class="fbody"><div id="srcs"></div><div id="chips"></div></div>
       <p class="meta note">자동 수집이 되지 않는 기관은 이 목록에 없습니다. 공고는 공식 사이트에서 직접 확인하세요:
         <a href="https://www.ibk.co.kr/cyber/noticeListCyber.ibk?pageId=IR03010400" target="_blank" rel="noopener" title="자동 수집 허용 안 됨">IBK기업은행 공고 게시판</a> ·
@@ -125,6 +126,7 @@ footer{margin-top:28px;padding:20px 0 48px;border-top:1px solid var(--line);colo
     <!-- 4. 뉴스전체 카드 -->
     <section class="card tone-b" id="cardNF">
       <h2>뉴스</h2>
+      <div class="sbox"><input id="qa" type="search" placeholder="뉴스 제목 검색"><button class="chip" id="resetA">초기화</button></div>
       <div class="fbody"><div id="newsf"></div></div>
     </section>
 
@@ -150,14 +152,16 @@ const SRCS=Object.keys(noticeCount).sort((a,b)=>noticeCount[b]-noticeCount[a]||a
 // 기관 버튼에 쓰는 줄임말(데이터의 기관 이름은 그대로 두고 버튼 글자만 바꾼다).
 const SHORT={"한국벤처투자":"모태","한국성장금융":"성장금융","산업은행":"산은","수출입은행":"수은"};
 // 상태: 출자사업 필터(src, cat)는 달력과 공고문 카드에, 뉴스 필터(npub, ncat)는 최근 소식 카드에만 적용된다.
-let src="전체",cat="전체",npub="전체",ncat="전체",q="",selDay=null,limit=40,dlimit=40;
+let src="전체",cat="전체",npub="전체",ncat="전체",qN="",qA="",selDay=null,limit=40,dlimit=40;
 const KC={"출자계획":"k1","선정결과":"k2","접수현황":"k3","서류결과":"k4"};
 const kc=c=>KC[c]||"k5";
 const latest=D.length?D[0].date:new Date().toISOString().slice(0,10);
 let ym=latest.slice(0,7);
 const $=id=>document.getElementById(id);
 const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const hit=d=>!q||d.title.toLowerCase().includes(q);
+// 검색어는 출자사업(qN)과 뉴스(qA)가 따로다.
+const hitN=d=>!qN||d.title.toLowerCase().includes(qN);
+const hitA=d=>!qA||d.title.toLowerCase().includes(qA);
 // 공고문 PDF에서 뽑은 일정. 기관 필터만 따른다.
 const EV=window.EVENTS||[];
 const EVC={"접수마감":"e1","서류심사":"e2","PT심사":"e2","선정발표":"e3"};
@@ -165,8 +169,8 @@ const okE=e=>src==="전체"||e.src===src;
 // 달력 칸 안의 약칭(좁은 칸에서도 한 줄에 들어가도록). 전체 이름은 마우스를 올리면 보인다.
 const EVS={"접수마감":"마감","서류심사":"심사","PT심사":"심사","선정발표":"발표"};
 const CS={"출자계획":"계획","선정결과":"최종","접수현황":"접수","서류결과":"서류","질의응답":"질의","기타":"기타"};
-const okN=d=>d.kind==="notice"&&(cat==="전체"||d.cat===cat)&&(src==="전체"||d.src===src)&&hit(d);
-const okA=d=>d.kind==="article"&&(npub==="전체"||d.pub===npub)&&(ncat==="전체"||d.cat===ncat)&&hit(d);
+const okN=d=>d.kind==="notice"&&(cat==="전체"||d.cat===cat)&&(src==="전체"||d.src===src)&&hitN(d);
+const okA=d=>d.kind==="article"&&(npub==="전체"||d.pub===npub)&&(ncat==="전체"||d.cat===ncat)&&hitA(d);
 const btn=(on,attrs,label)=>`<button class="chip ${on?"on":""}" ${attrs}>${label}</button>`;
 function chips(){
  $("srcs").innerHTML=btn(src==="전체",'data-g="s" data-v="전체"',"출자사업전체기관")+SRCS.map(s=>btn(s===src,`data-g="s" data-v="${s}"`,SHORT[s]||s)).join("");
@@ -201,7 +205,7 @@ function cal(){
   if(selDay)$("cardDay").scrollIntoView({behavior:"smooth",block:"nearest"})})}
 // 3. 공고문 종류 내용 카드: 날짜를 누르면 그날의 공고문과 일정(근거 문장 포함)을, 출자사업 조건·검색을 쓰면 해당 공고를 보여준다.
 function dayCard(){
- const on=!!(selDay||q||src!=="전체"||cat!=="전체");
+ const on=!!(selDay||qN||src!=="전체"||cat!=="전체");
  $("cardDay").hidden=!on;if(!on)return;
  const f=D.filter(d=>okN(d)&&(!selDay||d.date===selDay));
  const evs=selDay?EV.filter(e=>e.d===selDay&&okE(e)):[];
@@ -217,11 +221,14 @@ function news(){
  $("list").innerHTML=f.slice(0,limit).map(d=>`<li><span class="tag">${esc(d.cat)}</span><span class="tag ${d.pri?"pri":""}">${esc(d.pub||d.src)}</span><span class="meta">${d.date}</span><div><a href="${d.url}" target="_blank" rel="noopener">${esc(d.title)}</a></div></li>`).join("")||`<li class="meta">조건에 맞는 뉴스가 없습니다.</li>`;
  $("more").hidden=f.length<=limit}
 function render(){chips();cal();dayCard();news()}
-$("q").oninput=e=>{q=e.target.value.trim().toLowerCase();selDay=null;limit=40;dlimit=40;render()};
+$("qn").oninput=e=>{qN=e.target.value.trim().toLowerCase();selDay=null;dlimit=40;render()};
+$("qa").oninput=e=>{qA=e.target.value.trim().toLowerCase();limit=40;render()};
 $("more").onclick=()=>{limit+=40;news()};
 $("dmore").onclick=()=>{dlimit+=40;dayCard()};
 $("dclear").onclick=()=>{if(selDay){selDay=null}else{src="전체";cat="전체"}dlimit=40;render()};
-$("showall").onclick=()=>{src="전체";cat="전체";npub="전체";ncat="전체";q="";$("q").value="";selDay=null;limit=40;dlimit=40;render()};
+// 초기화는 카드별로: 출자사업 카드는 기관·공고문종류·검색을, 뉴스 카드는 매체·분류·검색을 지운다.
+$("resetN").onclick=()=>{src="전체";cat="전체";qN="";$("qn").value="";selDay=null;dlimit=40;render()};
+$("resetA").onclick=()=>{npub="전체";ncat="전체";qA="";$("qa").value="";limit=40;render()};
 function shift(n){const [y,m]=ym.split("-").map(Number);const d=new Date(y,m-1+n,1);ym=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`;selDay=null;render()}
 $("prev").onclick=()=>shift(-1);$("next").onclick=()=>shift(1);
 $("info").textContent=D.length?`총 ${D.length}건 · 최신 공지 ${latest}`:"데이터 없음";
