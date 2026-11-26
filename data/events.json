@@ -878,5 +878,83 @@
   "note": "robots.txt가 첨부 다운로드 경로를 막고 서버도 직접 다운로드를 거절함",
   "events": [],
   "tried": "2026-11-26"
+ },
+ "키움인베스트먼트-13": {
+  "source": "키움인베스트먼트",
+  "title": "키움 벤처히어로 모펀드 출자사업 공고(LP 성장펀드 매칭)",
+  "url": "https://www.kiwoominvest.com/bbs/?so_table=notice&mode=VIEW&num=13",
+  "published": "2026-08-03",
+  "status": "no_pdf",
+  "events": [],
+  "tried": "2026-11-26"
+ },
+ "키움인베스트먼트-10": {
+  "source": "키움인베스트먼트",
+  "title": "키움 벤처히어로 모펀드 2026년 출자사업 공고",
+  "url": "https://www.kiwoominvest.com/bbs/?so_table=notice&mode=VIEW&num=10",
+  "published": "2026-05-27",
+  "status": "no_pdf",
+  "events": [],
+  "tried": "2026-11-26"
+ },
+ "우리자산운용-46JUZyxoX5ZyXGIn": {
+  "source": "우리자산운용",
+  "title": "『국민성장펀드(간접투자분야) 초장기기술투자펀드』 위탁운용사 선정계획 공고",
+  "url": "https://www.wooriam.kr/customer/notice-view/46JUZyxoX5ZyXGIn",
+  "published": "2026-08-20",
+  "file": "붙임1. 2026년 초장기기술투자펀드 위탁운용사 선정계획 공고.hwp",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2026-09-03",
+    "evidence": "접수일시 ○ 2026년 9월 3일"
+   }
+  ],
+  "tried": "2026-11-26",
+  "pages": null
+ },
+ "신한자산운용-209": {
+  "source": "신한자산운용",
+  "title": "(재공고)과학기술혁신펀드 2026년 위탁운용사 선정계획 공고",
+  "url": "https://www.shinhanfund.com/ko/pc/board/noticeView?no=209",
+  "published": "2026-07-16",
+  "file": "(재공고)2026년 과학기술혁신펀드 위탁운용사 선정 공고문_게시.pdf",
+  "status": "no_date",
+  "note": "",
+  "events": [],
+  "tried": "2026-11-26",
+  "pages": 11
+ },
+ "신한자산운용-202": {
+  "source": "신한자산운용",
+  "title": "과학기술혁신펀드 2026년 위탁운용사 선정계획 공고",
+  "url": "https://www.shinhanfund.com/ko/pc/board/noticeView?no=202",
+  "published": "2026-06-11",
+  "file": "2026년 과학기술혁신펀드 위탁운용사 선정 공고문_최종(게시).pdf",
+  "status": "no_date",
+  "note": "",
+  "events": [],
+  "tried": "2026-11-26",
+  "pages": 12
+ },
+ "신한자산운용-201": {
+  "source": "신한자산운용",
+  "title": "「국민성장펀드(간접투자분야) 정책성펀드」 2026년 2차 위탁운용사 선정계획 공고",
+  "url": "https://www.shinhanfund.com/ko/pc/board/noticeView?no=201",
+  "published": "2026-05-27",
+  "file": "붙임1. 국민성장펀드(간접투자분야) 정책성펀드 2026년 2차 위탁운용사 선정계획 공고.hwp",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2026-06-10",
+    "evidence": "접수일시 ○ 2026년 6월 10일"
+   }
+  ],
+  "tried": "2026-11-26",
+  "pages": null
  }
 }

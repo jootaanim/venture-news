@@ -45,6 +45,13 @@ jobs:
         continue-on-error: true
       - run: python scripts/collect_nps.py
         continue-on-error: true
+      # 금융그룹 계열 운용사·VC의 출자사업 공고(신한벤처투자는 서버 인증서 체인 문제로 보류 중이라 넣지 않았다).
+      - run: python scripts/collect_shinhanam.py
+        continue-on-error: true
+      - run: python scripts/collect_wooriam.py
+        continue-on-error: true
+      - run: python scripts/collect_kiwoom.py
+        continue-on-error: true
       - run: python scripts/collect_news.py
         continue-on-error: true
       # 새 공고문 PDF에서 접수마감·심사·선정발표 일정을 추출한다(한국성장금융은 요청 간격 60초라 새 공고가 많으면 오래 걸린다).
