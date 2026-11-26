@@ -67,7 +67,10 @@ footer{padding:24px 0;color:var(--mute);font-size:12px;text-align:center}
 <script>
 const D=window.DATA||[];
 const CATS=["출자계획","선정결과","접수현황","서류결과","질의응답","기타","VC·펀드","출자·LP","벤처기업"];
-const SRCS=["전체",...new Set(D.map(d=>d.src))];let src="전체";
+// 기관 버튼은 공고를 많이 낸 순서로 정렬하고, 기관이 아닌 '뉴스'는 맨 뒤에 둔다.
+const noticeCount={};D.forEach(d=>{if(d.kind==="notice")noticeCount[d.src]=(noticeCount[d.src]||0)+1});
+const orgs=Object.keys(noticeCount).sort((a,b)=>noticeCount[b]-noticeCount[a]||a.localeCompare(b,"ko"));
+const SRCS=["전체",...orgs,...[...new Set(D.map(d=>d.src))].filter(s=>!(s in noticeCount))];let src="전체";
 const KC={"출자계획":"k1","선정결과":"k2","접수현황":"k3","서류결과":"k4"};
 const kc=c=>KC[c]||"k5";
 let cat="전체",q="",selDay=null,limit=40;
