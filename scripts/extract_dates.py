@@ -1,0 +1,271 @@
+"""출자사업 공고문 PDF에서 접수마감·심사·선정발표 일정을 뽑아 data/events.json에 저장한다.
+
+원칙
+- 공고문에 날짜(연·월·일)가 적혀 있을 때만 기록한다. "12월 중"처럼 일이 없으면 추정하지 않고 비워 둔다(미정).
+- 날짜마다 근거 문장(evidence)과 파일명을 같이 남긴다.
+- robots.txt와 Crawl-delay를 지키고, 정직한 User-Agent를 쓰며, 인증서 검증을 끄지 않는다.
+- 한국벤처투자는 robots.txt가 첨부 다운로드 경로를 막고 서버도 직접 다운로드를 거절하므로 받지 않는다.
+- PDF 원문은 저장하지 않고, 추출한 일정과 짧은 근거 문장만 저장한다.
+
+공고문의 일정은 두 가지 모양으로 적힌다.
+  A) "접수일시 ◦ 2026년 10월 1일 (목) 16:00까지"      (항목 → 날짜)
+  B) "'26.12.02(수) 제안서 접수 10:00~16:00"          (일정표: 날짜 → 내용)
+두 모양을 모두 읽고, 같은 종류의 일정은 문서에서 가장 먼저 나온 것 하나만 쓴다.
+"""
+import argparse
+import io
+import json
+import re
+import time
+from datetime import date, datetime, timedelta
+from pathlib import Path
+from urllib.parse import urlparse
+from urllib.robotparser import RobotFileParser
+
+import requests
+from pypdf import PdfReader
+
+ROOT = Path(__file__).resolve().parent.parent
+OUT = ROOT / "data" / "events.json"
+UA = "venture-news-bot/0.1"
+SKIP_HOSTS = {
+    "www.kvic.or.kr": "robots.txt가 첨부 다운로드 경로를 막고 서버도 직접 다운로드를 거절함",
+    "www.kpasset.go.kr": "구형 암호화 방식 허용 여부가 정해지지 않음",
+}
+TARGET_CATEGORIES = {"출자계획", "선정공고"}
+SKIP_NAME = re.compile(r"서식|양식|매뉴얼|신청서|제출서류|질의|FAQ|안내문|동의서", re.I)
+
+DATE_FULL = re.compile(r"(20\d\d)\s*[.\-년]\s*(\d{1,2})\s*[.\-월]\s*(\d{1,2})\s*일?")
+DATE_APOS = re.compile(r"[‘’'ʼ´`]\s?(\d{2})\s*[.\-]\s*(\d{1,2})\s*[.\-]\s*(\d{1,2})")  # '26.12.02
+DATE_SHORT = re.compile(r"(?<!\d)(\d{1,2})\s*월\s*(\d{1,2})\s*일")
+
+# 종류별 키워드. 접수는 '제안서 접수', '접수일시'처럼 일정을 가리키는 말만 인정한다.
+KINDS = {
+    "접수마감": re.compile(r"((제안서|서류)\s*)?(접수|제출)\s*(일시|기간|일정|마감|기한)|접수\s*마감|제안서\s*(접수|제출)(?!처|방법)"),
+    "서류심사": re.compile(r"서류\s*(심사|평가)"),
+    "PT심사": re.compile(r"(PT|P\.T|구술|발표)\s*(심사|평가)|현장\s*실사|면접\s*(심사|평가)"),
+    "선정발표": re.compile(r"(최종\s*)?선정\s*(결과)?\s*(발표|통보|통지)|결과\s*발표|심사\s*결과\s*발표"),
+}
+BAD_GAP = re.compile(r"기준|현재|작성|공시|일\s*자|내\s*용|비\s*고|→|[①-⑩]")
+FLOW_ARROW = re.compile(r"→")
+MAX_GAP_A = 35   # 키워드 뒤 날짜까지 허용 거리
+MAX_GAP_B = 18   # 날짜 뒤 키워드까지 허용 거리
+
+
+def robots_for(url, cache={}):
+    p = urlparse(url)
+    base = f"{p.scheme}://{p.netloc}"
+    if base in cache:
+        return cache[base]
+    rp = RobotFileParser()
+    try:
+        r = requests.get(base + "/robots.txt", headers={"User-Agent": UA}, timeout=20)
+        if r.status_code == 200 and "<html" not in r.text[:300].lower():
+            rp.parse(r.text.splitlines())
+            cache[base] = rp
+        else:
+            cache[base] = None  # robots.txt 없음 = 제한 없음
+    except requests.RequestException:
+        cache[base] = False  # 확인 실패 = 안전하게 받지 않음
+    return cache[base]
+
+
+def crawl_delay(rp):
+    if rp:
+        d = rp.crawl_delay(UA)
+        if d:
+            return float(d)
+    return 1.5
+
+
+def fetch_pdf(item, att, last_hit):
+    url = att["url"]
+    host = urlparse(url).netloc
+    if host in SKIP_HOSTS:
+        return None, "skipped", SKIP_HOSTS[host]
+    rp = robots_for(url)
+    if rp is False:
+        return None, "skipped", "robots.txt를 확인하지 못함"
+    if rp and not rp.can_fetch(UA, url):
+        return None, "skipped", "robots.txt가 이 경로를 막음"
+    wait = crawl_delay(rp) - (time.time() - last_hit.get(host, 0))
+    if wait > 0:
+        time.sleep(wait)
+    s = requests.Session()
+    s.headers["User-Agent"] = UA
+    headers = {"Referer": item["url"]}  # 공지 페이지에서 링크를 누른 것과 같은 정상 흐름
+    for attempt in range(2):
+        try:
+            r = s.get(url, headers=headers, timeout=60)
+            last_hit[host] = time.time()
+            if r.content[:4] == b"%PDF":
+                return r.content, "ok", ""
+            if attempt == 0:  # 세션 쿠키가 필요한 사이트: 공지 페이지를 먼저 열고 한 번만 다시 시도
+                time.sleep(crawl_delay(rp))
+                s.get(item["url"], timeout=30)
+                last_hit[host] = time.time()
+        except requests.RequestException as e:
+            return None, "download_failed", type(e).__name__
+    return None, "download_failed", "PDF가 아닌 응답(접근 거절 가능성)"
+
+
+def pdf_text(data):
+    reader = PdfReader(io.BytesIO(data))
+    return "\n".join((p.extract_text() or "") for p in reader.pages), len(reader.pages)
+
+
+def find_dates(flat, published):
+    """문서 전체에서 날짜를 위치 순으로 찾는다. [(date, start, end)]"""
+    pub = datetime.strptime(published, "%Y-%m-%d").date()
+    found, spans = [], []
+
+    def add(y, mo, d, m):
+        try:
+            found.append((date(y, mo, d), m.start(), m.end()))
+            spans.append((m.start(), m.end()))
+        except ValueError:
+            pass
+
+    for m in DATE_FULL.finditer(flat):
+        add(int(m.group(1)), int(m.group(2)), int(m.group(3)), m)
+    for m in DATE_APOS.finditer(flat):
+        if not any(a <= m.start() < b or a < m.end() <= b for a, b in spans):
+            add(2000 + int(m.group(1)), int(m.group(2)), int(m.group(3)), m)
+    for m in DATE_SHORT.finditer(flat):
+        if any(a <= m.start() < b for a, b in spans):
+            continue
+        y, mo, d = pub.year, int(m.group(1)), int(m.group(2))
+        try:
+            dt = date(y, mo, d)
+            if dt < pub - timedelta(days=30):
+                dt = date(y + 1, mo, d)
+            add(dt.year, dt.month, dt.day, m)
+        except ValueError:
+            pass
+    found.sort(key=lambda x: x[1])
+    return found
+
+
+def extract_events(text, published):
+    pub = datetime.strptime(published, "%Y-%m-%d").date()
+    flat = re.sub(r"\s+", " ", text)
+    # 일정은 공고일 이후여야 한다. 공고일 이전 날짜는 작성기준일 등 다른 날짜다.
+    dates = [d for d in find_dates(flat, published) if pub <= d[0] <= pub + timedelta(days=365)]
+    cands = {k: [] for k in KINDS}  # 종류 -> [(위치, 날짜, 근거)]
+
+    for kind, rx in KINDS.items():
+        for m in rx.finditer(flat):
+            # 선정 절차를 나열한 화살표 문장(공고→접수→심사→…)은 일정이 아니다.
+            near = flat[max(0, m.start() - 3): m.end() + 3]
+            if FLOW_ARROW.search(near):
+                continue
+            # A) 키워드 뒤에 날짜
+            for dt, s, e in dates:
+                if s < m.end():
+                    continue
+                gap = flat[m.end(): s]
+                if len(gap) > MAX_GAP_A:
+                    break
+                if BAD_GAP.search(gap):
+                    break
+                end = (dt, s, e)
+                # 범위(~)면 뒤쪽 날짜가 마감
+                nxt = next((x for x in dates if x[1] > e), None)
+                if nxt and re.fullmatch(r"[^0-9]{0,24}?[~∼～\-–—][^0-9]{0,6}", flat[e: nxt[1]]):
+                    end = nxt
+                cands[kind].append((m.start(), end[0], flat[m.start(): end[2]]))
+                break
+        # B) 날짜 뒤에 키워드(일정표 한 줄)
+        for idx, (dt, s, e) in enumerate(dates):
+            seg = flat[e: e + MAX_GAP_B + 25]
+            km = rx.search(seg)
+            if not km or km.start() > MAX_GAP_B:
+                continue
+            gap = seg[: km.start()]
+            if BAD_GAP.search(gap) or re.search(r"20\d\d|[‘’'`]\s?\d{2}\s*\.", gap):
+                continue  # 사이에 다른 날짜가 끼면 그 날짜의 내용이다
+            if FLOW_ARROW.search(flat[max(0, e - 3): e + km.end() + 3]):
+                continue
+            cands[kind].append((s, dt, flat[s: e + km.end()]))
+
+    events = []
+    for kind, lst in cands.items():
+        if not lst:
+            continue
+        lst.sort(key=lambda x: x[0])
+        pos, dt, ev = lst[0]
+        events.append({"type": kind, "date": dt.isoformat(), "evidence": ev.strip()[:110]})
+    # 심사·발표는 접수마감보다 뒤여야 한다. 같은 날이거나 앞서면 표 머리글을 잘못 읽은 것이다.
+    due = next((e["date"] for e in events if e["type"] == "접수마감"), None)
+    if due:
+        events = [e for e in events if e["type"] == "접수마감" or e["date"] > due]
+    return events
+
+
+def load():
+    return json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {}
+
+
+def save(records):
+    OUT.parent.mkdir(exist_ok=True)
+    OUT.write_text(json.dumps(records, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--since", default=str(date.today() - timedelta(days=183)))
+    ap.add_argument("--limit", type=int, default=60)
+    ap.add_argument("--retry-days", type=int, default=3, help="다운로드 실패 건을 다시 시도하기까지의 일수")
+    ap.add_argument("--redo", action="store_true", help="이미 처리한 공고도 다시 처리")
+    args = ap.parse_args()
+
+    records = load()
+    todo = []
+    for f in sorted((ROOT / "data").glob("*.json")):
+        if f.name == "events.json":
+            continue
+        for it in json.loads(f.read_text(encoding="utf-8")):
+            if it.get("kind") != "notice" or it["category"] not in TARGET_CATEGORIES or it["published"] < args.since:
+                continue
+            key = f'{it["source"]}-{it["id"]}'
+            old = records.get(key)
+            if old and not args.redo and old["status"] != "download_failed":
+                continue
+            if old and old["status"] == "download_failed" and old.get("tried", "") > str(date.today() - timedelta(days=args.retry_days)):
+                continue
+            pdfs = [a for a in it.get("attachments", []) if a["name"].lower().endswith(".pdf") and not SKIP_NAME.search(a["name"])]
+            if not pdfs:
+                records[key] = {"source": it["source"], "title": it["title"], "url": it["url"], "published": it["published"],
+                                "status": "no_pdf", "events": [], "tried": str(date.today())}
+                continue
+            pdfs.sort(key=lambda a: (0 if re.search(r"공고|계획", a["name"]) else 1))
+            todo.append((key, it, pdfs[0]))
+
+    todo.sort(key=lambda t: t[1]["published"], reverse=True)
+    todo = todo[: args.limit]
+    print(f"대상 {len(todo)}건")
+    last_hit = {}
+    for key, it, att in todo:
+        data, status, note = fetch_pdf(it, att, last_hit)
+        rec = {"source": it["source"], "title": it["title"], "url": it["url"], "published": it["published"],
+               "file": att["name"], "status": status, "note": note, "events": [], "tried": str(date.today())}
+        if data:
+            try:
+                text, pages = pdf_text(data)
+                rec["pages"] = pages
+                if len(text.strip()) < 50:
+                    rec["status"], rec["note"] = "no_text", "텍스트가 없는 PDF(스캔본 가능성)"
+                else:
+                    rec["events"] = extract_events(text, it["published"])
+                    rec["status"] = "ok" if rec["events"] else "no_date"
+            except Exception as e:
+                rec["status"], rec["note"] = "parse_failed", type(e).__name__
+        records[key] = rec
+        print(f"[{rec['status']}] {it['source']} {it['published']} {it['title'][:36]} -> {[(e['type'], e['date']) for e in rec['events']]} {rec['note']}")
+        save(records)
+    save(records)
+    print(f"완료: 전체 {len(records)}건 기록 -> {OUT}")
+
+
+if __name__ == "__main__":
+    main()

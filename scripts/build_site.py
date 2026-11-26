@@ -24,6 +24,8 @@ def norm_cat(cat):
 
 items = []
 for f in sorted((ROOT / "data").glob("*.json")):
+    if f.name == "events.json":  # 공고문 PDF에서 뽑은 일정은 따로 읽는다
+        continue
     items += json.loads(f.read_text(encoding="utf-8"))
 
 # 연기금·공제회·우정사업본부 게시판에는 해외주식, 부동산, PEF 등 벤처캐피탈과 무관한 공고도 섞여 있어
@@ -84,8 +86,31 @@ tag = '<script src="data.js"></script>'
 assert tag in tpl, "template.html에 data.js 자리표시가 없습니다"
 # </ 가 들어간 제목이 script를 끊지 않도록 이스케이프
 payload = json.dumps(slim, ensure_ascii=False).replace("</", "<\\/")
-html = tpl.replace(tag, f"<script>window.DATA={payload};</script>")
+
+# 공고문 PDF에서 추출한 일정. 사이트에 올라가는 공고(필터 통과)에 속한 일정만 쓴다.
+EVENT_TYPES = {"접수마감", "서류심사", "PT심사", "선정발표"}
+kept = {f'{it["source"]}-{it["id"]}' for it in items if it.get("kind") == "notice"}
+events = []
+ev_file = ROOT / "data" / "events.json"
+if ev_file.exists():
+    for key, rec in json.loads(ev_file.read_text(encoding="utf-8")).items():
+        if key not in kept or rec.get("status") != "ok":
+            continue
+        # 이미 저장된 추출 결과에도 같은 검증을 적용한다: 심사·발표는 접수마감보다 뒤여야 한다.
+        due = next((e["date"] for e in rec["events"] if e["type"] == "접수마감"), None)
+        for e in rec["events"]:
+            if due and e["type"] != "접수마감" and e["date"] <= due:
+                continue
+            if e["type"] in EVENT_TYPES:
+                events.append({
+                    "d": e["date"], "t": e["type"], "src": rec["source"],
+                    "title": " ".join(rec["title"].split()), "url": rec["url"],
+                    "ev": " ".join(e["evidence"].split()), "file": rec.get("file", ""),
+                })
+events.sort(key=lambda x: (x["d"], x["t"]))
+ev_payload = json.dumps(events, ensure_ascii=False).replace("</", "<\\/")
+html = tpl.replace(tag, f"<script>window.DATA={payload};window.EVENTS={ev_payload};</script>")
 
 out = ROOT / "site" / "index.html"
 out.write_text(html, encoding="utf-8")
-print(f"{len(slim)}건 -> {out}")
+print(f"{len(slim)}건, 일정 {len(events)}건 -> {out}")

@@ -47,6 +47,9 @@ jobs:
         continue-on-error: true
       - run: python scripts/collect_news.py
         continue-on-error: true
+      # 새 공고문 PDF에서 접수마감·심사·선정발표 일정을 추출한다(한국성장금융은 요청 간격 60초라 새 공고가 많으면 오래 걸린다).
+      - run: python scripts/extract_dates.py --limit 15
+        continue-on-error: true
       - run: python scripts/build_site.py
       - name: 변경된 데이터 커밋
         run: |
