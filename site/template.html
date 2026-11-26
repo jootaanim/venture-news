@@ -58,10 +58,17 @@ button.chip.on{background:var(--chip-on);color:var(--chip-on-ink)}
 .evp,.dot{display:flex;align-items:center;gap:4px;margin-top:3px;padding:1px 6px;border-radius:6px;font-size:11px;line-height:1.55;white-space:nowrap;background:rgba(var(--c),var(--a));color:var(--t)}
 .evp{font-weight:600}
 .dot{--a:.09;font-weight:500}
+/* 게시일 칩은 가로 한 줄로 나란히(넘치면 숨김). 글자는 작게 */
+.dots{display:flex;flex-wrap:nowrap;gap:2px;margin-top:3px;overflow:hidden}
+.dots .dot{margin-top:0;flex:none;padding:1px 3px;gap:1px;font-size:9.5px;line-height:1.5}
+.dots .dot .lb{flex:none;overflow:visible}
+.dots.tight .dot .lb{display:none}
+/* 칸이 좁아 넘치는 칸: 칩이 칸 폭을 똑같이 나눠 갖는다(건수만 표시) */
+.dots.tight .dot{flex:1 1 0;min-width:0;padding:1px 0;gap:0;justify-content:center;font-size:9.5px}
 .lb{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
 .n{flex:none;font-weight:700}
 /* 좁은 화면(칸 폭 약 40px): 게시일 칩은 색+건수만, 일정 칩은 약칭('마감')을 그대로 보여준다 */
-@media (max-width:560px){.day{padding:5px 3px}.evp,.dot{padding:1px 3px;justify-content:center;font-size:10.5px}.dot .lb{display:none}.evp .lb{flex:none}}
+@media (max-width:560px){.day{padding:5px 3px}.evp,.dot{padding:1px 3px;justify-content:center;font-size:10.5px}.dot .lb{display:none}.evp .lb{flex:none}.dots{gap:1px}.dots .dot{padding:1px 2px;font-size:10px}}
 .legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--mute);margin-top:12px}
 .legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;background:rgb(var(--c))}
 ul.list{list-style:none;margin:0;padding:0}
@@ -140,6 +147,10 @@ const okE=e=>src==="전체"||e.src===src;
 // 달력 칸 안의 약칭(좁은 칸에서도 한 줄에 들어가도록). 전체 이름은 마우스를 올리면 보인다.
 const EVS={"접수마감":"마감","서류심사":"심사","PT심사":"심사","선정발표":"발표"};
 const CS={"출자계획":"출자","선정결과":"선정","접수현황":"접수","서류결과":"서류","질의응답":"질의","기타":"기타"};
+const CS1={"출자계획":"출","선정결과":"선","접수현황":"접","서류결과":"서","질의응답":"질","기타":"기"};
+// 한 칸에 종류가 많아 칩이 칸 폭을 넘으면 그 칸만 건수만 보이게(이름 글자 숨김) 줄여서 항상 한 줄에 다 보이게 한다.
+function fitDots(){document.querySelectorAll("#cal .dots").forEach(r=>{r.classList.remove("tight");if(r.scrollWidth>r.clientWidth+1)r.classList.add("tight")})}
+addEventListener("resize",fitDots);
 // 출자사업(공지) 조건 / 뉴스 조건. 달력은 모드와 상관없이 출자사업 조건만 따른다.
 const okN=d=>d.kind==="notice"&&(cat==="전체"||d.cat===cat)&&(src==="전체"||d.src===src)&&hit(d);
 const okA=d=>d.kind==="article"&&(npub==="전체"||d.pub===npub)&&(ncat==="전체"||d.cat===ncat)&&hit(d);
@@ -173,8 +184,8 @@ function cal(){
   const counts={};ev.forEach(e=>counts[e.cat]=(counts[e.cat]||0)+1);
   const evs=evBy[key]||[];const ec={};evs.forEach(e=>ec[e.t]=(ec[e.t]||0)+1);
   const evHtml=Object.entries(ec).map(([t,n])=>`<span class="evp ${EVC[t]}" title="공고문 기준 ${t}${n>1?" "+n+"건":""}"><span class="lb">${EVS[t]||t}</span>${n>1?`<span class="n">${n}</span>`:""}</span>`).join("");
-  h+=`<div class="day ${ev.length||evs.length?"has":""} ${key===selDay?"sel":""}" data-d="${key}"><b>${d}</b>${evHtml}${Object.entries(counts).map(([c,n])=>`<span class="dot ${kc(c)}" title="${c} ${n}건 게시"><span class="lb">${CS[c]||c}</span><span class="n">${n}</span></span>`).join("")}</div>`}
- $("cal").innerHTML=h;
+  h+=`<div class="day ${ev.length||evs.length?"has":""} ${key===selDay?"sel":""}" data-d="${key}"><b>${d}</b>${evHtml}${Object.keys(counts).length?`<div class="dots">${Object.entries(counts).map(([c,n])=>`<span class="dot ${kc(c)}" title="${c} ${n}건 게시"><span class="lb">${CS1[c]||c}</span><span class="n">${n}</span></span>`).join("")}</div>`:""}</div>`}
+ $("cal").innerHTML=h;fitDots();
  $("cal").querySelectorAll(".day.has").forEach(e=>e.onclick=()=>{const d=e.dataset.d;if(selDay===d){clearDay()}else{if(!selDay)prevMode=mode;selDay=d;mode="notice"}limit=40;render()})}
 function list(){const f=filtered();
  $("lh").textContent=selDay?`${selDay} 출자사업 공고 (${f.length}건)`:`최근 소식 (${f.length}건)`;
