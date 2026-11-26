@@ -95,7 +95,9 @@ const SHORT={"한국벤처투자":"모태","한국성장금융":"성장금융","
 let mode="all",npub="전체",ncat="전체";
 const KC={"출자계획":"k1","선정결과":"k2","접수현황":"k3","서류결과":"k4"};
 const kc=c=>KC[c]||"k5";
-let cat="전체",q="",selDay=null,limit=40;
+let cat="전체",q="",selDay=null,limit=40,prevMode=null;
+// 달력 날짜를 누르면 그날의 출자사업 공고만 보여주고(뉴스 제외), 날짜를 해제하면 원래 보던 모드로 돌아간다.
+function clearDay(){selDay=null;if(prevMode){mode=prevMode;prevMode=null}}
 const latest=D.length?D[0].date:new Date().toISOString().slice(0,10);
 let ym=latest.slice(0,7);
 const $=id=>document.getElementById(id);
@@ -125,7 +127,7 @@ function chips(){
   else if(g==="n0"){mode="news";npub="전체";ncat="전체"}
   else if(g==="np"){mode="news";npub=npub===v?"전체":v}
   else if(g==="nc"){mode="news";ncat=ncat===v?"전체":v}
-  selDay=null;limit=40;render()});
+  selDay=null;prevMode=null;limit=40;render()});
  $("legend").innerHTML=`<span><i class="e1"></i>접수마감</span><span><i class="e2"></i>심사</span><span><i class="e3"></i>선정발표</span> · 게시일: `+CATS.slice(0,4).map(c=>`<span><i class="${kc(c)}" style="opacity:.5"></i>${c}</span>`).join("")}
 function cal(){
  const [y,m]=ym.split("-").map(Number);$("month").textContent=`${y}년 ${m}월`;
@@ -140,9 +142,9 @@ function cal(){
   const evHtml=Object.entries(ec).map(([t,n])=>`<span class="evp ${EVC[t]}" title="공고문 기준 ${t}">${t}${n>1?" "+n:""}</span>`).join("");
   h+=`<div class="day ${ev.length||evs.length?"has":""} ${key===selDay?"sel":""}" data-d="${key}"><b>${d}</b>${evHtml}${Object.entries(counts).map(([c,n])=>`<span class="dot lite ${kc(c)}">${c} ${n}</span>`).join("")}</div>`}
  $("cal").innerHTML=h;
- $("cal").querySelectorAll(".day.has").forEach(e=>e.onclick=()=>{selDay=selDay===e.dataset.d?null:e.dataset.d;if(selDay&&mode==="news")mode="notice";limit=40;render()})}
+ $("cal").querySelectorAll(".day.has").forEach(e=>e.onclick=()=>{const d=e.dataset.d;if(selDay===d){clearDay()}else{if(!selDay)prevMode=mode;selDay=d;mode="notice"}limit=40;render()})}
 function list(){const f=filtered();
- $("lh").textContent=selDay?`${selDay} 소식 (${f.length}건)`:`최근 소식 (${f.length}건)`;
+ $("lh").textContent=selDay?`${selDay} 출자사업 공고 (${f.length}건)`:`최근 소식 (${f.length}건)`;
  $("clear").style.display=selDay?"":"none";
  // 날짜를 눌렀을 때: 그날의 공고문 일정(근거 문장 포함)을 목록 맨 위에 보여준다.
  const evs=selDay?EV.filter(e=>e.d===selDay&&okE(e)):[];
@@ -150,11 +152,11 @@ function list(){const f=filtered();
  $("list").innerHTML=evHtml+f.slice(0,limit).map(d=>`<li><span class="tag">${esc(d.cat)}</span><span class="tag ${d.pri?"pri":""}">${esc(d.pub||d.src)}</span><span class="meta">${d.date}${d.files?` · 첨부 ${d.files}`:""}</span><div><a href="${d.url}" target="_blank" rel="noopener">${esc(d.title)}</a></div></li>`).join("")||`<li class="meta">조건에 맞는 공지가 없습니다.</li>`;
  $("more").style.display=f.length>limit?"":"none"}
 function render(){chips();cal();list()}
-$("q").oninput=e=>{q=e.target.value.trim().toLowerCase();selDay=null;limit=40;render()};
+$("q").oninput=e=>{q=e.target.value.trim().toLowerCase();clearDay();limit=40;render()};
 $("more").onclick=()=>{limit+=40;list()};
-$("clear").onclick=()=>{selDay=null;render()};
-$("showall").onclick=()=>{mode="all";src="전체";cat="전체";npub="전체";ncat="전체";selDay=null;limit=40;render()};
-function shift(n){const [y,m]=ym.split("-").map(Number);const d=new Date(y,m-1+n,1);ym=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`;selDay=null;render()}
+$("clear").onclick=()=>{clearDay();render()};
+$("showall").onclick=()=>{mode="all";src="전체";cat="전체";npub="전체";ncat="전체";selDay=null;prevMode=null;limit=40;render()};
+function shift(n){const [y,m]=ym.split("-").map(Number);const d=new Date(y,m-1+n,1);ym=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`;clearDay();render()}
 $("prev").onclick=()=>shift(-1);$("next").onclick=()=>shift(1);
 $("info").textContent=D.length?`· 총 ${D.length}건 · 최신 공지 ${latest}`:"· 데이터 없음";
 render();
