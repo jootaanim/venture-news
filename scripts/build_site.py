@@ -3,6 +3,7 @@
 데이터를 HTML 안에 넣어서, 파일을 더블클릭해 열거나 패널 미리보기로 열어도 데이터가 보인다.
 """
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -22,6 +23,32 @@ def norm_cat(cat):
 items = []
 for f in sorted((ROOT / "data").glob("*.json")):
     items += json.loads(f.read_text(encoding="utf-8"))
+
+# 연기금·공제회·우정사업본부 게시판에는 해외주식, 부동산, PEF 등 벤처캐피탈과 무관한 공고도 섞여 있어
+# 국내 VC 대상 공고만 남긴다. (제목에 VC·벤처가 있고, 제외 키워드가 없는 글)
+MIXED_BOARDS = {"우정사업본부", "군인공제회", "교직원공제회", "국민연금"}
+KEEP = re.compile(r"VC|벤처")
+DROP = re.compile(r"해외|주식|채권|부동산|헤지|인프라")
+
+
+def relevant(it):
+    if it["source"] not in MIXED_BOARDS:
+        return True
+    return bool(KEEP.search(it["title"])) and not DROP.search(it["title"])
+
+
+items = [it for it in items if relevant(it)]
+
+# 우정사업본부처럼 같은 공고를 날짜만 바꿔 다시 올리는 게시판은 가장 최근 것 하나만 둔다.
+# (한국벤처투자·한국성장금융 등은 같은 제목의 별개 공지가 있을 수 있어 그대로 둔다.)
+seen, deduped = set(), []
+for it in sorted(items, key=lambda x: x["published"], reverse=True):
+    key = (it["source"], " ".join(it["title"].split()))
+    if it["source"] in MIXED_BOARDS and key in seen:
+        continue
+    seen.add(key)
+    deduped.append(it)
+items = deduped
 
 slim = [
     {

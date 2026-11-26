@@ -38,6 +38,13 @@ jobs:
         continue-on-error: true
       - run: python scripts/collect_kdb.py
         continue-on-error: true
+      # 연기금·공제회: 미국 서버에서 접속되는지는 첫 실행 후 확인한다(실패해도 배포는 계속).
+      - run: python scripts/collect_ktcu.py
+        continue-on-error: true
+      - run: python scripts/collect_mmaa.py
+        continue-on-error: true
+      - run: python scripts/collect_nps.py
+        continue-on-error: true
       - run: python scripts/collect_news.py
         continue-on-error: true
       - run: python scripts/build_site.py
