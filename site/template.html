@@ -38,6 +38,7 @@ ul.list{list-style:none;margin:0;padding:0}
 ul.list li{padding:9px 0;border-top:1px solid var(--line)}
 ul.list li:first-child{border-top:0}
 .tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:999px;border:1px solid var(--line);color:var(--mute);margin-right:4px}
+.tag.pri{color:var(--brand);border-color:var(--brand);font-weight:600}
 a{color:var(--brand);text-decoration:none}a:hover{text-decoration:underline}
 .more{width:100%;margin-top:8px;padding:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;cursor:pointer}
 footer{padding:24px 0;color:var(--mute);font-size:12px;text-align:center}
@@ -70,7 +71,7 @@ const CATS=["출자계획","선정결과","접수현황","서류결과","질의�
 // 기관 버튼은 공고를 많이 낸 순서로 정렬하고, 기관이 아닌 '뉴스'는 맨 뒤에 둔다.
 const noticeCount={};D.forEach(d=>{if(d.kind==="notice")noticeCount[d.src]=(noticeCount[d.src]||0)+1});
 const orgs=Object.keys(noticeCount).sort((a,b)=>noticeCount[b]-noticeCount[a]||a.localeCompare(b,"ko"));
-const SRCS=["전체",...orgs,...[...new Set(D.map(d=>d.src))].filter(s=>!(s in noticeCount))];let src="전체";
+const SRCS=["전체","__pri",...orgs,...[...new Set(D.map(d=>d.src))].filter(s=>!(s in noticeCount))];let src="전체";
 const KC={"출자계획":"k1","선정결과":"k2","접수현황":"k3","서류결과":"k4"};
 const kc=c=>KC[c]||"k5";
 let cat="전체",q="",selDay=null,limit=40;
@@ -78,10 +79,10 @@ const latest=D.length?D[0].date:new Date().toISOString().slice(0,10);
 let ym=latest.slice(0,7);
 const $=id=>document.getElementById(id);
 const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const ok=d=>(cat==="전체"||d.cat===cat)&&(src==="전체"||d.src===src)&&(!q||d.title.toLowerCase().includes(q));
+const ok=d=>(cat==="전체"||d.cat===cat)&&(src==="전체"||(src==="__pri"?d.pri:d.src===src))&&(!q||d.title.toLowerCase().includes(q));
 function filtered(){return D.filter(d=>ok(d)&&(!selDay||d.date===selDay))}
 function chips(){
- $("srcs").innerHTML=SRCS.map(s=>`<button class="chip ${s===src?"on":""}" data-s="${s}">${s==="전체"?"전체 기관":s}</button>`).join(" ");
+ $("srcs").innerHTML=SRCS.map(s=>`<button class="chip ${s===src?"on":""}" data-s="${s}">${s==="전체"?"전체 기관":s==="__pri"?"더벨·딜사이트":s}</button>`).join(" ");
  $("srcs").querySelectorAll("button").forEach(b=>b.onclick=()=>{src=b.dataset.s;selDay=null;limit=40;render()});$("chips").innerHTML=["전체",...CATS].map(c=>`<button class="chip ${c===cat?"on":""}" data-c="${c}">${c}</button>`).join(" ");
  $("chips").querySelectorAll("button").forEach(b=>b.onclick=()=>{cat=b.dataset.c;selDay=null;limit=40;render()});
  $("legend").innerHTML=CATS.slice(0,4).map(c=>`<span><i class="${kc(c)}"></i>${c}</span>`).join("")}
@@ -99,7 +100,7 @@ function cal(){
 function list(){const f=filtered();
  $("lh").textContent=selDay?`${selDay} 소식 (${f.length}건)`:`최근 소식 (${f.length}건)`;
  $("clear").style.display=selDay?"":"none";
- $("list").innerHTML=f.slice(0,limit).map(d=>`<li><span class="tag">${esc(d.cat)}</span><span class="tag">${esc(d.pub||d.src)}</span><span class="meta">${d.date}${d.files?` · 첨부 ${d.files}`:""}</span><div><a href="${d.url}" target="_blank" rel="noopener">${esc(d.title)}</a></div></li>`).join("")||`<li class="meta">조건에 맞는 공지가 없습니다.</li>`;
+ $("list").innerHTML=f.slice(0,limit).map(d=>`<li><span class="tag">${esc(d.cat)}</span><span class="tag ${d.pri?"pri":""}">${esc(d.pub||d.src)}</span><span class="meta">${d.date}${d.files?` · 첨부 ${d.files}`:""}</span><div><a href="${d.url}" target="_blank" rel="noopener">${esc(d.title)}</a></div></li>`).join("")||`<li class="meta">조건에 맞는 공지가 없습니다.</li>`;
  $("more").style.display=f.length>limit?"":"none"}
 function render(){chips();cal();list()}
 $("q").oninput=e=>{q=e.target.value.trim().toLowerCase();selDay=null;limit=40;render()};

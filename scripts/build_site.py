@@ -13,6 +13,8 @@ ALIAS = {"선정공고": "출자계획"}  # 한국성장금융 '선정공고' = 
 
 
 NEWS_CATS = {"VC·펀드", "출자·LP", "벤처기업"}
+PRIORITY_OUTLETS = {"더벨", "딜사이트"}
+OUTLET_ALIAS = {"thebell Free": "더벨", "THE BELL": "더벨"}
 
 
 def norm_cat(cat):
@@ -31,7 +33,16 @@ KEEP = re.compile(r"VC|벤처")
 DROP = re.compile(r"해외|주식|채권|부동산|헤지|인프라")
 
 
+# 뉴스는 키워드 검색 결과라 무관한 기사가 섞인다. 제목에 투자·벤처 관련 단어가 있는 기사만 남긴다.
+NEWS_KEEP = re.compile(
+    r"벤처|VC|펀드|투자|스타트업|창업|출자|IPO|상장|시리즈|유치|LP|GP|운용사|캐피탈|캐피털|모태|성장금융|인수|M&A|엑시트|딥테크|세컨더리",
+    re.I,
+)
+
+
 def relevant(it):
+    if it.get("kind") == "article":
+        return bool(NEWS_KEEP.search(it["title"]))
     if it["source"] not in MIXED_BOARDS:
         return True
     return bool(KEEP.search(it["title"])) and not DROP.search(it["title"])
@@ -55,7 +66,8 @@ slim = [
         "id": f'{it["source"]}-{it["id"]}',
         "src": it["source"],
         "kind": it.get("kind", "notice"),
-        "pub": it.get("outlet", ""),
+        "pub": OUTLET_ALIAS.get(it.get("outlet", ""), it.get("outlet", "")),
+        "pri": 1 if OUTLET_ALIAS.get(it.get("outlet", ""), it.get("outlet", "")) in PRIORITY_OUTLETS else 0,
         "cat": norm_cat(it["category"]),
         "title": " ".join(it["title"].split()),
         "date": it["published"],
@@ -64,7 +76,8 @@ slim = [
     }
     for it in items
 ]
-slim.sort(key=lambda x: (x["date"], x["id"]), reverse=True)
+# 최신순, 같은 날짜 안에서는 최우선 매체(더벨·딜사이트) 기사를 먼저 둔다.
+slim.sort(key=lambda x: (x["date"], x["pri"], x["id"]), reverse=True)
 
 tpl = (ROOT / "site" / "template.html").read_text(encoding="utf-8")
 tag = '<script src="data.js"></script>'

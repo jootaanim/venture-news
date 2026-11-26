@@ -27,7 +27,15 @@ QUERIES = [
     ("VC·펀드", '벤처캐피탈 OR "벤처투자" OR "벤처펀드" OR "펀드 결성"'),
     ("출자·LP", '모태펀드 OR "출자사업" OR "위탁운용사" OR "성장금융" OR "벤처투자 출자"'),
     ("벤처기업", '스타트업 ("투자 유치" OR "시리즈A" OR "시리즈B" OR "시드 투자")'),
+    # 최우선 매체(더벨, 딜사이트): 사이트를 지정해서 벤처캐피탈 운용사와 벤처기업 기사를 따로 모은다.
+    ("VC·펀드", 'site:thebell.co.kr (벤처캐피탈 OR 벤처투자 OR 벤처펀드 OR 펀드결성 OR VC OR 출자)'),
+    ("벤처기업", 'site:thebell.co.kr (스타트업 OR 벤처기업 OR 투자유치 OR 시리즈A OR 시리즈B OR 프리IPO)'),
+    ("VC·펀드", 'site:dealsite.co.kr (벤처캐피탈 OR 벤처투자 OR 벤처펀드 OR 펀드결성 OR VC OR 출자)'),
+    ("벤처기업", 'site:dealsite.co.kr (스타트업 OR 벤처기업 OR 투자유치 OR 시리즈A OR 시리즈B OR 프리IPO)'),
 ]
+
+# 언론사 표기를 하나로 맞춘다(더벨은 'thebell Free'로도 나온다).
+OUTLET_ALIAS = {"thebell Free": "더벨", "THE BELL": "더벨"}
 
 
 def fetch(query, days):
@@ -63,6 +71,7 @@ def parse(root, category):
         title = raw
         if outlet and raw.endswith(f" - {outlet}"):
             title = raw[: -len(f" - {outlet}")].strip()
+        outlet = OUTLET_ALIAS.get(outlet, outlet)
         dt = parsedate_to_datetime(pub).astimezone(KST)
         out.append({
             "id": sha1(norm(title).encode()).hexdigest()[:12],
