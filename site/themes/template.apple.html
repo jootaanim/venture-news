@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>모험자본 출자사업 모니터</title>
+<style>
+/* 디자인: Apple 스토어(apple.com/kr/store)에서 읽은 값 - 배경 #f5f5f7, 글자 #1d1d1f, 보조 #6e6e73,
+   링크 #0066cc, 카드 모서리 28px, 옅은 그림자. 로고·상표는 쓰지 않는다. */
+:root{--bg:#f5f5f7;--card:#fff;--ink:#1d1d1f;--mute:#6e6e73;--line:#d2d2d7;
+--chip:#e8e8ed;--chip-h:#dcdce1;--chip-on:#1d1d1f;--chip-on-ink:#fff;
+--brand:#0066cc;--accent:#0071e3;--cell:#f5f5f7;--shadow:2px 4px 12px rgba(0,0,0,.08);--nav:rgba(245,245,247,.8);
+--a:.14;--e1c:255,59,48;--e2c:255,149,0;--e3c:52,199,89;--k1c:0,122,255;--k2c:52,199,89;--k3c:255,149,0;--k4c:175,82,222;--k5c:142,142,147;--e1t:#d70015;--e2t:#b25000;--e3t:#1d7a34;--k1t:#0062cc;--k2t:#1d7a34;--k3t:#b25000;--k4t:#8a37b0;--k5t:#6e6e73}
+@media (prefers-color-scheme:dark){:root{--bg:#000;--card:#1d1d1f;--ink:#f5f5f7;--mute:#a1a1a6;--line:#424245;
+--chip:#2c2c2e;--chip-h:#3a3a3c;--chip-on:#f5f5f7;--chip-on-ink:#1d1d1f;
+--brand:#2997ff;--accent:#0a84ff;--cell:#2a2a2d;--shadow:none;--nav:rgba(0,0,0,.72);
+--a:.26;--e1c:255,69,58;--e2c:255,159,10;--e3c:48,209,88;--k1c:10,132,255;--k2c:48,209,88;--k3c:255,159,10;--k4c:191,90,242;--k5c:152,152,157;--e1t:#ff6961;--e2t:#ffb340;--e3t:#4cd964;--k1t:#64a8ff;--k2t:#4cd964;--k3t:#ffb340;--k4t:#d28cf0;--k5t:#a1a1a6;color-scheme:dark}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.47 "SF Pro KR","SF Pro Text",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 max(22px,env(safe-area-inset-left,0px))}
+.nav{position:sticky;top:0;z-index:20;height:48px;background:var(--nav);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(128,128,128,.2)}
+.nav .wrap{height:48px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.nav b{font-size:17px;font-weight:600;white-space:nowrap}
+.hero{padding-top:48px;padding-bottom:28px}
+.hero h1{margin:0;font-size:clamp(30px,6.2vw,64px);line-height:1.1;font-weight:600;letter-spacing:-.01em;word-break:keep-all;text-wrap:balance}
+.hero p{margin:12px 0 0;font-size:clamp(16px,2.4vw,21px);line-height:1.4;color:var(--mute);max-width:720px;word-break:keep-all}
+@media (max-width:560px){.nav .meta{display:none}.hero{padding-top:32px}}
+.meta{font-size:13px;color:var(--mute)}
+.sbox{display:flex;gap:10px;align-items:center;margin-top:14px}
+.sbox input{flex:1;min-width:0;height:42px;padding:0 18px;border:0;border-radius:980px;background:var(--chip);color:var(--ink);font:inherit;font-size:16px}
+.sbox input::placeholder{color:var(--mute)}
+.sbox input:focus,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sbox .chip{flex:none;height:42px;padding:0 16px}
+/* 한 열로 쌓는 카드: 출자사업 → 달력 → (날짜 클릭 시) 공고문 → 뉴스전체 → 최근 소식 */
+.stack{display:flex;flex-direction:column;gap:14px}
+.card{background:var(--card);border-radius:28px;padding:22px 24px;box-shadow:var(--shadow);min-width:0}
+.card h2{font-size:21px;line-height:1.19;margin:0;color:var(--ink);font-weight:600}
+/* 파스텔 색: 출자사업·달력·공고문 카드는 연한 파랑, 뉴스 카드 둘은 연한 민트 */
+.card.tone-a{--card:#e8f1fd;--chip:rgba(255,255,255,.72);--chip-h:#fff;--chip-on:#bcd7f8;--chip-on-ink:#0a3a7a;--cell:rgba(255,255,255,.6);--line:rgba(10,58,122,.14)}
+.card.tone-b{--card:#e9f6ee;--chip:rgba(255,255,255,.72);--chip-h:#fff;--chip-on:#bfe6cd;--chip-on-ink:#165a33;--line:rgba(22,90,51,.14)}
+@media (prefers-color-scheme:dark){
+.card.tone-a{--card:#1b2a3d;--chip:rgba(255,255,255,.10);--chip-h:rgba(255,255,255,.18);--chip-on:#35597f;--chip-on-ink:#e6f0ff;--cell:rgba(255,255,255,.07);--line:rgba(255,255,255,.12)}
+.card.tone-b{--card:#1a2f25;--chip:rgba(255,255,255,.10);--chip-h:rgba(255,255,255,.18);--chip-on:#2f5c45;--chip-on-ink:#dff5e8;--line:rgba(255,255,255,.12)}}
+.fbody{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.fbody>div{display:flex;flex-wrap:wrap;gap:8px}
+button.chip{border:0;background:var(--chip);color:var(--ink);padding:7px 15px;border-radius:980px;cursor:pointer;font:inherit;font-size:14px;line-height:1.3;transition:background .2s}
+button.chip:hover{background:var(--chip-h)}
+button.chip.on{background:var(--chip-on);color:var(--chip-on-ink);font-weight:600}
+.head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:8px}
+.head button{border:0;background:var(--chip);color:var(--ink);border-radius:980px;min-width:34px;height:34px;padding:0 14px;cursor:pointer;font:inherit;font-size:14px}
+.head button:hover{background:var(--chip-h)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.dow{font-size:12px;color:var(--mute);text-align:center;padding:4px 0}
+.day{min-height:72px;background:var(--cell);border-radius:12px;padding:5px 6px;font-size:12px;cursor:default;overflow:hidden}
+.day.has{cursor:pointer}
+.day.has:hover{box-shadow:inset 0 0 0 1px var(--line)}
+.day.sel{outline:2px solid var(--accent);outline-offset:-2px}
+.day.out{background:transparent}
+.e1{--c:var(--e1c);--t:var(--e1t)}.e2{--c:var(--e2c);--t:var(--e2t)}.e3{--c:var(--e3c);--t:var(--e3t)}
+.k1{--c:var(--k1c);--t:var(--k1t)}.k2{--c:var(--k2c);--t:var(--k2t)}.k3{--c:var(--k3c);--t:var(--k3t)}.k4{--c:var(--k4c);--t:var(--k4t)}.k5{--c:var(--k5c);--t:var(--k5t)}
+/* 한 줄 표시: 왼쪽에 종류(길면 … 처리), 오른쪽에 건수는 항상 보인다 */
+.evp,.dot{display:flex;align-items:center;gap:4px;margin-top:3px;padding:1px 6px;border-radius:6px;font-size:11px;line-height:1.55;white-space:nowrap;background:rgba(var(--c),var(--a));color:var(--t)}
+.evp{font-weight:600}
+.dot{--a:.09;font-weight:500}
+/* 게시일 칩: 종류마다 한 줄('계획 1'), 종류가 여러 개면 다음 줄에 이어서 쌓는다. 글자는 작게 */
+.dots{display:flex;flex-direction:column;align-items:flex-start;gap:2px;margin-top:3px}
+.dots .dot{margin-top:0;padding:1px 4px;gap:3px;font-size:10px;line-height:1.5;max-width:100%}
+.dots .dot .lb{flex:none;overflow:visible}
+/* 좁은 화면에서도 같은 모양: 글자만 더 작게, 칸 여백을 줄여 이름이 한 줄에 다 들어가게 한다 */
+@media (max-width:640px){.day{padding:5px 2px;min-height:64px}.dots .dot,.evp{padding:1px 3px;gap:2px;font-size:9px}.card{padding:20px 18px}}
+.lb{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.n{flex:none;font-weight:700}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--mute);margin-top:12px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;background:rgb(var(--c))}
+ul.list{list-style:none;margin:0;padding:0}
+ul.list li{padding:14px 0;border-top:1px solid var(--line)}
+ul.list li:first-child{border-top:0;padding-top:4px}
+ul.list li a{font-weight:500;line-height:1.35}
+.tag{display:inline-block;font-size:12px;padding:2px 10px;border-radius:980px;background:var(--chip);color:var(--mute);margin:0 4px 4px 0}
+.tag.pri{background:transparent;color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);font-weight:600}
+.tag.ev{background:rgba(var(--c),var(--a));color:var(--t);font-weight:600}
+a{color:var(--brand);text-decoration:none}a:hover{text-decoration:underline}
+.more{width:100%;margin-top:14px;padding:12px;border:0;background:var(--chip-on);color:var(--chip-on-ink);border-radius:980px;cursor:pointer;font:inherit;font-size:16px;font-weight:600}
+.more:hover{filter:brightness(.97)}
+.note{margin:14px 0 0;line-height:1.5}
+footer{margin-top:28px;padding:20px 0 48px;border-top:1px solid var(--line);color:var(--mute);font-size:12px;line-height:1.5}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap"><b>모험자본 출자사업 모니터</b><span class="meta" id="info"></span></div></nav>
+<div class="wrap hero">
+  <h1>출자사업 일정과 벤처 뉴스</h1>
+  <p>한국벤처투자·한국성장금융 등 출자기관의 공고와 벤처캐피탈·벤처기업 소식을 매일 자동으로 모아 보여줍니다.</p>
+</div>
+<div class="wrap">
+  <div class="stack">
+
+    <!-- 1. 출자사업 카드 -->
+    <section class="card tone-a" id="cardA">
+      <h2>출자사업</h2>
+      <div class="sbox"><input id="qn" type="search" placeholder="공고 제목 검색"><button class="chip" id="resetN">초기화</button></div>
+      <div class="fbody"><div id="srcs"></div><div id="chips"></div></div>
+      <p class="meta note">자동 수집이 되지 않는 기관은 이 목록에 없습니다. 공고는 공식 사이트에서 직접 확인하세요:
+        <a href="https://www.ibk.co.kr/cyber/noticeListCyber.ibk?pageId=IR03010400" target="_blank" rel="noopener" title="자동 수집 허용 안 됨">IBK기업은행 공고 게시판</a> ·
+        <a href="https://www.apfs.kr/front/board/boardContentsListPage.do?boardId=10026&amp;menuId=41#none" target="_blank" rel="noopener" title="자동 수집 허용 안 됨">농업정책보험금융원 공고 게시판</a> ·
+        <a href="https://www.sema.or.kr/sema/bbs/B0000022/list.do?menuNo=200017&amp;optn1=S" target="_blank" rel="noopener" title="접속이 불안정할 수 있음">과학기술인공제회 공고 게시판</a></p>
+    </section>
+
+    <!-- 2. 달력 카드 (출자사업 카드 바로 아래) -->
+    <section class="card tone-a" id="cardCal">
+      <div class="head"><button id="prev">&lt;</button><h2 id="month"></h2><button id="next">&gt;</button></div>
+      <div class="cal" id="cal"></div>
+      <div class="legend" id="legend"></div>
+      <p class="meta" style="margin:8px 0 0">진한 색 표시는 공고문 PDF에 적힌 <b>접수마감·심사·선정발표 일정</b>이고, 옅은 표시는 공지 <b>게시일</b>입니다. 한국벤처투자 등 공고문을 받아 볼 수 없는 기관과 날짜가 적혀 있지 않은 공고는 일정이 없습니다. 일정은 자동 추출이므로 날짜를 누르면 나오는 근거 문장과 원문을 확인하세요.</p>
+    </section>
+
+    <!-- 3. 공고문 종류 내용 카드 (날짜를 누르거나 출자사업 조건·검색을 쓰면 달력 바로 아래에 나타남) -->
+    <section class="card tone-a" id="cardDay" hidden>
+      <div class="head"><h2 id="dh"></h2><button id="dclear"></button></div>
+      <ul class="list" id="dlist"></ul>
+      <button class="more" id="dmore" hidden>더 보기</button>
+    </section>
+
+    <!-- 4. 뉴스전체 카드 -->
+    <section class="card tone-b" id="cardNF">
+      <h2>뉴스</h2>
+      <div class="sbox"><input id="qa" type="search" placeholder="뉴스 제목 검색"><button class="chip" id="resetA">초기화</button></div>
+      <div class="fbody"><div id="newsf"></div></div>
+    </section>
+
+    <!-- 5. 뉴스 최근 소식 카드 -->
+    <section class="card tone-b" id="cardNews">
+      <div class="head"><h2 id="lh">최근 소식</h2></div>
+      <ul class="list" id="list"></ul>
+      <button class="more" id="more" hidden>더 보기</button>
+    </section>
+
+  </div>
+  <footer>출처: 한국벤처투자 출자사업공지(최근 2년), 한국성장금융 출자사업공고(최근 6개월), Google 뉴스 검색 결과(최근 90일, 자동 수집이라 관련 없는 기사가 섞일 수 있습니다). 제목과 원문 링크만 제공합니다. 정확한 내용은 원문을 확인하세요.</footer>
+</div>
+<script src="data.js"></script>
+<script>
+const D=window.DATA||[];
+const CATS=["출자계획","선정결과","접수현황","서류결과","질의응답","기타"];      // 출자사업 분류
+const NEWS_CATS=["VC·펀드","출자·LP","벤처기업"];                              // 뉴스 분류
+const PUBS=["더벨","딜사이트"];                                                // 최우선 매체
+// 기관 버튼은 공고를 많이 낸 순서로 정렬한다.
+const noticeCount={};D.forEach(d=>{if(d.kind==="notice")noticeCount[d.src]=(noticeCount[d.src]||0)+1});
+const SRCS=Object.keys(noticeCount).sort((a,b)=>noticeCount[b]-noticeCount[a]||a.localeCompare(b,"ko"));
+// 기관 버튼에 쓰는 줄임말(데이터의 기관 이름은 그대로 두고 버튼 글자만 바꾼다).
+const SHORT={"한국벤처투자":"모태","한국성장금융":"성장금융","산업은행":"산은","수출입은행":"수은"};
+// 상태: 출자사업 필터(src, cat)는 달력과 공고문 카드에, 뉴스 필터(npub, ncat)는 최근 소식 카드에만 적용된다.
+let src="전체",cat="전체",npub="전체",ncat="전체",qN="",qA="",selDay=null,limit=40,dlimit=40;
+const KC={"출자계획":"k1","선정결과":"k2","접수현황":"k3","서류결과":"k4"};
+const kc=c=>KC[c]||"k5";
+const latest=D.length?D[0].date:new Date().toISOString().slice(0,10);
+let ym=latest.slice(0,7);
+const $=id=>document.getElementById(id);
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+// 검색어는 출자사업(qN)과 뉴스(qA)가 따로다.
+const hitN=d=>!qN||d.title.toLowerCase().includes(qN);
+const hitA=d=>!qA||d.title.toLowerCase().includes(qA);
+// 공고문 PDF에서 뽑은 일정. 기관 필터만 따른다.
+const EV=window.EVENTS||[];
+const EVC={"접수마감":"e1","서류심사":"e2","PT심사":"e2","선정발표":"e3"};
+const okE=e=>src==="전체"||e.src===src;
+// 달력 칸 안의 약칭(좁은 칸에서도 한 줄에 들어가도록). 전체 이름은 마우스를 올리면 보인다.
+const EVS={"접수마감":"마감","서류심사":"심사","PT심사":"심사","선정발표":"발표"};
+const CS={"출자계획":"계획","선정결과":"최종","접수현황":"접수","서류결과":"서류","질의응답":"질의","기타":"기타"};
+const okN=d=>d.kind==="notice"&&(cat==="전체"||d.cat===cat)&&(src==="전체"||d.src===src)&&hitN(d);
+const okA=d=>d.kind==="article"&&(npub==="전체"||d.pub===npub)&&(ncat==="전체"||d.cat===ncat)&&hitA(d);
+const btn=(on,attrs,label)=>`<button class="chip ${on?"on":""}" ${attrs}>${label}</button>`;
+function chips(){
+ $("srcs").innerHTML=btn(src==="전체",'data-g="s" data-v="전체"',"출자사업전체기관")+SRCS.map(s=>btn(s===src,`data-g="s" data-v="${s}"`,SHORT[s]||s)).join("");
+ $("chips").innerHTML=btn(cat==="전체",'data-g="c" data-v="전체"',"공고문종류전체")+CATS.map(c=>btn(c===cat,`data-g="c" data-v="${c}"`,c)).join("");
+ $("newsf").innerHTML=btn(npub==="전체"&&ncat==="전체",'data-g="n0"',"뉴스전체")+
+  PUBS.map(p=>btn(p===npub,`data-g="np" data-v="${p}"`,p)).join("")+
+  NEWS_CATS.map(c=>btn(c===ncat,`data-g="nc" data-v="${c}"`,c)).join("");
+ document.querySelectorAll("#srcs button,#chips button,#newsf button").forEach(b=>b.onclick=()=>{
+  const g=b.dataset.g,v=b.dataset.v;
+  if(g==="s"){src=v;dlimit=40}
+  else if(g==="c"){cat=v;dlimit=40}
+  else if(g==="n0"){npub="전체";ncat="전체";limit=40}
+  else if(g==="np"){npub=npub===v?"전체":v;limit=40}
+  else if(g==="nc"){ncat=ncat===v?"전체":v;limit=40}
+  render()});
+ $("legend").innerHTML=`<span><i class="e1"></i>마감(접수마감)</span><span><i class="e2"></i>심사</span><span><i class="e3"></i>발표(선정발표)</span> · 게시일: `+CATS.slice(0,4).map(c=>`<span><i class="${kc(c)}"></i>${CS[c]||c}</span>`).join("")}
+function cal(){
+ const [y,m]=ym.split("-").map(Number);$("month").textContent=`${y}년 ${m}월`;
+ const first=new Date(y,m-1,1).getDay(),days=new Date(y,m,0).getDate();
+ const by={};D.filter(d=>d.date.startsWith(ym)&&okN(d)).forEach(d=>{(by[d.date]=by[d.date]||[]).push(d)});
+ const evBy={};EV.filter(e=>e.d.startsWith(ym)&&okE(e)).forEach(e=>{(evBy[e.d]=evBy[e.d]||[]).push(e)});
+ let h=["일","월","화","수","목","금","토"].map(x=>`<div class="dow">${x}</div>`).join("");
+ for(let i=0;i<first;i++)h+=`<div class="day out"></div>`;
+ for(let d=1;d<=days;d++){const key=`${ym}-${String(d).padStart(2,"0")}`;const ev=by[key]||[];
+  const counts={};ev.forEach(e=>counts[e.cat]=(counts[e.cat]||0)+1);
+  const evs=evBy[key]||[];const ec={};evs.forEach(e=>ec[e.t]=(ec[e.t]||0)+1);
+  const evHtml=Object.entries(ec).map(([t,n])=>`<span class="evp ${EVC[t]}" title="공고문 기준 ${t}${n>1?" "+n+"건":""}"><span class="lb">${EVS[t]||t}</span>${n>1?`<span class="n">${n}</span>`:""}</span>`).join("");
+  h+=`<div class="day ${ev.length||evs.length?"has":""} ${key===selDay?"sel":""}" data-d="${key}"><b>${d}</b>${evHtml}${Object.keys(counts).length?`<div class="dots">${Object.entries(counts).map(([c,n])=>`<span class="dot ${kc(c)}" title="${c} ${n}건 게시"><span class="lb">${CS[c]||c}</span><span class="n">${n}</span></span>`).join("")}</div>`:""}</div>`}
+ $("cal").innerHTML=h;
+ $("cal").querySelectorAll(".day.has").forEach(e=>e.onclick=()=>{
+  const d=e.dataset.d;selDay=selDay===d?null:d;dlimit=40;render();
+  if(selDay)$("cardDay").scrollIntoView({behavior:"smooth",block:"nearest"})})}
+// 3. 공고문 종류 내용 카드: 날짜를 누르면 그날의 공고문과 일정(근거 문장 포함)을, 출자사업 조건·검색을 쓰면 해당 공고를 보여준다.
+function dayCard(){
+ const on=!!(selDay||qN||src!=="전체"||cat!=="전체");
+ $("cardDay").hidden=!on;if(!on)return;
+ const f=D.filter(d=>okN(d)&&(!selDay||d.date===selDay));
+ const evs=selDay?EV.filter(e=>e.d===selDay&&okE(e)):[];
+ $("dh").textContent=(selDay?`${selDay} 공고문`:"선택한 조건의 공고문")+` (${f.length}건)`;
+ $("dclear").textContent=selDay?"날짜 해제":"조건 해제";
+ const evHtml=evs.map(e=>`<li><span class="tag ev ${EVC[e.t]}">${e.t}</span><span class="tag">${esc(e.src)}</span><div><a href="${e.url}" target="_blank" rel="noopener">${esc(e.title)}</a></div><div class="meta">공고문 근거: ${esc(e.ev)}${e.file?` (${esc(e.file)})`:""}</div></li>`).join("");
+ $("dlist").innerHTML=evHtml+f.slice(0,dlimit).map(d=>`<li><span class="tag">${esc(d.cat)}</span><span class="tag">${esc(d.src)}</span><span class="meta">${d.date}${d.files?` · 첨부 ${d.files}`:""}</span><div><a href="${d.url}" target="_blank" rel="noopener">${esc(d.title)}</a></div></li>`).join("")||`<li class="meta">조건에 맞는 공고문이 없습니다.</li>`;
+ $("dmore").hidden=f.length<=dlimit}
+// 5. 뉴스 최근 소식 카드: 뉴스 필터만 따른다.
+function news(){
+ const f=D.filter(okA);
+ $("lh").textContent=`최근 소식 (${f.length}건)`;
+ $("list").innerHTML=f.slice(0,limit).map(d=>`<li><span class="tag">${esc(d.cat)}</span><span class="tag ${d.pri?"pri":""}">${esc(d.pub||d.src)}</span><span class="meta">${d.date}</span><div><a href="${d.url}" target="_blank" rel="noopener">${esc(d.title)}</a></div></li>`).join("")||`<li class="meta">조건에 맞는 뉴스가 없습니다.</li>`;
+ $("more").hidden=f.length<=limit}
+function render(){chips();cal();dayCard();news()}
+$("qn").oninput=e=>{qN=e.target.value.trim().toLowerCase();selDay=null;dlimit=40;render()};
+$("qa").oninput=e=>{qA=e.target.value.trim().toLowerCase();limit=40;render()};
+$("more").onclick=()=>{limit+=40;news()};
+$("dmore").onclick=()=>{dlimit+=40;dayCard()};
+$("dclear").onclick=()=>{if(selDay){selDay=null}else{src="전체";cat="전체"}dlimit=40;render()};
+// 초기화는 카드별로: 출자사업 카드는 기관·공고문종류·검색을, 뉴스 카드는 매체·분류·검색을 지운다.
+$("resetN").onclick=()=>{src="전체";cat="전체";qN="";$("qn").value="";selDay=null;dlimit=40;render()};
+$("resetA").onclick=()=>{npub="전체";ncat="전체";qA="";$("qa").value="";limit=40;render()};
+function shift(n){const [y,m]=ym.split("-").map(Number);const d=new Date(y,m-1+n,1);ym=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`;selDay=null;render()}
+$("prev").onclick=()=>shift(-1);$("next").onclick=()=>shift(1);
+$("info").textContent=D.length?`총 ${D.length}건 · 최신 공지 ${latest}`:"데이터 없음";
+render();
+</script>
+</body>
+</html>
