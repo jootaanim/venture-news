@@ -162,7 +162,8 @@ footer{margin-top:36px;padding:20px 0 56px;border-top:4px solid var(--rule);colo
 <script src="data.js"></script>
 <script>
 const D=window.DATA||[];
-const CATS=["출자계획","선정결과","접수현황","서류결과","질의응답","기타"];      // 출자사업 분류
+const CATS=["출자계획","질의응답","접수현황","서류결과","선정결과","기타"];      // 출자사업 분류(버튼 순서)
+const LBL={"선정결과":"최종선정"};   // 화면에 보이는 이름(데이터의 분류 값은 그대로 둔다)
 const NEWS_CATS=["VC·펀드","출자·LP","벤처기업"];                              // 뉴스 분류
 const PUBS=["더벨","딜사이트"];                                                // 최우선 매체
 // 기관 버튼은 공고를 많이 낸 순서로 정렬한다.
@@ -193,7 +194,7 @@ const okA=d=>d.kind==="article"&&(npub==="전체"||d.pub===npub)&&(ncat==="전�
 const btn=(on,attrs,label)=>`<button class="chip ${on?"on":""}" ${attrs}>${label}</button>`;
 function chips(){
  $("srcs").innerHTML=btn(src==="전체",'data-g="s" data-v="전체"',"출자사업전체기관")+SRCS.map(s=>btn(s===src,`data-g="s" data-v="${s}"`,SHORT[s]||s)).join("");
- $("chips").innerHTML=btn(cat==="전체",'data-g="c" data-v="전체"',"공고문종류전체")+CATS.map(c=>btn(c===cat,`data-g="c" data-v="${c}"`,c)).join("");
+ $("chips").innerHTML=btn(cat==="전체",'data-g="c" data-v="전체"',"공고문종류전체")+CATS.map(c=>btn(c===cat,`data-g="c" data-v="${c}"`,LBL[c]||c)).join("");
  $("newsf").innerHTML=btn(npub==="전체"&&ncat==="전체",'data-g="n0"',"뉴스전체")+
   PUBS.map(p=>btn(p===npub,`data-g="np" data-v="${p}"`,p)).join("")+
   NEWS_CATS.map(c=>btn(c===ncat,`data-g="nc" data-v="${c}"`,c)).join("");
@@ -205,7 +206,7 @@ function chips(){
   else if(g==="np"){npub=npub===v?"전체":v;limit=40}
   else if(g==="nc"){ncat=ncat===v?"전체":v;limit=40}
   render()});
- $("legend").innerHTML=`<span><i class="e1"></i>마감(접수마감)</span><span><i class="e2"></i>심사</span><span><i class="e3"></i>발표(선정발표)</span><span><i style="background:var(--accent)"></i>오늘</span> · 게시일: `+CATS.slice(0,4).map(c=>`<span><i class="${kc(c)}"></i>${CS[c]||c}</span>`).join("")}
+ $("legend").innerHTML=`<span><i class="e1"></i>마감(접수마감)</span><span><i class="e2"></i>심사</span><span><i class="e3"></i>발표(선정발표)</span><span><i style="background:var(--accent)"></i>오늘</span> · 게시일: `+["출자계획","접수현황","서류결과","선정결과"].map(c=>`<span><i class="${kc(c)}"></i>${CS[c]||c}</span>`).join("")}
 function cal(){
  const [y,m]=ym.split("-").map(Number);$("month").textContent=`${y}년 ${m}월`;
  const t0=new Date(),todayKey=`${t0.getFullYear()}-${String(t0.getMonth()+1).padStart(2,"0")}-${String(t0.getDate()).padStart(2,"0")}`;
@@ -218,7 +219,7 @@ function cal(){
   const counts={};ev.forEach(e=>counts[e.cat]=(counts[e.cat]||0)+1);
   const evs=evBy[key]||[];const ec={};evs.forEach(e=>ec[e.t]=(ec[e.t]||0)+1);
   const evHtml=Object.entries(ec).map(([t,n])=>`<span class="evp ${EVC[t]}" title="공고문 기준 ${t}${n>1?" "+n+"건":""}"><span class="lb">${EVS[t]||t}</span>${n>1?`<span class="n">${n}</span>`:""}</span>`).join("");
-  h+=`<div class="day ${ev.length||evs.length?"has":""} ${key===selDay?"sel":""} ${key===todayKey?"today":""}" data-d="${key}"${key===todayKey?' title="오늘"':""}><b>${d}</b>${evHtml}${Object.keys(counts).length?`<div class="dots">${Object.entries(counts).map(([c,n])=>`<span class="dot ${kc(c)}" title="${c} ${n}건 게시"><span class="lb">${CS[c]||c}</span><span class="n">${n}</span></span>`).join("")}</div>`:""}</div>`}
+  h+=`<div class="day ${ev.length||evs.length?"has":""} ${key===selDay?"sel":""} ${key===todayKey?"today":""}" data-d="${key}"${key===todayKey?' title="오늘"':""}><b>${d}</b>${evHtml}${Object.keys(counts).length?`<div class="dots">${Object.entries(counts).map(([c,n])=>`<span class="dot ${kc(c)}" title="${LBL[c]||c} ${n}건 게시"><span class="lb">${CS[c]||c}</span><span class="n">${n}</span></span>`).join("")}</div>`:""}</div>`}
  $("cal").innerHTML=h;
  $("cal").querySelectorAll(".day.has").forEach(e=>e.onclick=()=>{
   const d=e.dataset.d;selDay=selDay===d?null:d;dlimit=40;render();
@@ -232,7 +233,7 @@ function dayCard(){
  $("dh").textContent=(selDay?`${selDay} 공고문`:"선택한 조건의 공고문")+` (${f.length}건)`;
  $("dclear").textContent=selDay?"날짜 해제":"조건 해제";
  const evHtml=evs.map(e=>`<li><span class="tag ev ${EVC[e.t]}">${e.t}</span><span class="tag">${esc(e.src)}</span><div><a href="${e.url}" target="_blank" rel="noopener">${esc(e.title)}</a></div><div class="meta">공고문 근거: ${esc(e.ev)}${e.file?` (${esc(e.file)})`:""}</div></li>`).join("");
- $("dlist").innerHTML=evHtml+f.slice(0,dlimit).map(d=>`<li><span class="tag">${esc(d.cat)}</span><span class="tag">${esc(d.src)}</span><span class="meta">${d.date}${d.files?` · 첨부 ${d.files}`:""}</span><div><a href="${d.url}" target="_blank" rel="noopener">${esc(d.title)}</a></div></li>`).join("")||`<li class="meta">조건에 맞는 공고문이 없습니다.</li>`;
+ $("dlist").innerHTML=evHtml+f.slice(0,dlimit).map(d=>`<li><span class="tag">${esc(LBL[d.cat]||d.cat)}</span><span class="tag">${esc(d.src)}</span><span class="meta">${d.date}${d.files?` · 첨부 ${d.files}`:""}</span><div><a href="${d.url}" target="_blank" rel="noopener">${esc(d.title)}</a></div></li>`).join("")||`<li class="meta">조건에 맞는 공고문이 없습니다.</li>`;
  $("dmore").hidden=f.length<=dlimit}
 // 5. 뉴스 최근 소식 카드: 뉴스 필터만 따른다.
 function news(){
