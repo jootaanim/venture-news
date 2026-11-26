@@ -1,7 +1,7 @@
 name: collect-and-deploy
 on:
   schedule:
-    - cron: "0 22 * * *"   # 매일 07:00 KST
+    - cron: "17 * * * *"   # 매시 17분 (정각은 혼잡해서 피함)
   workflow_dispatch: {}
   push:
     branches: [main]
