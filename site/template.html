@@ -81,6 +81,7 @@ a{color:var(--brand);text-decoration:none}a:hover{text-decoration:underline}
 .more{width:100%;margin-top:14px;padding:12px;border:0;background:var(--accent);color:#fff;border-radius:980px;cursor:pointer;font:inherit;font-size:17px}
 .more:hover{filter:brightness(1.08)}
 .note{margin:0 0 16px}
+.fgroup .note{margin:0;line-height:1.5}
 footer{margin-top:28px;padding:20px 0 48px;border-top:1px solid var(--line);color:var(--mute);font-size:12px;line-height:1.5}
 </style>
 </head>
@@ -94,12 +95,14 @@ footer{margin-top:28px;padding:20px 0 48px;border-top:1px solid var(--line);colo
   <div class="bar"><input id="q" type="search" placeholder="제목 검색 (예: 모태펀드, 성장펀드)"><button class="chip" id="showall">모두 보기</button></div>
   <div class="filters">
     <div class="fgroup"><div id="srcs"></div><div id="chips"></div></div>
-    <div class="fgroup"><div id="newsf"></div></div>
-  </div>
-  <p class="meta note">자동 수집이 되지 않는 기관은 이 목록에 없습니다. 공고는 공식 사이트에서 직접 확인하세요:
+    <div class="fgroup">
+      <p class="meta note">자동 수집이 되지 않는 기관은 이 목록에 없습니다. 공고는 공식 사이트에서 직접 확인하세요:
     <a href="https://www.ibk.co.kr/cyber/noticeListCyber.ibk?pageId=IR03010400" target="_blank" rel="noopener" title="자동 수집 허용 안 됨">IBK기업은행 공고 게시판</a> ·
     <a href="https://www.apfs.kr/front/board/boardContentsListPage.do?boardId=10026&amp;menuId=41#none" target="_blank" rel="noopener" title="자동 수집 허용 안 됨">농업정책보험금융원 공고 게시판</a> ·
     <a href="https://www.sema.or.kr/sema/bbs/B0000022/list.do?menuNo=200017&amp;optn1=S" target="_blank" rel="noopener" title="접속이 불안정할 수 있음">과학기술인공제회 공고 게시판</a></p>
+      <div id="newsf"></div>
+    </div>
+  </div>
   <div class="grid">
     <section class="card">
       <div class="head"><button id="prev">&lt;</button><h2 id="month"></h2><button id="next">&gt;</button></div>
