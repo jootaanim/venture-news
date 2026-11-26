@@ -42,6 +42,8 @@ items = []
 for f in sorted((ROOT / "data").glob("*.json")):
     if f.name == "events.json":  # 공고문 PDF에서 뽑은 일정은 따로 읽는다
         continue
+    if f.name == "koreapost.json":  # 우정사업본부는 자동 수집을 하지 않고 안내 링크만 둔다(사이트에 싣지 않음)
+        continue
     items += json.loads(f.read_text(encoding="utf-8"))
 
 # 연기금·공제회·우정사업본부 게시판에는 해외주식, 부동산, PEF 등 벤처캐피탈과 무관한 공고도 섞여 있어
