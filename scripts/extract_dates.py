@@ -27,6 +27,7 @@ from pypdf import PdfReader
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "events.json"
+CACHE = ROOT / ".cache" / "pdf_text"
 UA = "venture-news-bot/0.1"
 SKIP_HOSTS = {
     "www.kvic.or.kr": "robots.txt가 첨부 다운로드 경로를 막고 서버도 직접 다운로드를 거절함",
@@ -41,7 +42,9 @@ DATE_SHORT = re.compile(r"(?<!\d)(\d{1,2})\s*월\s*(\d{1,2})\s*일")
 
 # 종류별 키워드. 접수는 '제안서 접수', '접수일시'처럼 일정을 가리키는 말만 인정한다.
 KINDS = {
-    "접수마감": re.compile(r"((제안서|서류)\s*)?(접수|제출)\s*(일시|기간|일정|마감|기한)|접수\s*마감|제안서\s*(접수|제출)(?!처|방법)"),
+    # 공고문마다 '접수일시', '접수일', '접수기간', '접수마감'처럼 표기가 달라서 모두 접수마감 일정으로 본다.
+    # 단, '제안서 접수일 현재'처럼 기준일을 뜻하는 말은 일정이 아니다.
+    "접수마감": re.compile(r"((제안서|서류)\s*)?(접수|제출)\s*(일시|일자|일정|기간|마감|기한|일)(?!\s*(현재|기준))|접수\s*마감|제안서\s*(접수|제출)(?!처|방법)"),
     "서류심사": re.compile(r"서류\s*(심사|평가)"),
     "PT심사": re.compile(r"(PT|P\.T|구술|발표)\s*(심사|평가)|현장\s*실사|면접\s*(심사|평가)"),
     "선정발표": re.compile(r"(최종\s*)?선정\s*(결과)?\s*(발표|통보|통지)|결과\s*발표|심사\s*결과\s*발표"),
@@ -246,12 +249,23 @@ def main():
     print(f"대상 {len(todo)}건")
     last_hit = {}
     for key, it, att in todo:
-        data, status, note = fetch_pdf(it, att, last_hit)
+        # 다시 읽을 때 같은 PDF를 또 받지 않도록 글자만 로컬에 캐시한다(.cache는 저장소에 올리지 않는다).
+        cfile = CACHE / (re.sub(r"[^0-9A-Za-z가-힣_-]", "_", key) + ".txt")
+        cached = cfile.read_text(encoding="utf-8") if cfile.exists() else None
+        if cached is not None:
+            data, status, note = b"cached", "ok", ""
+        else:
+            data, status, note = fetch_pdf(it, att, last_hit)
         rec = {"source": it["source"], "title": it["title"], "url": it["url"], "published": it["published"],
                "file": att["name"], "status": status, "note": note, "events": [], "tried": str(date.today())}
         if data:
             try:
-                text, pages = pdf_text(data)
+                if cached is not None:
+                    text, pages = cached, None
+                else:
+                    text, pages = pdf_text(data)
+                    CACHE.mkdir(parents=True, exist_ok=True)
+                    cfile.write_text(text, encoding="utf-8")
                 rec["pages"] = pages
                 if len(text.strip()) < 50:
                     rec["status"], rec["note"] = "no_text", "텍스트가 없는 PDF(스캔본 가능성)"
