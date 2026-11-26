@@ -745,5 +745,88 @@
   "note": "robots.txt가 첨부 다운로드 경로를 막고 서버도 직접 다운로드를 거절함",
   "events": [],
   "tried": "2026-11-26"
+ },
+ "한국성장금융-1050": {
+  "source": "한국성장금융",
+  "title": "「연기금 국민성장매칭 펀드」 위탁운용사 선정계획 공고",
+  "url": "https://www.kgrowth.or.kr/notice_view.asp?idx=1050&tab=1",
+  "published": "2026-06-10",
+  "file": "「연기금 국민성장매칭 펀드」 위탁운용사 선정계획 공고문_fn.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2026-06-22",
+    "evidence": "제안서 접수 (블라인드) ‘26.6.22"
+   }
+  ],
+  "tried": "2026-11-26",
+  "pages": 8
+ },
+ "한국성장금융-1047": {
+  "source": "한국성장금융",
+  "title": "「은행권 중견기업 밸류업펀드(3차)」 위탁운용사 선정계획 공고",
+  "url": "https://www.kgrowth.or.kr/notice_view.asp?idx=1047&tab=1",
+  "published": "2026-06-04",
+  "file": "은행권 중견기업 밸류업펀드(3차) 위탁운용사 선정계획 공고.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2026-07-06",
+    "evidence": "접수일시 ◦ 2026년 7월 6일"
+   }
+  ],
+  "tried": "2026-11-26",
+  "pages": 9
+ },
+ "한국성장금융-1039": {
+  "source": "한국성장금융",
+  "title": "「은행권 기후기술펀드 3호」 2026년 위탁운용사 선정계획 공고",
+  "url": "https://www.kgrowth.or.kr/notice_view.asp?idx=1039&tab=1",
+  "published": "2026-06-01",
+  "file": "성장금융 은행권 기후기술펀드 3호 선정계획 공고문_vF.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2026-07-06",
+    "evidence": "접수일시 ◦ 2026년 7월 6일"
+   }
+  ],
+  "tried": "2026-11-26",
+  "pages": 9
+ },
+ "한국성장금융-1037": {
+  "source": "한국성장금융",
+  "title": "「K-콘텐츠 미디어 전략펀드 3호」위탁운용사 선정계획 공고",
+  "url": "https://www.kgrowth.or.kr/notice_view.asp?idx=1037&tab=1",
+  "published": "2026-05-29",
+  "file": "(K-콘텐츠 미디어 전략펀드 3호)위탁운용사 선정계획 공고문_최종.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2026-07-03",
+    "evidence": "접수일시 2026년 7월 3일"
+   }
+  ],
+  "tried": "2026-11-26",
+  "pages": 9
+ },
+ "한국벤처투자-4868": {
+  "source": "한국벤처투자",
+  "title": "모태펀드(중기부 소관) 2026년 5월 수시 출자사업 계획 공고",
+  "url": "https://www.kvic.or.kr/notice/kvic-notice/investment-business-notice?id=4868",
+  "published": "2026-05-29",
+  "file": "붙임1. 모태펀드(중기부 소관) 2026년 5월 수시 출자사업 계획 공고.pdf",
+  "status": "skipped",
+  "note": "robots.txt가 첨부 다운로드 경로를 막고 서버도 직접 다운로드를 거절함",
+  "events": [],
+  "tried": "2026-11-26"
  }
 }
