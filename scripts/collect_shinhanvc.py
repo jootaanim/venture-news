@@ -24,10 +24,24 @@ DELAY = 1.0
 KEYWORDS = ("출자", "위탁운용", "모펀드", "운용사 선정", "GP")
 
 
+def _ca_bundle():
+    """이 사이트는 중간 인증서를 빼고 내려준다. 발급기관(Sectigo)의 공식 중간 인증서를 기본 신뢰 목록에 더해
+    검증은 그대로 켠 채 접속한다(certs/sectigo_rsa_dv_intermediate.pem)."""
+    import certifi
+    extra = Path(__file__).resolve().parent.parent / "certs" / "sectigo_rsa_dv_intermediate.pem"
+    out = Path(__file__).resolve().parent.parent / ".cache" / "ca_bundle.pem"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(Path(certifi.where()).read_text() + "\n" + extra.read_text())
+    return str(out)
+
+
+CA = _ca_bundle()
+
+
 def get(path, **params):
     for attempt in range(3):
         try:
-            r = requests.get(f"{BASE}{path}", params=params, headers=HEADERS, timeout=30)
+            r = requests.get(f"{BASE}{path}", params=params, headers=HEADERS, timeout=30, verify=CA)
             r.raise_for_status()
             return r.content.decode("utf-8", errors="replace")
         except requests.RequestException as e:
@@ -103,7 +117,7 @@ def main():
     known = set(items)
     new_count = 0
     for page in range(1, args.max_pages + 1):
-        rows = parse_list(get(BOARD, page=page))
+        rows = parse_list(get(BOARD, page=page - 1))  # 이 게시판의 page는 0부터 시작(0이 최신)
         if not rows:
             break
         fresh = [r for r in rows if r["id"] not in known]
