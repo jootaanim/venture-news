@@ -86,7 +86,7 @@ button.chip.on{background:var(--chip-on);color:var(--chip-on-ink);border-color:v
 .k1{--c:var(--k1c);--t:var(--k1t)}.k2{--c:var(--k2c);--t:var(--k2t)}.k3{--c:var(--k3c);--t:var(--k3t)}.k4{--c:var(--k4c);--t:var(--k4t)}.k5{--c:var(--k5c);--t:var(--k5t)}
 /* 한 줄 표시: 왼쪽에 종류(길면 … 처리), 오른쪽에 건수는 항상 보인다 */
 .evp,.dot{display:flex;align-items:center;gap:4px;margin-top:3px;padding:1px 6px;border-radius:2px;font-size:var(--chipfs,11px);line-height:1.55;white-space:nowrap;background:rgba(var(--c),var(--a));color:var(--t)}
-.evp{font-weight:700;padding:1px 4px;gap:3px}  /* 마감·심사·발표 칸도 계획·최종 칸과 같은 여백(글자 크기 계산 기준이 같도록) */
+.dot.evp{--a:.12}  /* 마감·심사·발표: 모양은 다른 칸과 같고 색만 다르다 */
 .dot{--a:.08;font-weight:500}
 /* 게시일 칩: 종류마다 한 줄('계획 1'), 종류가 여러 개면 다음 줄에 이어서 쌓는다. 글자는 작게 */
 .dots{display:flex;flex-direction:column;align-items:flex-start;gap:2px;margin-top:3px}
@@ -242,8 +242,9 @@ function cal(){
  for(let d=1;d<=days;d++){const key=`${ym}-${String(d).padStart(2,"0")}`;const ev=by[key]||[];
   const counts={};ev.forEach(e=>counts[e.cat]=(counts[e.cat]||0)+1);
   const evs=evBy[key]||[];const ec={};evs.forEach(e=>ec[e.t]=(ec[e.t]||0)+1);
-  const evHtml=Object.entries(ec).map(([t,n])=>`<span class="evp ${EVC[t]}" title="공고문 기준 ${t}${n>1?" "+n+"건":""}"><span class="lb">${EVS[t]||t}</span>${n>1?`<span class="n">${n}</span>`:""}</span>`).join("");
-  h+=`<div class="day ${ev.length||evs.length?"has":""} ${key===selDay?"sel":""} ${key===todayKey?"today":""}" data-d="${key}"${key===todayKey?' title="오늘"':""}><b>${d}</b>${evHtml}${Object.keys(counts).length?`<div class="dots">${Object.entries(counts).map(([c,n])=>`<span class="dot ${kc(c)}" title="${LBL[c]||c} ${n}건 게시"><span class="lb">${CS[c]||c}</span><span class="n">${n}</span></span>`).join("")}</div>`:""}</div>`}
+  // 마감·심사·발표도 계획·접수·기타와 똑같은 칸(.dots .dot)으로 그린다: 글자 크기·굵기·여백·줄 간격이 같다.
+  const evHtml=Object.entries(ec).map(([t,n])=>`<span class="dot evp ${EVC[t]}" title="공고문 기준 ${t}${n>1?" "+n+"건":""}"><span class="lb">${EVS[t]||t}</span>${n>1?`<span class="n">${n}</span>`:""}</span>`).join("");
+  h+=`<div class="day ${ev.length||evs.length?"has":""} ${key===selDay?"sel":""} ${key===todayKey?"today":""}" data-d="${key}"${key===todayKey?' title="오늘"':""}><b>${d}</b>${evHtml||Object.keys(counts).length?`<div class="dots">${evHtml}${Object.entries(counts).map(([c,n])=>`<span class="dot ${kc(c)}" title="${LBL[c]||c} ${n}건 게시"><span class="lb">${CS[c]||c}</span><span class="n">${n}</span></span>`).join("")}</div>`:""}</div>`}
  $("cal").innerHTML=h;fitCal();
  $("cal").querySelectorAll(".day.has").forEach(e=>e.onclick=()=>{
   const d=e.dataset.d;selDay=selDay===d?null:d;dlimit=40;render();
