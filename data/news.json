@@ -1,5 +1,15 @@
 [
  {
+  "id": "ffa944b366db",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "딜사이트",
+  "title": "[핀셋+] [신도기연] 장비 팔수록 손해 \"밑지는 장사\"…수익성 '빨간불'",
+  "published": "2026-11-27",
+  "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE96Zktwa0pVUk9lY1hIc3ZGSXlvZTdtQmtDaHV5TXdJeEpnRjdwa2pqOC1FUDRFMjYwWk13dnBkeGRiNUJMMzFVeW4wSGFuTzg?oc=5"
+ },
+ {
   "id": "fef01fe78a8c",
   "source": "뉴스",
   "kind": "article",
@@ -30,6 +40,16 @@
   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBNWko1U2k0VVNyeHZHSlBsSUV3V0tCRkFuam9EemFKQnZYVlJJamRTcFNLWmtMZDlvU2NKaFp0cl9ncElVdktlRVphNFlpZXZTV1lmcDJfazJHNzA2X2RpeW1ObFFjaHdvbzNPVg?oc=5"
  },
  {
+  "id": "df2d0f4d11ac",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "벤처기업",
+  "outlet": "뉴스톱",
+  "title": "VC협회, 스케일업 팁스 서밋 개최...딥테크 성장·글로벌 투자유치 지원",
+  "published": "2026-11-27",
+  "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5GQ1VCNUs1cDMyOFVkM2t5dkRhYl82QnF5Rm13R2U5R2ZHdVRENE8yX1RfWU1wbEZ1bVNwQTJWRXlReHh3X2NOYmVYaGM1U1RCS0FIY0g5SGNzVzJ4TEE?oc=5"
+ },
+ {
   "id": "d44312dd9076",
   "source": "뉴스",
   "kind": "article",
@@ -48,6 +68,26 @@
   "title": "ETF 다음은 대체투자…김우석의 선택은 이시완",
   "published": "2026-11-27",
   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBER2FjQVVuYTA0blRCeUZSRW5CalNTOWF2QnNOUHlFOGtHMEluZW5DZ0xGRFRpNGNTQlplb0dfbzZ2bXVBcS1NQ0VlTGNyWkE?oc=5"
+ },
+ {
+  "id": "c93a16507685",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "벤처기업",
+  "outlet": "스페셜타임스",
+  "title": "대구·경북 스타트업, 10개 기업 1:1 투자상담으로 투자유치 가능성 확대",
+  "published": "2026-11-27",
+  "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5zX3JHbjB4X2FNVldxWmZWZVBkdnBKSHdWbkh4RFdzaU1nMEVlZF95NlZaNXFFWUpEQnlTWVhpR2ozYUt2M1I1dHpQSS12TUg5UTZrUmlCY2l3TEtGeG4yVVl2NkhqMlZPUkd3WHNYanhsUjQ?oc=5"
+ },
+ {
+  "id": "c4b83cc115dd",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "벤처기업",
+  "outlet": "이데일리",
+  "title": "[마켓인]DHP, 보건산업진흥원 투자유치 지원사업 성료…139억 결실",
+  "published": "2026-11-27",
+  "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPSVpobmU1UmtiVlpKQzc4dlYzM3k2ZjhBb3JFajhiVzFrRnhsWlpJSlFJeGVBbXJ1cXBkenVJQnJTQW0yTkRRdVNEVU5jbUg0ck5qTTE1QmNpMVRHbExwNmJ0Znd1RjlZWlZha0ZGNzVOTTVGTE5PZVd3U3NZZ1ZiRw?oc=5"
  },
  {
   "id": "b5dce19ec755",
@@ -80,6 +120,16 @@
   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE4xNi14UGFIbmRMY2s5a0RQYW5oZlhPRHhER3JqS00xR2trTTJDb3BkeElQN1pqOTIta2FJWU5NMzNCVTZ3Q2Nuemk5bGxFQlU?oc=5"
  },
  {
+  "id": "9fe029ece5c1",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "벤처기업",
+  "outlet": "테크42",
+  "title": "[스타트업 안테나] QAI 양자컴퓨터 도입·더인벤션랩 109억원 투자 유치 성과… 바이오·로봇·AI 사업화 확대",
+  "published": "2026-11-27",
+  "url": "https://news.google.com/rss/articles/CBMixgJBVV95cUxPUEJyQWpJNUF5RVFFQlpYUGhLTGdrQUU4UUIzT1ZxQ1FBNHdtVDAyTGJZaVdOSWRGRnFkUjFqTjVWQS1LeFFmZDJBTVZZbWZWU3p5X1JoQnlpYWNnT3VORjczTTVxWFdycDFPMEJRNVh0MWFjNlo2ZkR4cmNXdXVSOWE0SnFQaDVIS0R0TWZXWGJkeldjUnBERmQzUnZ6LVpnTVFFZUFuaDBPamd1YVJyVDRYLV81NkNvWHlwTVFJU1hJQlZuZ0VzTDE5Z2M0TEtmb2lSb2tqVV9xdW03Qnp6UG55Y1NpcDNaVGw3MjM3SkwzRk5PbE1tWDdjWXlXa0dxcXpnSUIyZ2lEQWhxZkpoMkJia1FnbFpxRVVKVzdiQ1VpRnRvWlZ4YnVncC1FZ3VIUk1MN0tFcEE1VXE2WS0yWEZrTGFUUQ?oc=5"
+ },
+ {
   "id": "9fb27e93fbc4",
   "source": "뉴스",
   "kind": "article",
@@ -88,6 +138,16 @@
   "title": "[만나봤더니] 전승휘 큐브엔터 부사장 \"2027년 전환기…3~5년 내 업계 선도 기업과 어깨 나란히\"",
   "published": "2026-11-27",
   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1zX18xOUhPNGlPNTF5dG1xdFo3NTl1TldzcjJueXMtcUlSd3NJVk00RUhqVVRrdGNrdU1xbHM2UUlDNzdqd2YtSHB0MTA3QTQ?oc=5"
+ },
+ {
+  "id": "9916f4878607",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "더벨",
+  "title": "탭엔젤파트너스, 신사옥 매입…선정릉에 새 둥지",
+  "published": "2026-11-27",
+  "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPQ2NCaU1sekJYUkt1ajhxUEZWQ0dvZlZYYTN4Z0RDVlJkSWgyOXFOMjFycFpsZFpMUDhzdUhLeDE1ZTJQVUxuVmZZdTAtZUVfa0Zvc2xKR3VVTDlBZEZUekZFQ3BMYkhaYzViQ0h0OFZaUnlNZmU5YjJhbVFINkRRdGlDbGJHN0o5UlZj?oc=5"
  },
  {
   "id": "963a35b68c6d",
@@ -108,6 +168,16 @@
   "title": "[네이버 쇼핑 그늘] 스마트스토어, 판매자 증가세 둔화…입점 경쟁력 '시험대'",
   "published": "2026-11-27",
   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBjQ2ZZVXZIUFhxYWtZQkh6WWdCVHZta3FnYy1tNVJLVFlqUjBhSXZWZlJ1bU0yRkJiTUdoZ2VIMnRBc0dNdHhxSlF3TjRNQ2c?oc=5"
+ },
+ {
+  "id": "914fd629982a",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "벤처기업",
+  "outlet": "나눔경제뉴스",
+  "title": "플랜에이치벤처스, ‘모두의 창업’ 참여팀 육성…61억원 펀드로 초기 창업기업 투자 확대",
+  "published": "2026-11-27",
+  "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9PcklBaXV0LTl3bVNNb2tLTFMxRlB0ZFluTmxWSEFvV094TnRRODlJaVF2QjVCS2dsR0JjNkpaZUpOVzFzVEZCWG5jbm54blRDa0FBTTd2bXVpUlhldDhWaTVsVzcyUEQ5RWdvWQ?oc=5"
  },
  {
   "id": "8ba2d9a10aba",
@@ -190,6 +260,66 @@
   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBIOFg5RW9wUUVnb1hSamdFdHJDdmltelZkNVc3bEczTm1fQXZCT0hpa015ZzVkUnBLZHFfN1V5X3o5YmljaVZ6dk5ad0pmVTg?oc=5"
  },
  {
+  "id": "4dbdb58da494",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "아주경제",
+  "title": "호반 플랜에이치, 61억원 벤처투자조합 결성…초기 창업기업 지원",
+  "published": "2026-11-27",
+  "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5DT0JSeDZ4WDVEcTUyWEd5YmF6MEgzdGZEUmF3Q1AtbXpSRUh3RzFMajVkblFrd05qRUdXN2s1N3ltTlBsSlZMQTh0elFZWjBfbzEtMzhEeFNDUdIBWEFVX3lxTE1RTmZtWjJraE5jUEpCbDlmdXcxenUyWjdxTjhxMk82MHRsZjRlRHBBdi1feDU4SlpMVVBxYVc2N3gxcFZUMmwxS3RVRHV3bzJQdHFMZWxZaFA?oc=5"
+ },
+ {
+  "id": "4cfa804bd840",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "딜사이트",
+  "title": "스퀘어텍 대표 배임·횡령 피소…유증 대금 절반 자본잠식사에 투자 의혹",
+  "published": "2026-11-27",
+  "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBVNFMxcy1tcVBtSTB2d0dQSjRzckdneXBzdE1oTjNQVm1YWWdBZVNMeXY2SEM0aXJJUVFiWGNrVHlPcjh1ektjT2FfV2tVbW8?oc=5"
+ },
+ {
+  "id": "4c80537364e8",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "딜사이트",
+  "title": "보장 확대 못 따라간 위험관리…삼성화재 내부통제 도마",
+  "published": "2026-11-27",
+  "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9KMXpQOVRTOV9NVjM0M1F0SnZ2Z1BiYVM4NlVXY2ZZZ2VlQXdjR3RmX2NiTE00UHEzWW1MdXJ5V3htVWVxNV9GblRiUWRtdjA?oc=5"
+ },
+ {
+  "id": "4b1312ebeec5",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "더벨",
+  "title": "[신생 CVC 톺아보기] SK하이닉스벤처스, 10년 투자 이력에 '새 간판' 달았다",
+  "published": "2026-11-27",
+  "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQTTBEbXkwVDczX21VbS1vVDJBQXZsMUJNWm1DREQ0Tjd3dUV0UkhVeldvNlZyc2lfQnNraWZ5Z0FSRVZ6WHRZWmhWNEdPaHB4TTlwRXlVd2FxRWhRdE5QLXdHNXQ1WUtZM3ZSQ3lGTm1vSVZKMjNPek1hN0p0ZVQ3Nm03SGxQOExRd25N?oc=5"
+ },
+ {
+  "id": "49204558e088",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "출자·LP",
+  "outlet": "넘버스",
+  "title": "IMM인베, 하드캡 채워 3000억 '세컨더리 7호' 연내 결성한다",
+  "published": "2026-11-27",
+  "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9SdmdxZFRQNEFKRVE4VVN6aXVKUU5VWFd5MEs1blFLamFfZTk3amZBcmRzMXpZU1VyZWR0emF4RDFob0REcGdxN0VoSW1vMXZ1X2hzS0F3QV8waU5JMEI1dW1CTUotT1I3cVdR?oc=5"
+ },
+ {
+  "id": "488f8070519e",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "더벨",
+  "title": "[thebell interview | 한투파 출범 40년] 황만순 대표 \"글로벌 선도기업 키우는 아시아 대표 VC로\"",
+  "published": "2026-11-27",
+  "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNc3NDMzBFYURMOHlQeHFQOEtkeFBNZlZabnVYT3FRZmdHYmxqc0k4c1l0LUpZdVVUYksxbEZzMFU0R2ExVkJwMzNYdjc3LUZnNHJJSEZNMXZmTHVLaGxZTERHc2JMdFBQeDlTS01BTGhPbkxqaXdNdmhWQVM1eUQteXVmWm1TWG02VGhv?oc=5"
+ },
+ {
   "id": "3756711df298",
   "source": "뉴스",
   "kind": "article",
@@ -198,6 +328,16 @@
   "title": "[이노보테라퓨틱스 IPO] 상장 후 석달 유통물량 2.1배 늘어난다…오버행 리스크",
   "published": "2026-11-27",
   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5BYlJkQi1ueWRLRUsyUkVvOWRmbmcyeURHb0c0UnlxRS1kZXBmRXpzbFFiTnkzblNyMTZMeVFtbW5NaHV2MXpwSzhMYnJ0anM?oc=5"
+ },
+ {
+  "id": "350cf305a7c6",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "더벨",
+  "title": "차바이오텍, 차헬스케어 대여금 다시 2000억대…회수 과제",
+  "published": "2026-11-27",
+  "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOWmJ3OXlOeHlQOFc4bjFjbWdQZy1uenNVbjk3WGZxM0xJSE01TUw2RFZMenJnMnYtU3hzRzVMM0k3Rnh6WjZvWnh1QUY3c2pLZlRnc3hzcDl0UEpkZXdkLWx0Rm11b2t5RENVY3pzNi1DWURMc2Fwa005RVlabGRnX1VybmxrdkM0ZV8w?oc=5"
  },
  {
   "id": "32ef92418828",
@@ -210,6 +350,26 @@
   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5yRFhlYXlUenJxaWJrV2pIbjhaSU5LVlFVbmRYOWE5WGtVOVdtemZFOFhjc0ljYlhxR2RpXy0wa0RJdDRpaU1OQXpYR21ldlU?oc=5"
  },
  {
+  "id": "32d3940aa2ca",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "이투데이",
+  "title": "[전날 애프터마켓] 미래에셋벤처투자, 스페이스X 호재에 추가 상승…삼전·SK하닉↑",
+  "published": "2026-11-27",
+  "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE40QVE0a3d4REVDM0xzQUo5WmtxSW1rNnJBU0N0UnBBVVhuQW52ZmVWRDFaOFpOTy04R1BMdXhVT0xjTkhVM2p4TWswY2QxTEY3MGc4Xw?oc=5"
+ },
+ {
+  "id": "2feb03f1994e",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "딜사이트",
+  "title": "韓 중징계 위기 MBK…日 6조원대 바이아웃 질주",
+  "published": "2026-11-27",
+  "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9XeFFzSnVReXNkYVpyQ1NpZERkbURyX0pVcWNxOWhrT0R3NHpkZDlWLTFKYzZ4TXVMX2p0X2JLR0ZNdGZXY0F5QlRYWVB4N0k?oc=5"
+ },
+ {
   "id": "2b3149b98a94",
   "source": "뉴스",
   "kind": "article",
@@ -218,6 +378,26 @@
   "title": "[배터리 ESS 빌드업] [삼성SDI] 美 주문 몰리는데 남은 전기차 라인 유지·전환 갈림길",
   "published": "2026-11-27",
   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBLOEpWSzB2RUc2THBQdUNVdlRKQjQ3cmVXdGM2dEh3T3dKNzVYazlIVjA3Uzh1MldOV0Z1MlpBM1FXeU9DR1lHNjlQeGE3djA?oc=5"
+ },
+ {
+  "id": "28ec2c98bff0",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "더벨",
+  "title": "이앤벤처, 310억 8호 펀드 결성…AUM 2000억 돌파",
+  "published": "2026-11-27",
+  "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQaHd4YTByR0VOZzlwZlhQdTNha1NmS21KVWVHMXZSVlFsTHFFNXg5a2xrZTdjNldpeGNZZ3FCbGZEaTBJV1B2WGZPeEVOUTk5eUd2dW9CQ2FXNmVkaDB4aDRMUm1kYlVNOXBseDhBWlR4Um5GWS1lU3JRUnBQMDEtc2dBMUdEejY4NDJn?oc=5"
+ },
+ {
+  "id": "1bbc2f1ee3ea",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "벤처기업",
+  "outlet": "더바이오",
+  "title": "DHP, 보산진 투자유치 지원사업 성료…4개사 139억원 유치",
+  "published": "2026-11-27",
+  "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBGMVMyRmZTUm95TTNaNllfMUdyR1lONlkyR2lES0M5d0Y1MHljMmRXRUtralYtVTBMTVI2QjlqcnhfVENXU1ZTUjNVRzJoYlRlV3Mxc2JYNzFEYURabDU2UGxOc2d2Q24wTU9TdtIBcEFVX3lxTFB3SS0xbVBQV1h4dmJ3MnEta2hZOWZ1aEROMUV1dmZxMGZlWEFvMWo1d0ZEOFBmcDlCX3BGVEZzYUlORlQxTHZLYVp2QmRvZkxtalNTVDNUaVZXQWpWWmZLR2pTRmtWZThOY1RkQ2dnWDQ?oc=5"
  },
  {
   "id": "1aaef4c39f96",
@@ -1738,6 +1918,16 @@
   "title": "중기부, 55개국 참여 ‘컴업 2026’ 개최…스타트업 글로벌 투자·사업 협력 지원",
   "published": "2026-11-26",
   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFB5U2ktTG4ySkdRRFJQdWt5Zkdhemh6LWlqTWhlcWp3UXN3REUwOXozVmZabEhKVXNjblRQcEY0bkJWQm9jSmZvclkwV3N0dmZkcVVfTnotcW5PU09rZmcyOUdvcUxkbUk?oc=5"
+ },
+ {
+  "id": "0168bdaade79",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "딜사이트",
+  "title": "SK이노, 2.4조 RCPS 상환 연기…양사 협의 중",
+  "published": "2026-11-26",
+  "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5Rdm9rU3JxTXVBNy1PT0MtQklYdkgxYjhEcjhWWTBkUm9BR2lhcjNKdzQ1dDAwVzh3SlI0THdwa2RUUTZwRTdPb19XTWVXY2s?oc=5"
  },
  {
   "id": "00112dd313ec",
@@ -4668,6 +4858,16 @@
   "title": "[인사] 삼성SDI",
   "published": "2026-11-24",
   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBHRzVQb1h2akoxVUVlbDJVcTBSSU9QdDg5SGhjRWNYbWtOQ2ZEbFpCaTNLMnNuVDZjX2NqVGVNQWZIaU83QnZkVjQ5SXNrWVU?oc=5"
+ },
+ {
+  "id": "1b436ee5aabe",
+  "source": "뉴스",
+  "kind": "article",
+  "category": "VC·펀드",
+  "outlet": "딜사이트",
+  "title": "[지배구조 리포트] [롯데지주] 빠듯한 재무여력 지속…계열사들 그룹 지원 구원투수로",
+  "published": "2026-11-24",
+  "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE13eEN3bnE0alc4UnljdEtkTFhHMFhiM0ZLZGNWS0g3eGxtWEdLTjNCeUF3WENjbmFSYm52eElGb2VFVWlBMjFGX2tXeFRCc2s?oc=5"
  },
  {
   "id": "1907c49ebda6",
