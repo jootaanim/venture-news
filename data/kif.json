@@ -70,5 +70,93 @@
    }
   ],
   "body": ""
+ },
+ {
+  "id": 50100,
+  "source": "KIF",
+  "kind": "notice",
+  "category": "선정결과",
+  "title": "2025년 KIF투자조합 자펀드 업무집행조합원 선정결과",
+  "published": "2025-10-02",
+  "url": "https://www.ktoa.or.kr/ko/notice/bidding/view?detailsKey=50100",
+  "attachments": [
+   {
+    "name": "2025년 업무집행조합원 선정 결과 공고_20251002.pdf",
+    "url": "https://www.ktoa.or.kr/file/view?fileSeq=8543&fileOrd=0"
+   }
+  ],
+  "body": ""
+ },
+ {
+  "id": 50098,
+  "source": "KIF",
+  "kind": "notice",
+  "category": "서류결과",
+  "title": "2025년 KIF투자조합 업무집행조합원 1차 심의 결과",
+  "published": "2025-09-16",
+  "url": "https://www.ktoa.or.kr/ko/notice/bidding/view?detailsKey=50098",
+  "attachments": [
+   {
+    "name": "1차 심의 결과 요약.JPG",
+    "url": "https://www.ktoa.or.kr/file/view?fileSeq=8536&fileOrd=1"
+   }
+  ],
+  "body": ""
+ },
+ {
+  "id": 50096,
+  "source": "KIF",
+  "kind": "notice",
+  "category": "접수현황",
+  "title": "2025년 KIF투자조합 업무집행조합원 선정 제안서 접수결과",
+  "published": "2025-08-29",
+  "url": "https://www.ktoa.or.kr/ko/notice/bidding/view?detailsKey=50096",
+  "attachments": [
+   {
+    "name": "제안서 접수결과.jpg",
+    "url": "https://www.ktoa.or.kr/file/view?fileSeq=8533&fileOrd=2"
+   }
+  ],
+  "body": ""
+ },
+ {
+  "id": 50092,
+  "source": "KIF",
+  "kind": "notice",
+  "category": "출자계획",
+  "title": "2025년 KIF투자조합 업무집행조합원 선정계획 공고",
+  "published": "2025-08-12",
+  "url": "https://www.ktoa.or.kr/ko/notice/bidding/view?detailsKey=50092",
+  "attachments": [
+   {
+    "name": "1. KIF투자조합 업무집행조합원 선정계획 공고.pdf",
+    "url": "https://www.ktoa.or.kr/file/view?fileSeq=8528&fileOrd=3"
+   },
+   {
+    "name": "2. 제안신청 서류 및 관련 서식(HWP).hwp",
+    "url": "https://www.ktoa.or.kr/file/view?fileSeq=8528&fileOrd=4"
+   },
+   {
+    "name": "3. 2025 KIF 자펀드 업무집행조합원 선정 제안서 제출서식_20250812.xlsx",
+    "url": "https://www.ktoa.or.kr/file/view?fileSeq=8528&fileOrd=6"
+   }
+  ],
+  "body": "공고번호 : KTOA-2025-0028"
+ },
+ {
+  "id": 50091,
+  "source": "KIF",
+  "kind": "notice",
+  "category": "출자계획",
+  "title": "2025년 KIF투자조합 출자설명회",
+  "published": "2025-08-06",
+  "url": "https://www.ktoa.or.kr/ko/notice/bidding/view?detailsKey=50091",
+  "attachments": [
+   {
+    "name": "2025년 KIF투자조합 출자설명회 안내 공지문.pdf",
+    "url": "https://www.ktoa.or.kr/file/view?fileSeq=8527&fileOrd=0"
+   }
+  ],
+  "body": ""
  }
 ]

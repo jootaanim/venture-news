@@ -109,7 +109,11 @@ def main():
         if n in items:
             break  # 저장된 가장 최근 글을 만나면 그보다 오래된 글은 이미 처리한 것
         time.sleep(DELAY)
-        html = get(VIEW, no=n)
+        try:
+            html = get(VIEW, no=n)
+        except RuntimeError as e:  # 지워졌거나 서버 오류가 나는 글 번호는 건너뛴다
+            print(f"no={n} 건너뜀: {e}", file=sys.stderr)
+            continue
         d = parse_detail(html) if html else None
         if not d:
             continue
