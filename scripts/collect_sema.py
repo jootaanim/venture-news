@@ -96,7 +96,11 @@ def main():
     for i, word in enumerate(SEARCH_WORDS):
         if i:
             time.sleep(DELAY)
-        rows = parse_list(get({"menuNo": "200017", "searchCnd": "1", "searchWrd": word, "pageIndex": "1"}))
+        try:
+            rows = parse_list(get({"menuNo": "200017", "searchCnd": "1", "searchWrd": word, "pageIndex": "1"}))
+        except RuntimeError as e:  # 서버가 자주 시간 초과된다. 이번 검색만 건너뛰고 나머지는 저장한다.
+            print(f"'{word}' 검색 건너뜀: {e}", file=sys.stderr)
+            continue
         pick = [r for r in rows if r["id"] not in items and r["published"] >= args.since]
         print(f"'{word}' 검색: {len(rows)}건 중 기간 내 신규 {len(pick)}건")
         for r in pick:
