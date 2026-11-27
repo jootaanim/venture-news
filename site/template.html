@@ -86,7 +86,7 @@ button.chip.on{background:var(--chip-on);color:var(--chip-on-ink);border-color:v
 .k1{--c:var(--k1c);--t:var(--k1t)}.k2{--c:var(--k2c);--t:var(--k2t)}.k3{--c:var(--k3c);--t:var(--k3t)}.k4{--c:var(--k4c);--t:var(--k4t)}.k5{--c:var(--k5c);--t:var(--k5t)}
 /* 한 줄 표시: 왼쪽에 종류(길면 … 처리), 오른쪽에 건수는 항상 보인다 */
 .evp,.dot{display:flex;align-items:center;gap:4px;margin-top:3px;padding:1px 6px;border-radius:2px;font-size:var(--chipfs,11px);line-height:1.55;white-space:nowrap;background:rgba(var(--c),var(--a));color:var(--t)}
-.evp{font-weight:700}
+.evp{font-weight:700;padding:1px 4px;gap:3px}  /* 마감·심사·발표 칸도 계획·최종 칸과 같은 여백(글자 크기 계산 기준이 같도록) */
 .dot{--a:.08;font-weight:500}
 /* 게시일 칩: 종류마다 한 줄('계획 1'), 종류가 여러 개면 다음 줄에 이어서 쌓는다. 글자는 작게 */
 .dots{display:flex;flex-direction:column;align-items:flex-start;gap:2px;margin-top:3px}
@@ -283,8 +283,8 @@ const MAXD=String(Math.max(1,...Object.values(D.filter(d=>d.kind==="notice").red
 function fitCal(){const cal=$("cal");if(!cal)return;
  const day=cal.querySelector(".day:not(.out)");if(!day)return;
  const ds=getComputedStyle(day),avail=day.clientWidth-parseFloat(ds.paddingLeft)-parseFloat(ds.paddingRight);
- const chip=cal.querySelector(".dots .dot")||cal.querySelector(".evp");
- let fixed=8+3;if(chip){const cs=getComputedStyle(chip);fixed=parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight)+parseFloat(cs.columnGap||cs.gap||3)}
+ // 칸 종류(계획·최종 / 마감·심사·발표)마다 여백이 다를 수 있으니 가장 넓은 쪽을 기준으로 한다
+ let fixed=8+3;cal.querySelectorAll(".dots .dot,.evp").forEach((chip,i)=>{const cs=getComputedStyle(chip);const f=parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight)+parseFloat(cs.columnGap||cs.gap||3);fixed=i?Math.max(fixed,f):f});
  _cv.font=`700 100px ${getComputedStyle(document.body).fontFamily}`;
  const w100=Math.max(_cv.measureText("접수 "+"9".repeat(MAXD)).width,_cv.measureText("마감 9").width);
  if(!avail||!w100)return;
