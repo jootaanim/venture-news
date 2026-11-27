@@ -52,6 +52,9 @@ jobs:
       # 기업은행: robots.txt는 막혀 있으나 2026-11-27 기업은행 허용 답변에 따라 수집(docs/수집허용.md).
       - run: python scripts/collect_ibk.py
         continue-on-error: true
+      # 농업정책보험금융원: robots.txt는 막혀 있으나 2026-11-27 허용 답변에 따라 수집(docs/수집허용.md).
+      - run: python scripts/collect_apfs.py
+        continue-on-error: true
       - run: python scripts/collect_shinhanam.py
         continue-on-error: true
       - run: python scripts/collect_shinhanvc.py
