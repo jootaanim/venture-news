@@ -1,4 +1,4 @@
-"""출자사업 공고문 PDF에서 접수마감·심사·선정발표 일정을 뽑아 data/events.json에 저장한다.
+"""출자사업 공고문 첨부파일(PDF·한글 hwp/hwpx·워드 docx/doc)에서 접수마감·심사·선정발표 일정을 뽑아 data/events.json에 저장한다.
 
 원칙
 - 공고문에 날짜(연·월·일)가 적혀 있을 때만 기록한다. "12월 중"처럼 일이 없으면 추정하지 않고 비워 둔다(미정).
@@ -30,6 +30,10 @@ import olefile
 import requests
 from pypdf import PdfReader
 
+from cabundle import ca_bundle
+
+CA = ca_bundle()  # 중간 인증서를 빠뜨린 서버(수출입은행·신한벤처투자)도 검증을 켠 채 접속
+
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "events.json"
 CACHE = ROOT / ".cache" / "pdf_text"
@@ -39,6 +43,12 @@ SKIP_HOSTS = {
     "www.kpasset.go.kr": "구형 암호화 방식 허용 여부가 정해지지 않음",
 }
 TARGET_CATEGORIES = {"출자계획", "선정공고"}
+DOC_EXT = (".pdf", ".hwp", ".hwpx", ".docx", ".doc")  # 공고문으로 읽는 첨부파일 종류(PDF·한글·워드)
+def bare_name(name):
+    """'공고문.pdf (76 KB)'처럼 뒤에 붙은 파일 크기 표기를 떼어 낸 파일 이름."""
+    return re.sub(r"\s*\(\s*[\d.,]+\s*[KMG]?B\s*\)\s*$", "", name, flags=re.I)
+
+
 SKIP_NAME = re.compile(r"서식|양식|매뉴얼|신청서|제출서류|질의|FAQ|안내문|동의서", re.I)
 
 DATE_FULL = re.compile(r"(20\d\d)\s*[.\-년]\s*(\d{1,2})\s*[.\-월]\s*(\d{1,2})\s*일?")
@@ -66,15 +76,19 @@ def robots_for(url, cache={}):
     if base in cache:
         return cache[base]
     rp = RobotFileParser()
-    try:
-        r = requests.get(base + "/robots.txt", headers={"User-Agent": UA}, timeout=20)
+    cache[base] = False  # 확인 실패 = 안전하게 받지 않음
+    for attempt in range(3):  # 연결을 자주 끊는 서버(수출입은행)가 있어 몇 번 다시 시도한다
+        try:
+            r = requests.get(base + "/robots.txt", headers={"User-Agent": UA}, timeout=20, verify=CA)
+        except requests.RequestException:
+            time.sleep(3 * (attempt + 1))
+            continue
         if r.status_code == 200 and "<html" not in r.text[:300].lower():
             rp.parse(r.text.splitlines())
             cache[base] = rp
         else:
             cache[base] = None  # robots.txt 없음 = 제한 없음
-    except requests.RequestException:
-        cache[base] = False  # 확인 실패 = 안전하게 받지 않음
+        break
     return cache[base]
 
 
@@ -101,6 +115,7 @@ def fetch_pdf(item, att, last_hit):
         time.sleep(wait)
     s = requests.Session()
     s.headers["User-Agent"] = UA
+    s.verify = CA
     headers = {"Referer": item["url"]}  # 공지 페이지에서 링크를 누른 것과 같은 정상 흐름
     for attempt in range(2):
         try:
@@ -122,13 +137,25 @@ def doc_kind(b):
     if b[:4] == b"%PDF":
         return "pdf"
     if b[:8] == bytes.fromhex("D0CF11E0A1B11AE1"):
-        return "hwp"
+        try:
+            ole = olefile.OleFileIO(io.BytesIO(b))
+        except Exception:
+            return None
+        if ole.exists("FileHeader"):
+            return "hwp"
+        if ole.exists("WordDocument"):
+            return "doc"
+        return None
     if b[:2] == b"PK":
         try:
             names = zipfile.ZipFile(io.BytesIO(b)).namelist()
-            return "hwpx" if any(n.startswith("Contents/") for n in names) else None
         except zipfile.BadZipFile:
             return None
+        if any(n.startswith("Contents/") for n in names):
+            return "hwpx"
+        if "word/document.xml" in names:
+            return "docx"
+        return None
     return None
 
 
@@ -191,8 +218,29 @@ def hwpx_text(data):
     return "\n".join(txt), None
 
 
+def docx_text(data):
+    """워드(.docx) 본문 글자. 문단(</w:p>)과 표 칸(</w:tc>)마다 줄을 바꾼다."""
+    xml = zipfile.ZipFile(io.BytesIO(data)).read("word/document.xml").decode("utf-8", "replace")
+    xml = re.sub(r"</w:p>|</w:tc>", "\n", xml)
+    xml = re.sub(r"<w:tab/>", " ", xml)
+    return re.sub(r"<[^>]+>", "", xml), None
+
+
+def word97_text(data):
+    """옛 워드(.doc) 본문 글자. 정확한 구조 해석 대신 본문 스트림에서 UTF-16 글자 덩어리를 모은다."""
+    ole = olefile.OleFileIO(io.BytesIO(data))
+    raw = ole.openstream("WordDocument").read()
+    runs = re.findall(r"(?:[\x20-\x7e·‘-”　-〿가-힣！-～\r\n\t]){4,}",
+                      raw.decode("utf-16le", "ignore"))
+    return "\n".join(runs).replace("\r", "\n"), None
+
+
 def doc_text(data):
     kind = doc_kind(data)
+    if kind == "docx":
+        return docx_text(data)
+    if kind == "doc":
+        return word97_text(data)
     if kind == "pdf":
         return pdf_text(data)
     if kind == "hwp":
@@ -299,12 +347,47 @@ def save(records):
     OUT.write_text(json.dumps(records, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
+RANK = {"ok": 3, "no_date": 2, "no_text": 1}
+
+
+def read_one(cache_key, it, att, last_hit):
+    """첨부파일 하나를 받아(또는 캐시에서) 일정을 뽑은 기록을 돌려준다."""
+    # 다시 읽을 때 같은 파일을 또 받지 않도록 글자만 로컬에 캐시한다(.cache는 저장소에 올리지 않는다).
+    cfile = CACHE / (re.sub(r"[^0-9A-Za-z가-힣_-]", "_", cache_key) + ".txt")
+    cached = cfile.read_text(encoding="utf-8") if cfile.exists() else None
+    if cached is not None:
+        data, status, note = b"cached", "ok", ""
+    else:
+        data, status, note = fetch_pdf(it, att, last_hit)
+    rec = {"source": it["source"], "title": it["title"], "url": it["url"], "published": it["published"],
+           "file": att["name"], "status": status, "note": note, "events": [], "tried": str(date.today())}
+    if data:
+        try:
+            if cached is not None:
+                text, pages = cached, None
+            else:
+                text, pages = doc_text(data)
+                CACHE.mkdir(parents=True, exist_ok=True)
+                cfile.write_text(text, encoding="utf-8")
+            rec["pages"] = pages
+            if len(text.strip()) < 50:
+                rec["status"], rec["note"] = "no_text", "텍스트가 없는 문서(스캔본 가능성)"
+            else:
+                rec["events"] = extract_events(text, it["published"])
+                rec["status"] = "ok" if rec["events"] else "no_date"
+        except Exception as e:
+            rec["status"], rec["note"] = "parse_failed", type(e).__name__
+    return rec
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--since", default=str(date.today() - timedelta(days=183)))
     ap.add_argument("--limit", type=int, default=60)
     ap.add_argument("--retry-days", type=int, default=3, help="다운로드 실패 건을 다시 시도하기까지의 일수")
     ap.add_argument("--redo", action="store_true", help="이미 처리한 공고도 다시 처리")
+    ap.add_argument("--redo-status", default="", help="이 상태(쉼표로 여러 개)로 기록된 공고만 다시 처리. 예: no_date,parse_failed")
+    ap.add_argument("--skip-source", default="", help="이번에 건너뛸 기관(쉼표로 여러 개)")
     args = ap.parse_args()
 
     records = load()
@@ -317,49 +400,35 @@ def main():
                 continue
             key = f'{it["source"]}-{it["id"]}'
             old = records.get(key)
-            if old and not args.redo and old["status"] != "download_failed":
+            if it["source"] in set(filter(None, args.skip_source.split(","))):
+                continue
+            redo_this = args.redo or (old and old["status"] in set(filter(None, args.redo_status.split(","))))
+            if old and not redo_this and old["status"] != "download_failed":
                 continue
             if old and old["status"] == "download_failed" and old.get("tried", "") > str(date.today() - timedelta(days=args.retry_days)):
                 continue
-            pdfs = [a for a in it.get("attachments", []) if a.get("url") and a["name"].lower().endswith((".pdf", ".hwp", ".hwpx")) and not SKIP_NAME.search(a["name"])]
+            pdfs = [a for a in it.get("attachments", []) if a.get("url") and bare_name(a["name"]).lower().endswith(DOC_EXT) and not SKIP_NAME.search(a["name"])]
             if not pdfs:
                 records[key] = {"source": it["source"], "title": it["title"], "url": it["url"], "published": it["published"],
                                 "status": "no_pdf", "events": [], "tried": str(date.today())}
                 continue
             # 공고문 이름이 들어간 파일을 먼저, 같은 조건이면 PDF를 한글 파일보다 먼저 쓴다.
-            pdfs.sort(key=lambda a: (0 if re.search(r"공고|계획", a["name"]) else 1, 0 if a["name"].lower().endswith(".pdf") else 1))
-            todo.append((key, it, pdfs[0]))
+            pdfs.sort(key=lambda a: (0 if re.search(r"공고|계획", a["name"]) else 1, 0 if bare_name(a["name"]).lower().endswith(".pdf") else 1))
+            todo.append((key, it, pdfs[:3]))  # 첫 파일에 날짜가 없으면 다음 파일(최대 3개)도 읽는다
 
     todo.sort(key=lambda t: t[1]["published"], reverse=True)
     todo = todo[: args.limit]
     print(f"대상 {len(todo)}건")
     last_hit = {}
-    for key, it, att in todo:
-        # 다시 읽을 때 같은 PDF를 또 받지 않도록 글자만 로컬에 캐시한다(.cache는 저장소에 올리지 않는다).
-        cfile = CACHE / (re.sub(r"[^0-9A-Za-z가-힣_-]", "_", key) + ".txt")
-        cached = cfile.read_text(encoding="utf-8") if cfile.exists() else None
-        if cached is not None:
-            data, status, note = b"cached", "ok", ""
-        else:
-            data, status, note = fetch_pdf(it, att, last_hit)
-        rec = {"source": it["source"], "title": it["title"], "url": it["url"], "published": it["published"],
-               "file": att["name"], "status": status, "note": note, "events": [], "tried": str(date.today())}
-        if data:
-            try:
-                if cached is not None:
-                    text, pages = cached, None
-                else:
-                    text, pages = doc_text(data)
-                    CACHE.mkdir(parents=True, exist_ok=True)
-                    cfile.write_text(text, encoding="utf-8")
-                rec["pages"] = pages
-                if len(text.strip()) < 50:
-                    rec["status"], rec["note"] = "no_text", "텍스트가 없는 PDF(스캔본 가능성)"
-                else:
-                    rec["events"] = extract_events(text, it["published"])
-                    rec["status"] = "ok" if rec["events"] else "no_date"
-            except Exception as e:
-                rec["status"], rec["note"] = "parse_failed", type(e).__name__
+    for key, it, atts in todo:
+        rec = None
+        for n, att in enumerate(atts):
+            r = read_one(key if n == 0 else f"{key}__{n}", it, att, last_hit)
+            # 날짜를 찾은 파일, 아니면 가장 진척된 결과를 남긴다(ok > no_date > 그 외)
+            if rec is None or RANK.get(r["status"], 0) > RANK.get(rec["status"], 0):
+                rec = r
+            if r["status"] == "ok":
+                break
         records[key] = rec
         print(f"[{rec['status']}] {it['source']} {it['published']} {it['title'][:36]} -> {[(e['type'], e['date']) for e in rec['events']]} {rec['note']}")
         save(records)
