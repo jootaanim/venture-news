@@ -321,7 +321,7 @@ def main():
                 continue
             if old and old["status"] == "download_failed" and old.get("tried", "") > str(date.today() - timedelta(days=args.retry_days)):
                 continue
-            pdfs = [a for a in it.get("attachments", []) if a["name"].lower().endswith((".pdf", ".hwp", ".hwpx")) and not SKIP_NAME.search(a["name"])]
+            pdfs = [a for a in it.get("attachments", []) if a.get("url") and a["name"].lower().endswith((".pdf", ".hwp", ".hwpx")) and not SKIP_NAME.search(a["name"])]
             if not pdfs:
                 records[key] = {"source": it["source"], "title": it["title"], "url": it["url"], "published": it["published"],
                                 "status": "no_pdf", "events": [], "tried": str(date.today())}

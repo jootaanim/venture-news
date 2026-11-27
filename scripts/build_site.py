@@ -82,7 +82,7 @@ for it in sorted(items, key=lambda x: x["published"], reverse=True):
 items = deduped
 
 # 다른 기관이 대신 공고하는 출자사업의 실제 출자자. 예: 한국성장금융이 공고하는 'IBK 혁신펀드'는 기업은행 출자.
-# 기업은행 공식 게시판은 robots.txt로 자동 수집을 막아 두어, 허용된 기관 게시판에 올라온 IBK 출자사업을 기업은행으로도 묶는다.
+# 기업은행이 직접 올린 공고(collect_ibk.py)와 다른 기관이 대신 올린 IBK 출자사업을 '기은' 버튼 하나로 묶는다.
 FUNDER_RULES = [("기업은행", re.compile(r"IBK|기업은행"))]
 
 
