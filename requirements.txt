@@ -2,3 +2,4 @@ requests>=2.31
 beautifulsoup4>=4.12
 pypdf>=4.0
 olefile>=0.46
+certifi>=2026.11.20  # 신한벤처투자 새 인증서의 루트(Sectigo R46)가 들어 있는 버전

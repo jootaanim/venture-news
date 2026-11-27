@@ -75,8 +75,11 @@ jobs:
           git config user.email "bot@users.noreply.github.com"
           git add data
           git diff --cached --quiet || git commit -m "data: 출자사업 공지 갱신"
-          git pull --rebase -X theirs || true
-          git push
+          # 빌드로 바뀐 site/index.html 때문에 pull이 거부되지 않도록 autostash. 그사이 다른 푸시가 있으면 몇 번 다시 시도한다.
+          for i in 1 2 3; do
+            git pull --rebase --autostash -X theirs && git push && break
+            sleep 5
+          done
       - name: 배포용 폴더 정리
         run: |
           mkdir public
