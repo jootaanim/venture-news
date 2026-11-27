@@ -81,6 +81,17 @@ for it in sorted(items, key=lambda x: x["published"], reverse=True):
     deduped.append(it)
 items = deduped
 
+# 다른 기관이 대신 공고하는 출자사업의 실제 출자자. 예: 한국성장금융이 공고하는 'IBK 혁신펀드'는 기업은행 출자.
+# 기업은행 공식 게시판은 robots.txt로 자동 수집을 막아 두어, 허용된 기관 게시판에 올라온 IBK 출자사업을 기업은행으로도 묶는다.
+FUNDER_RULES = [("기업은행", re.compile(r"IBK|기업은행"))]
+
+
+def funders(it):
+    if it.get("kind", "notice") != "notice":
+        return []
+    return [name for name, rx in FUNDER_RULES if name != it["source"] and rx.search(it["title"])]
+
+
 from kdb_url import detail_url  # 산업은행은 글 상세 주소를 계산해서 쓴다(scripts/kdb_url.py)
 
 
@@ -102,6 +113,7 @@ slim = [
         "date": it["published"],
         "url": pick_url(it),
         "files": len(it.get("attachments", [])),
+        "also": funders(it),
     }
     for it in items
 ]
@@ -133,6 +145,7 @@ if ev_file.exists():
                 events.append({
                     "d": e["date"], "t": e["type"], "src": rec["source"],
                     "title": " ".join(rec["title"].split()), "url": link_of.get(key, rec["url"]),
+                    "also": [n for n, rx in FUNDER_RULES if rx.search(rec["title"])],
                     "ev": " ".join(e["evidence"].split()), "file": rec.get("file", ""),
                 })
 events.sort(key=lambda x: (x["d"], x["t"]))

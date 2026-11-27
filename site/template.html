@@ -145,7 +145,7 @@ footer{margin-top:36px;padding:20px 0 56px;border-top:4px solid var(--rule);colo
       <div class="sbox"><input id="qn" type="search" placeholder="공고 제목 검색"><button class="chip" id="resetN">초기화</button></div>
       <div class="fbody"><div id="srcs"></div><div id="chips"></div></div>
       <p class="meta note">자동 수집이 되지 않는 기관은 이 목록에 없습니다. 공고는 공식 사이트에서 직접 확인하세요:
-        <a href="https://www.ibk.co.kr/cyber/noticeListCyber.ibk?pageId=IR03010400" target="_blank" rel="noopener" title="자동 수집 허용 안 됨">IBK기업은행 공고 게시판</a> ·
+        <a href="https://www.ibk.co.kr/cyber/noticeListCyber.ibk?pageId=IR03010400" target="_blank" rel="noopener" title="기업은행 공식 게시판은 자동 수집 허용 안 됨. '기은' 버튼은 한국성장금융 등이 대신 공고한 IBK 출자사업">IBK기업은행 공고 게시판(직접 공고)</a> ·
         <a href="https://www.apfs.kr/front/board/boardContentsListPage.do?boardId=10026&amp;menuId=41#none" target="_blank" rel="noopener" title="자동 수집 허용 안 됨">농업정책보험금융원 공고 게시판</a> ·
         <a href="https://www.sema.or.kr/sema/bbs/B0000022/list.do?menuNo=200017&amp;optn1=S" target="_blank" rel="noopener" title="접속이 불안정할 수 있음">과학기술인공제회 공고 게시판</a> ·
         <a href="https://www.kpasset.go.kr/board.es?mid=a10510000000&amp;bid=0042" target="_blank" rel="noopener" title="자동 수집 안 함">우정사업본부 공고 게시판</a></p>
@@ -194,10 +194,10 @@ const LBL={"선정결과":"최종선정"};   // 화면에 보이는 이름(데�
 const NEWS_CATS=["VC·펀드","출자·LP","벤처기업"];                              // 뉴스 분류
 const PUBS=["더벨","딜사이트"];                                                // 최우선 매체
 // 기관 버튼은 공고를 많이 낸 순서로 정렬한다.
-const noticeCount={};D.forEach(d=>{if(d.kind==="notice")noticeCount[d.src]=(noticeCount[d.src]||0)+1});
+const noticeCount={};D.forEach(d=>{if(d.kind==="notice")[d.src,...(d.also||[])].forEach(s=>noticeCount[s]=(noticeCount[s]||0)+1)});
 const SRCS=Object.keys(noticeCount).sort((a,b)=>noticeCount[b]-noticeCount[a]||a.localeCompare(b,"ko"));
 // 기관 버튼에 쓰는 줄임말(데이터의 기관 이름은 그대로 두고 버튼 글자만 바꾼다).
-const SHORT={"한국벤처투자":"모태","한국성장금융":"성장금융","산업은행":"산은","수출입은행":"수은","신한자산운용":"신한자산","우리자산운용":"우리자산","키움인베스트먼트":"키움인베","교직원공제회":"교공","군인공제회":"군공","신한벤처투자":"신벤"};
+const SHORT={"한국벤처투자":"모태","한국성장금융":"성장금융","산업은행":"산은","수출입은행":"수은","신한자산운용":"신한자산","우리자산운용":"우리자산","키움인베스트먼트":"키움인베","교직원공제회":"교공","군인공제회":"군공","신한벤처투자":"신벤","기업은행":"기은"};
 // 상태: 출자사업 필터(src, cat)는 달력과 공고문 카드에, 뉴스 필터(npub, ncat)는 최근 소식 카드에만 적용된다.
 let src="전체",cat="전체",npub="전체",ncat="전체",qN="",qA="",selDay=null,limit=40,dlimit=40;
 const KC={"출자계획":"k1","선정결과":"k2","접수현황":"k3","서류결과":"k4"};
@@ -212,11 +212,11 @@ const hitA=d=>!qA||d.title.toLowerCase().includes(qA);
 // 공고문 PDF에서 뽑은 일정. 기관 필터만 따른다.
 const EV=window.EVENTS||[];
 const EVC={"접수마감":"e1","서류심사":"e2","PT심사":"e2","선정발표":"e3"};
-const okE=e=>src==="전체"||e.src===src;
+const okE=e=>src==="전체"||e.src===src||(e.also||[]).includes(src);
 // 달력 칸 안의 약칭(좁은 칸에서도 한 줄에 들어가도록). 전체 이름은 마우스를 올리면 보인다.
 const EVS={"접수마감":"마감","서류심사":"심사","PT심사":"심사","선정발표":"발표"};
 const CS={"출자계획":"계획","선정결과":"최종","접수현황":"접수","서류결과":"서류","질의응답":"질의","기타":"기타"};
-const okN=d=>d.kind==="notice"&&(cat==="전체"||d.cat===cat)&&(src==="전체"||d.src===src)&&hitN(d);
+const okN=d=>d.kind==="notice"&&(cat==="전체"||d.cat===cat)&&(src==="전체"||d.src===src||(d.also||[]).includes(src))&&hitN(d);
 const okA=d=>d.kind==="article"&&(npub==="전체"||d.pub===npub)&&(ncat==="전체"||d.cat===ncat)&&hitA(d);
 const btn=(on,attrs,label)=>`<button class="chip ${on?"on":""}" ${attrs}>${label}</button>`;
 function chips(){
