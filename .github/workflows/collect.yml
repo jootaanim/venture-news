@@ -45,6 +45,9 @@ jobs:
         continue-on-error: true
       - run: python scripts/collect_nps.py
         continue-on-error: true
+      # 과학기술인공제회: 서버가 느려(요청당 20~30초) 검색 4번만 한다.
+      - run: python scripts/collect_sema.py
+        continue-on-error: true
       # 금융그룹 계열 운용사·VC의 출자사업 공고(신한벤처투자는 certs/ 의 공식 중간 인증서로 검증).
       # 기업은행: robots.txt는 막혀 있으나 2026-11-27 기업은행 허용 답변에 따라 수집(docs/수집허용.md).
       - run: python scripts/collect_ibk.py
