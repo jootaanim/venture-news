@@ -90,6 +90,8 @@ def main():
     ap.add_argument("--since", default=str(date.today() - timedelta(days=183)),
                     help="이 날짜 이전 글은 수집하지 않음 (YYYY-MM-DD)")
     ap.add_argument("--max-pages", type=int, default=100)
+    ap.add_argument("--resume", action="store_true",
+                    help="과거 자료 채우기: 이미 저장한 글만 있는 페이지에서도 멈추지 않고 --since까지 계속 간다")
     args = ap.parse_args()
 
     items = load()
@@ -105,7 +107,11 @@ def main():
         print(f"{page}페이지: {len(rows)}건 중 신규 {len(fresh)}건, 기간 내 {len(in_range)}건")
         for r in in_range:
             time.sleep(DELAY)
-            detail = parse_detail(get("notice_view.asp", idx=r["id"], tab=1))
+            try:
+                detail = parse_detail(get("notice_view.asp", idx=r["id"], tab=1))
+            except RuntimeError as e:  # 한 글이 안 열려도 나머지는 계속 받는다(다음 실행 때 다시 시도)
+                print(f"  idx={r['id']} 건너뜀: {e}", file=sys.stderr)
+                continue
             items[r["id"]] = {
                 "id": r["id"],
                 "source": "한국성장금융",
@@ -117,7 +123,8 @@ def main():
                 **detail,
             }
             new_count += 1
-        if not fresh or all(r["published"] < args.since for r in rows):
+            save(items)  # 요청 간격이 60초라 오래 걸리므로 한 건마다 저장해 중간에 끊겨도 받은 만큼은 남긴다
+        if (not fresh and not args.resume) or all(r["published"] < args.since for r in rows):
             break
         time.sleep(DELAY)
 
