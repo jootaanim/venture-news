@@ -5,7 +5,8 @@
 
 - 목록: POST https://www.apfs.kr/front/board/boardContentsList.do (miv_pageNo=N, 한 페이지 15건)
 - 상세: https://www.apfs.kr/front/board/boardContentsView.do?boardId=10026&menuId=41&contId=번호 (GET으로 열림)
-- 목록만 읽고(상세·첨부파일은 받지 않음) 이미 저장한 글까지 오면 멈춘다. 요청 간격 3초.
+- 목록을 읽고, 새 출자사업 글만 상세 페이지를 한 번 열어 첨부파일 주소를 저장한다(2026-11-27 첨부파일까지 허용 답변).
+  공고문 파일은 extract_dates.py가 받는다. 이미 저장한 글까지 오면 멈춘다. 요청 간격 3초.
 - 게시판에는 채용·행사 안내도 섞여 있어 제목 키워드로 출자사업 관련만 남긴다. 기본 수집 기간: 최근 6개월.
 """
 import argparse
@@ -78,6 +79,23 @@ def parse_list(page_html):
     return rows
 
 
+def fetch_files(cont_id):
+    """상세 페이지에서 첨부파일 이름과 다운로드 주소(GET)를 읽는다(2026-11-27 첨부파일까지 허용 답변)."""
+    for attempt in range(3):
+        try:
+            r = requests.get(BASE + VIEW.format(cont_id), headers=HEADERS, timeout=40)
+            r.raise_for_status()
+            break
+        except requests.RequestException as e:
+            print(f"  상세 요청 실패({attempt + 1}/3): {e}", file=sys.stderr)
+            time.sleep(3 * (attempt + 1))
+    else:
+        return None
+    soup = BeautifulSoup(r.content.decode("utf-8", errors="replace"), "html.parser")
+    return [{"name": clean(a.get("download") or a.get_text()), "url": BASE + a["href"]}
+            for a in soup.select("a[href*='fileidDownLoad.do']")]
+
+
 def load():
     if OUT.exists():
         return {it["id"]: it for it in json.loads(OUT.read_text(encoding="utf-8"))}
@@ -94,6 +112,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--since", default=str(date.today() - timedelta(days=183)))
     ap.add_argument("--max-pages", type=int, default=5)
+    ap.add_argument("--fill-files", action="store_true", help="저장된 글 중 첨부 주소가 없는 글의 상세 페이지를 읽어 채운다(한 번만)")
     args = ap.parse_args()
 
     items = load()
@@ -107,14 +126,24 @@ def main():
         pick = [r for r in rows if r["id"] not in items and r["published"] >= args.since and KEYWORDS.search(r["title"])]
         print(f"{page}페이지: {len(rows)}건 중 기간 내 신규 출자 관련 {len(pick)}건")
         for r in pick:
+            time.sleep(DELAY)
+            files = fetch_files(r["id"])
             items[r["id"]] = {"id": r["id"], "source": "농업정책보험금융원", "kind": "notice",
                               "category": classify(r["title"]), "title": r["title"], "published": r["published"],
                               "url": BASE + VIEW.format(r["id"]),
-                              "attachments": [{"name": n, "url": ""} for n in r["files"]]}
+                              "attachments": files if files is not None else [{"name": n, "url": ""} for n in r["files"]]}
             new_count += 1
         normal = [r for r in rows if not r["pinned"]]  # 맨 위 고정글은 매 페이지 반복되므로 멈춤 판단에서 뺀다
         if not normal or all(r["id"] in items for r in normal) or all(r["published"] < args.since for r in normal):
             break
+    if args.fill_files:
+        for it in items.values():
+            if it["attachments"] and not any(a.get("url") for a in it["attachments"]):
+                time.sleep(DELAY)
+                files = fetch_files(it["id"])
+                if files:
+                    it["attachments"] = files
+                    print(f"  첨부 주소 채움: {it['published']} {it['title'][:40]} ({len(files)}개)")
     save(items)
     print(f"완료: 신규 {new_count}건, 전체 {len(items)}건 -> {OUT}")
 

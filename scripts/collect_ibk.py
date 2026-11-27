@@ -5,7 +5,8 @@
 
 - 목록: https://www.ibk.co.kr/cyber/noticeListCyber.ibk?pageId=IR03010400&pageNum=N (GET, 한 페이지 10건)
 - 상세: https://www.ibk.co.kr/cyber/noticeDetailCyber.ibk?pageId=IR03010400&srno=번호 (GET으로 열림)
-- 첨부파일은 POST 다운로드라 링크 대신 파일 이름만 기록한다.
+- 첨부파일은 POST 다운로드(/common/download.ibk)라 받을 때 쓸 값을 함께 저장한다. 공고문은 extract_dates.py가 받는다
+  (2026-11-27 첨부파일까지 허용 답변).
 - 부담을 줄이기 위해 목록만 읽고(상세는 읽지 않음), 이미 저장한 글을 만나면 멈춘다. 요청 간격 3초.
 - 게시판에는 채용·입찰 공고도 섞여 있어 제목 키워드로 출자 관련만 남긴다. 기본 수집 기간: 최근 6개월.
 """
@@ -77,8 +78,13 @@ def parse_list(html):
         pub = to_date(tr.get_text(" "))
         if not (m and pub):
             continue
-        files = [re.search(r"downloadFile\('\d+','[^']*','([^']*)'", x.get("href", "") + x.get("onclick", "")).group(1)
-                 for x in tr.select("a") if "downloadFile" in (x.get("href", "") + x.get("onclick", ""))]
+        files = []
+        for x in tr.select("a"):
+            m2 = re.search(r"downloadFile\('(\d+)','([^']*)','([^']*)',\s*'([^']*)'", x.get("href", "") + x.get("onclick", ""))
+            if m2:  # 첨부파일은 POST로 받는다(/common/download.ibk). 받을 때 쓸 값을 같이 저장한다.
+                files.append({"name": m2.group(3), "url": f"{BASE}/common/download.ibk",
+                              "post": {"seq": m2.group(1), "fullName": m2.group(2), "fileName": m2.group(3),
+                                       "category": "" if m2.group(4) == "null" else m2.group(4)}})
         rows.append({"id": int(m.group(1)), "title": clean(a.get_text()), "published": pub, "files": files})
     return rows
 
@@ -116,7 +122,7 @@ def main():
             items[r["id"]] = {"id": r["id"], "source": "기업은행", "kind": "notice", "category": classify(r["title"]),
                               "title": r["title"], "published": r["published"],
                               "url": f"{BASE}{DETAIL}?pageId={PAGE_ID}&srno={r['id']}",
-                              "attachments": [{"name": n, "url": ""} for n in r["files"]]}
+                              "attachments": r["files"]}
             new_count += 1
         if len(fresh) < len(rows) or all(r["published"] < args.since for r in rows):
             break

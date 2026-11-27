@@ -995,9 +995,18 @@
   "title": "「정책금융기관 글로벌 스케일업 협력펀드」출자사업 위탁운용사 선정계획 공고",
   "url": "https://www.ibk.co.kr/cyber/noticeDetailCyber.ibk?pageId=IR03010400&srno=317190",
   "published": "2026-09-07",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "「정책금융기관 글로벌 스케일업 협력펀드」 위탁운용사 선정계획 공고.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2026-09-30",
+    "evidence": "접수일시 및 접수처 ○ 2026년 9월 30일"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 9
  },
  "과학기술인공제회-149398": {
   "source": "과학기술인공제회",
@@ -1049,9 +1058,18 @@
   "title": "농림수산식품모태펀드 '26년 5차 추가 출자사업(농식품 계정) 공고",
   "url": "https://www.apfs.kr/front/board/boardContentsView.do?boardId=10026&menuId=41&contId=15257",
   "published": "2026-10-28",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "261028 (붙임) `26년 5차 추가 출자사업(농식품투자 계정) 계획 공고(안)_홈페이지.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2026-11-13",
+    "evidence": "2026년 11월 13일 제안서접수 마감"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 14
  },
  "농업정책보험금융원-15215": {
   "source": "농업정책보험금융원",
@@ -1067,45 +1085,90 @@
   "title": "농림수산식품모태펀드 '26년 4차 추가 출자사업(농식품투자 계정) 공고",
   "url": "https://www.apfs.kr/front/board/boardContentsView.do?boardId=10026&menuId=41&contId=15211",
   "published": "2026-09-04",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "260904 (붙임) `26년 4차 추가 출자사업(농식품투자 계정) 계획 공고(안)_홈페이지.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2026-09-30",
+    "evidence": "2026년 9월 30일 제안서 접수 마감"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 19
  },
  "농업정책보험금융원-15166": {
   "source": "농업정책보험금융원",
   "title": "농림수산식품모태펀드 '26년 3차 추가 출자사업(농식품투자 계정) 공고",
   "url": "https://www.apfs.kr/front/board/boardContentsView.do?boardId=10026&menuId=41&contId=15166",
   "published": "2026-07-10",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "260710 (붙임) `26년 3차 추가 출자사업(농식품투자 계정) 계획 공고(안)_홈페이지.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2026-08-03",
+    "evidence": "2026. 8. 3. 제안서 접수 마감"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 16
  },
  "농업정책보험금융원-15099": {
   "source": "농업정책보험금융원",
   "title": "농림수산식품모태펀드 '26년 2차 추가 출자사업(농식품투자 계정) 공고",
   "url": "https://www.apfs.kr/front/board/boardContentsView.do?boardId=10026&menuId=41&contId=15099",
   "published": "2026-05-13",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "260513 (붙임) `26년 2차 추가 출자사업(농식품투자 계정) 계획 공고(안)_홈페이지.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2026-05-29",
+    "evidence": "2026. 5. 29. 제안서 접수 마감"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 16
  },
  "농업정책보험금융원-15018": {
   "source": "농업정책보험금융원",
   "title": "농림수산식품모태펀드 '26년 추가 출자사업(농식품투자 계정) 공고",
   "url": "https://www.apfs.kr/front/board/boardContentsView.do?boardId=10026&menuId=41&contId=15018",
   "published": "2026-04-01",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "260331 (붙임) `26년 추가 출자사업(농식품투자 계정) 계획 공고(안)_홈페이지.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2026-04-30",
+    "evidence": "2026. 4. 30. 제안서 접수 마감"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 21
  },
  "농업정책보험금융원-14951": {
   "source": "농업정책보험금융원",
   "title": "농림수산식품모태펀드 '26년 정기 출자사업(수산투자 계정) 공고",
   "url": "https://www.apfs.kr/front/board/boardContentsView.do?boardId=10026&menuId=41&contId=14951",
   "published": "2026-03-04",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "260304 (붙임) `26년 정기 출자사업(수산투자 계정) 계획 공고(안)_홈페이지(1).pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2026-03-31",
+    "evidence": "2026. 3. 31. 제안서 접수 마감"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 11
  },
  "농업정책보험금융원-14902": {
   "source": "농업정책보험금융원",
@@ -1121,45 +1184,90 @@
   "title": "농림수산식품모태펀드 '26년 정기 출자사업(농식품투자 계정) 공고",
   "url": "https://www.apfs.kr/front/board/boardContentsView.do?boardId=10026&menuId=41&contId=14900",
   "published": "2026-02-02",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "260202 (붙임) `26년 정기 출자사업(농식품투자 계정) 계획 공고_홈페이지.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2026-02-27",
+    "evidence": "2026. 2. 27. 제안서 접수 마감"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 17
  },
  "농업정책보험금융원-14797": {
   "source": "농업정책보험금융원",
   "title": "농림수산식품모태펀드 '25년 5차 추가 출자사업(농식품투자 계정) 공고",
   "url": "https://www.apfs.kr/front/board/boardContentsView.do?boardId=10026&menuId=41&contId=14797",
   "published": "2025-11-04",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "(붙임) `25년 5차 추가 출자사업(농식품투자 계정) 계획 공고_홈페이지.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2025-11-14",
+    "evidence": "2025. 11. 14. 제안서 접수마감"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 10
  },
  "농업정책보험금융원-14754": {
   "source": "농업정책보험금융원",
   "title": "농림수산식품모태펀드 '25년 4차 추가 출자사업(농식품투자 계정) 공고",
   "url": "https://www.apfs.kr/front/board/boardContentsView.do?boardId=10026&menuId=41&contId=14754",
   "published": "2025-09-26",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "(붙임) `25년 4차 추가 출자사업(농식품투자 계정) 계획 공고_홈페이지.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2025-10-15",
+    "evidence": "2025. 10. 15. 제안서 접수마감"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 10
  },
  "농업정책보험금융원-14716": {
   "source": "농업정책보험금융원",
   "title": "농림수산식품모태펀드 '25년 3차 추가 출자사업(농식품투자 계정) 공고",
   "url": "https://www.apfs.kr/front/board/boardContentsView.do?boardId=10026&menuId=41&contId=14716",
   "published": "2025-09-01",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "(붙임) `25년 3차 추가 출자사업(농식품투자 계정) 계획 공고_홈페이지.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2025-09-16",
+    "evidence": "2025. 9. 16. 제안서 접수마감"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 10
  },
  "농업정책보험금융원-14626": {
   "source": "농업정책보험금융원",
   "title": "농림수산식품모태펀드 '25년 2차 추가 출자사업(농식품투자 계정) 공고",
   "url": "https://www.apfs.kr/front/board/boardContentsView.do?boardId=10026&menuId=41&contId=14626",
   "published": "2025-06-25",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "(붙임) `25년 2차 추가 출자사업(농식품투자 계정) 계획 공고_홈페이지.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2025-07-22",
+    "evidence": "2025년 7월22일 제안서 접수 마감"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 14
  },
  "농업정책보험금융원-14511": {
   "source": "농업정책보험금융원",
@@ -1175,18 +1283,36 @@
   "title": "농림수산식품모태펀드 '25년 추가 출자사업(농식품투자 계정) 공고",
   "url": "https://www.apfs.kr/front/board/boardContentsView.do?boardId=10026&menuId=41&contId=14508",
   "published": "2025-05-02",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "(붙임) `25년 추가 출자사업(농식품투자 계정) 계획 공고_홈페이지.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2025-05-27",
+    "evidence": "2025년 5월 27일 제안서접수 마감"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 12
  },
  "농업정책보험금융원-14344": {
   "source": "농업정책보험금융원",
   "title": "농림수산식품모태펀드 '25년 정기 출자사업(수산투자 계정) 공고(첨부수정_별첨)",
   "url": "https://www.apfs.kr/front/board/boardContentsView.do?boardId=10026&menuId=41&contId=14344",
   "published": "2025-01-31",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "(붙임) `25년 정기 출자사업(수산투자 계정) 계획 공고_홈페이지.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2025-02-28",
+    "evidence": "2025년 2월 28일 제안서접수 마감"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 9
  },
  "농업정책보험금융원-14336": {
   "source": "농업정책보험금융원",
@@ -1202,45 +1328,90 @@
   "title": "농림수산식품모태펀드 '25년 정기 출자사업(농식품투자 계정) 공고(첨부수정_별첨)",
   "url": "https://www.apfs.kr/front/board/boardContentsView.do?boardId=10026&menuId=41&contId=14335",
   "published": "2025-01-21",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "(붙임) `25년 정기 출자사업(농식품투자 계정) 계획 공고_홈페이지.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2025-02-20",
+    "evidence": "2025년 2월 20일 제안서접수 마감"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 17
  },
  "농업정책보험금융원-14210": {
   "source": "농업정책보험금융원",
   "title": "농림수산식품모태펀드 '24년 2차 추가 출자사업(농식품투자 계정) 공고",
   "url": "https://www.apfs.kr/front/board/boardContentsView.do?boardId=10026&menuId=41&contId=14210",
   "published": "2024-10-08",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "(붙임) `24년 2차 추가 출자사업(농식품투자 계정) 계획 공고(안)_홈페이지.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2024-10-25",
+    "evidence": "2024년 10월 25일 제안서접수 마감"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 10
  },
  "농업정책보험금융원-14131": {
   "source": "농업정책보험금융원",
   "title": "농림수산식품모태펀드 '24년 하반기 추가 출자사업(농식품투자 계정) 공고",
   "url": "https://www.apfs.kr/front/board/boardContentsView.do?boardId=10026&menuId=41&contId=14131",
   "published": "2024-08-22",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "(붙임) `24년 하반기 추가 출자사업(농식품투자 계정) 계획 공고(안)_240822.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2024-09-11",
+    "evidence": "2024년 9월 11일 제안서접수 마감"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 10
  },
  "농업정책보험금융원-14023": {
   "source": "농업정책보험금융원",
   "title": "농림수산식품모태펀드 '24년 수시 출자사업(농식품투자 계정) 공고",
   "url": "https://www.apfs.kr/front/board/boardContentsView.do?boardId=10026&menuId=41&contId=14023",
   "published": "2024-05-27",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "(붙임) `24년 수시 출자사업(농식품투자 계정) 계획 공고_홈페이지.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2024-06-14",
+    "evidence": "2024년 6월 14일 제안서접수 마감"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 11
  },
  "농업정책보험금융원-13870": {
   "source": "농업정책보험금융원",
   "title": "농림수산식품모태펀드 '24년 정기 출자사업(수산투자 계정) 공고",
   "url": "https://www.apfs.kr/front/board/boardContentsView.do?boardId=10026&menuId=41&contId=13870",
   "published": "2024-02-28",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "(붙임) `24년 정기 출자사업(수산투자 계정) 계획 공고_홈페이지.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2024-03-22",
+    "evidence": "2024년 3월 22일 제안서접수 마감"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 10
  },
  "농업정책보험금융원-13868": {
   "source": "농업정책보험금융원",
@@ -1256,54 +1427,108 @@
   "title": "농림수산식품모태펀드 '24년 정기 출자사업(농식품투자 계정) 공고",
   "url": "https://www.apfs.kr/front/board/boardContentsView.do?boardId=10026&menuId=41&contId=13859",
   "published": "2024-02-21",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "(붙임) `24년 정기 출자사업(농식품투자 계정) 계획 공고_홈페이지.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2024-03-22",
+    "evidence": "2024년 3월 22일 제안서접수 마감"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 23
  },
  "기업은행-317002": {
   "source": "기업은행",
   "title": "「2026 IBK 동행펀드」출자사업 위탁운용사 선정계획 공고",
   "url": "https://www.ibk.co.kr/cyber/noticeDetailCyber.ibk?pageId=IR03010400&srno=317002",
   "published": "2026-05-18",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "「2026 IBK 동행펀드」 위탁운용사 선정계획 공고.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2026-05-29",
+    "evidence": "2026. 5. 29. 23:59 까지 제안서 접수"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 8
  },
  "기업은행-316988": {
   "source": "기업은행",
   "title": "「임상3상 특화펀드」위탁운용사 선정계획 공고",
   "url": "https://www.ibk.co.kr/cyber/noticeDetailCyber.ibk?pageId=IR03010400&srno=316988",
   "published": "2026-05-11",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "붙임.모태펀드(보건복지부) 2026년 5월 수시 출자사업 계획 공고(안).pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2026-06-05",
+    "evidence": "접수마감시한 · 2026년 6월 5일"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 17
  },
  "기업은행-316778": {
   "source": "기업은행",
   "title": "IBK기업은행 2026년도 출자사업 공고",
   "url": "https://www.ibk.co.kr/cyber/noticeDetailCyber.ibk?pageId=IR03010400&srno=316778",
   "published": "2026-01-12",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "(공고)IBK상생도약펀드_공고안(최종).hwp",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2026-01-30",
+    "evidence": "접수 일자 ▪ 2026년 1월 30일"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": null
  },
  "기업은행-316524": {
   "source": "기업은행",
   "title": "「2025 IBK 혁신펀드」출자사업 위탁운용사 선정계획 공고",
   "url": "https://www.ibk.co.kr/cyber/noticeDetailCyber.ibk?pageId=IR03010400&srno=316524",
   "published": "2025-10-13",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "「2025 IBK 혁신펀드」위탁운용사 선정계획 공고.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2025-10-27",
+    "evidence": "2025. 10. 27. 16:00 까지 제안서 접수"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 8
  },
  "기업은행-315849": {
   "source": "기업은행",
   "title": "「K-바이오·백신 펀드」 위탁운용사 선정계획 공고",
   "url": "https://www.ibk.co.kr/cyber/noticeDetailCyber.ibk?pageId=IR03010400&srno=315849",
   "published": "2024-12-20",
-  "status": "no_pdf",
-  "events": [],
-  "tried": "2026-11-27"
+  "file": "(붙임) 모태펀드(보건계정) 2024년 12월 수시 출자사업 계획 공고.pdf",
+  "status": "ok",
+  "note": "",
+  "events": [
+   {
+    "type": "접수마감",
+    "date": "2025-01-21",
+    "evidence": "접수마감시한 · 2025년 1월 21일"
+   }
+  ],
+  "tried": "2026-11-27",
+  "pages": 17
  },
  "교직원공제회-54862": {
   "source": "교직원공제회",

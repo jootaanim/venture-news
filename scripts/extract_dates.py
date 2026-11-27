@@ -42,6 +42,8 @@ SKIP_HOSTS = {
     "www.kvic.or.kr": "robots.txt가 첨부 다운로드 경로를 막고 서버도 직접 다운로드를 거절함",
     "www.kpasset.go.kr": "구형 암호화 방식 허용 여부가 정해지지 않음",
 }
+# robots.txt로는 막혀 있지만 기관에서 첨부파일 수집까지 허용 답변을 받은 곳(docs/수집허용.md). robots 확인 대신 이 기록을 따른다.
+PERMITTED_HOSTS = {"www.ibk.co.kr": 3.0, "www.apfs.kr": 3.0}  # 값: 요청 간격(초)
 TARGET_CATEGORIES = {"출자계획", "선정공고"}
 DOC_EXT = (".pdf", ".hwp", ".hwpx", ".docx", ".doc")  # 공고문으로 읽는 첨부파일 종류(PDF·한글·워드)
 def bare_name(name):
@@ -105,12 +107,16 @@ def fetch_pdf(item, att, last_hit):
     host = urlparse(url).netloc
     if host in SKIP_HOSTS:
         return None, "skipped", SKIP_HOSTS[host]
-    rp = robots_for(url)
+    if host in PERMITTED_HOSTS:
+        rp = None
+    else:
+        rp = robots_for(url)
     if rp is False:
         return None, "skipped", "robots.txt를 확인하지 못함"
     if rp and not rp.can_fetch(UA, url):
         return None, "skipped", "robots.txt가 이 경로를 막음"
-    wait = crawl_delay(rp) - (time.time() - last_hit.get(host, 0))
+    gap = PERMITTED_HOSTS.get(host) or crawl_delay(rp)
+    wait = gap - (time.time() - last_hit.get(host, 0))
     if wait > 0:
         time.sleep(wait)
     s = requests.Session()
@@ -119,7 +125,10 @@ def fetch_pdf(item, att, last_hit):
     headers = {"Referer": item["url"]}  # 공지 페이지에서 링크를 누른 것과 같은 정상 흐름
     for attempt in range(2):
         try:
-            r = s.get(url, headers=headers, timeout=60)
+            if att.get("post"):  # 기업은행처럼 POST로만 내려주는 첨부파일
+                r = s.post(url, data=att["post"], headers=headers, timeout=60)
+            else:
+                r = s.get(url, headers=headers, timeout=60)
             last_hit[host] = time.time()
             if doc_kind(r.content):
                 return r.content, "ok", ""
